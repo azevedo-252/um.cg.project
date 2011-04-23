@@ -1,0 +1,55 @@
+clean:
+	rm -f linux.exe *.o *.swp
+
+
+
+md2loader: md2_files
+
+compile: md2loader c_files h_files
+	gcc -o linux.exe 
+
+
+LIBPATH += -L"/System/Library/Frameworks/OpenGL.framework/Libraries" -I/opt/local/include -L/opt/local/lib
+
+FRAMEWORK = -framework GLUT
+RAMEWORK += -framework OpenGL 
+
+
+COMPILERFLAGS = -Wall -funrool-loops -O3 -ffast-math
+CC = g++ 
+CFLAGS = $(COMPILERFLAGS) 
+LIBS = -lGL -lGLU
+LIBS2 = -lGL -lGLU -lglut
+.SUFFIXES: .cpp .c .h
+
+SRC_MD2 = MD2Loader/Main.cpp MD2Loader/Anorms.h MD2Loader/DataManager.h MD2Loader/DataManager.cpp MD2Loader/Image.h MD2Loader/Image.cpp MD2Loader/MD2Model.h MD2Loader/MD2Model.cpp MD2Loader/MD2Player.h MD2Loader/MD2Player.cpp MD2Loader/Texture.h MD2Loader/Texture.cpp MD2Loader/TextureManager.h
+
+SRC = Main.cpp Camera.h Camera.cpp Character.h Character.cpp GLManager.h GLManager.cpp InputManager.h InputManager.cpp Map.h Map.cpp MD2main.h MD2main.cpp Model.h Vertex.h Vertex.cpp
+
+OBJ=$(SRC:.cpp=.o)
+OBJH=$(SRC:.cpp=.h)
+
+OUT = keybusters
+
+.cpp.o:
+	$(CC) $(INCLUDES) -c $< -o $@
+
+.o:
+	$(CC) $(INCLUDES) -c $< -o $@
+
+all: $(OUT)
+
+.cpp.h:
+
+$(OUT): $(OBJ)
+	$(CC) $(FRAMEWORK) -o $@ $(LIBDIR) $(LIBPATH) $(OBJ) $(LIBS)
+linux: $(OBJ)
+	$(CC) -o $(OUT) $(OBJ) $(LIBS2)
+
+install:
+	@echo Tem de ser superutilizador
+	sudo cp $(OUT) /usr/bin/
+unistall:
+	sudo rm /usr/bin/$(OUT)
+clean: 
+	rm -rf $(OBJ) $(OUT)

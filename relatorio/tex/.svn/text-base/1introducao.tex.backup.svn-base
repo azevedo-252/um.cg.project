@@ -1,0 +1,23 @@
+ %vim: set ts=4 sw=4 ai et tw=74:
+\chapter{Introdução}
+%\addcontentsline{toc}{chapter}{Introdução}
+
+
+No âmbito da disciplina de Laboratórios de Informática IV foi-nos proposta a realização de um projecto de software de tema livre, mas com as condições de que este fosse um projecto aplicável a um problema do mundo real e que utilizasse uma série de determinadas ferramentas profissionais.\\
+
+Sendo assim, a equipa responsável pela realização do projecto decidiu que o problema a resolver seria baseado numa imobiliária \textit{online} que fornece serviços de promoção, venda e aluguer de imóveis. \\
+
+De facto, e com o surgir de novas exigências por parte da sociedade moderna, torna-se cada vez mais necessário um sistema capaz de automatizar todo o processo de vendas, garantindo um acesso rápido e eficaz à informação, por forma a aumentar a competitividade num mercado cada vez mais lotado e instável devido às oscilações económicas.\\
+
+Sendo assim, deverá ser disponibilizada aos utilizadores deste sistema, uma plataforma simples e de fácil percepção, que permita a troca de informação entre compradores e vendedores, possuindo igualmente um vasto leque de funcionalidades de utilidade comprovada. \\
+
+Propusemo-nos então realizar um projecto de software que permita ao utilizador aceder facilmente a esta informação, simplificando todo o processo de pesquisa de imóveis e posterior contacto para o negócio. \\
+
+%Este relatório de acompanhamento está organizado conforme o processo de desenvolvimento de um projecto segundo o Modelo em Cascata. Assim, começa-se por abordar a Análise e Especificação do problema onde será feita uma primeira análise do problema proposto e um primeiro desenho da resolução. De seguida, explica-se o funcionamento do software criado, mostrando a forma como os dados estão organizados e como são trabalhados. Por fim, mostra-se os testes realizados para comprovar o sucesso dos objectivos propostos inicialmente.
+
+\chapter{Análise e Especificação do Problema}
+Actualmente, o comércio de imóveis é uma das bases da economia de um pais, pois sem este, a taxa de desemprego subiria drasticamente, causando graves problemas sociais. Existem actualmente em Portugal dezenas de empresas que diariamente transaccionam muitos imóveis, facilitando todo o processo de venda.\\
+
+Num mercado tão competitivo e face à recessão económica actual, um factor determinante para o explorar, é aborda-lo de uma forma simples, rápida e económica. Foi detectado que embora existam alguns portais no mercado que incidem sobre a venda de imóveis, estes não são suficientemente elucidativos para o cliente final, pois grande parte deles exibem problemas tanto ao nível da sua organização como ao nível da actualização dos dados e acesso à informação. Muitas vezes é também posta em causa a seriedade do vendedor, uma vez que existe sempre o medo por parte do cliente de que a propriedade esteja a ser sobrevalorizada e no final, este esteja a pagar mais por algo que não deve.\\
+
+Sendo assim, e depois de uma análise ostensiva ao mercado e de serem detectados os problemas dos vários portais existente, propuse-mo-nos então realizar uma aplicação web inovadora e mais completa que a actual oferta, com o objectivo de minimizar o esforço entre clientes e vendedores.

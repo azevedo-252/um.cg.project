@@ -1,0 +1,35 @@
+#ifndef _EXTERNS_H
+#define _EXTERNS_H
+
+#include "Config.h"
+#include "Map.h"
+#include "Player.h"
+#include "Camera.h"
+#include "Towers.h"
+#include "Keys.h"
+#include "Rainbow.h"
+#include "Toilet.h"
+#include "Radar.h"
+#include "SkyBox.h"
+#include "Sound.h"
+
+extern Config conf;
+extern Map* g_map;
+extern Player* g_player;
+extern Camera* g_camera;
+extern Towers* g_towers;
+extern Keys* g_keys;
+extern Rainbow* g_rainbow;
+extern Toilet* g_toilet;
+
+extern Radar* g_radar;
+
+extern int g_win_w, g_win_h, g_win_half_w, g_win_half_h;
+extern float g_dist_factor;
+
+extern int g_anims_interval;
+extern int g_update_interval;
+
+extern SkyBox* g_skybox;
+
+#endif

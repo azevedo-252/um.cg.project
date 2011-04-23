@@ -1,0 +1,81 @@
+\relax 
+\catcode`"\active
+\ifx\hyper@anchor\@undefined
+\global \let \oldcontentsline\contentsline
+\gdef \contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global \let \oldnewlabel\newlabel
+\gdef \newlabel#1#2{\newlabelxx{#1}#2}
+\gdef \newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\let \contentsline\oldcontentsline
+\let \newlabel\oldnewlabel}
+\else
+\global \let \hyper@last\relax 
+\fi
+
+\select@language{portuges}
+\@writefile{toc}{\select@language{portuges}}
+\@writefile{lof}{\select@language{portuges}}
+\@writefile{lot}{\select@language{portuges}}
+\@input{0resumo.aux}
+\@writefile{toc}{\contentsline {chapter}{Conte\'udo}{iii}{chapter*.2}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {1}Introdu\IeC {\c c}\IeC {\~a}o}{1}{chapter.1}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {chapter}{\numberline {2}An\IeC {\'a}lise e Especifica\IeC {\c c}\IeC {\~a}o do Problema}{2}{chapter.2}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {2.1}Descri\IeC {\c c}\IeC {\~a}o informal do problema}{2}{section.2.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}Especifica\IeC {\c c}\IeC {\~a}o dos objectivos}{2}{section.2.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}Camada de dados}{3}{subsection.2.2.1}}
+\@writefile{toc}{\contentsline {subsubsection}{API para a camada de dados}{3}{section*.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}Camada de Neg\IeC {\'o}cios}{4}{subsection.2.2.2}}
+\@writefile{toc}{\contentsline {subsubsection}{Parsings}{4}{section*.4}}
+\@writefile{toc}{\contentsline {subsubsection}{Web-Services}{4}{section*.5}}
+\@writefile{toc}{\contentsline {subsubsection}{API para interac\IeC {\c c}\IeC {\~a}o com a camada de dados}{4}{section*.6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.3}Camada de apresenta\IeC {\c c}\IeC {\~a}o}{5}{subsection.2.2.3}}
+\@writefile{toc}{\contentsline {subsubsection}{P\IeC {\'a}gina Web}{5}{section*.7}}
+\@writefile{toc}{\contentsline {subsubsection}{Aplica\IeC {\c c}\IeC {\~a}o de administra\IeC {\c c}\IeC {\~a}o}{6}{section*.8}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}Decis\IeC {\~o}es pretinentes}{6}{section.2.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}M\IeC {\'e}todo de desenvolvimento}{6}{subsection.2.3.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.2}Software a utilizar}{6}{subsection.2.3.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.3}Considera\IeC {\c c}\IeC {\~o}es}{7}{subsection.2.3.3}}
+\@writefile{toc}{\contentsline {subsubsection}{Tipos de Utilizadores}{7}{section*.9}}
+\@writefile{toc}{\contentsline {subsubsection}{Tipos de dados}{7}{section*.10}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Desenho do Sistema}{8}{chapter.3}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Diagrama de Componentes}{8}{section.3.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Diagrama de Componentes}}{9}{figure.3.1}}
+\newlabel{fig:diagramaComponentes}{{3.1}{9}{Diagrama de Componentes\relax }{figure.3.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Diagramas de \textit  {Use Cases}}{9}{section.3.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Pesquisa}{9}{subsection.3.2.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Diagrama de \textit  {Use Cases} da pesquisa}}{10}{figure.3.2}}
+\newlabel{fig:pesquisa}{{3.2}{10}{Diagrama de \textit {Use Cases} da pesquisa\relax }{figure.3.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Pesquisa R\IeC {\'a}pida}{10}{section*.11}}
+\@writefile{toc}{\contentsline {subsubsection}{Pesquisa Avan\IeC {\c c}ada}{10}{section*.12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Registo}{11}{subsection.3.2.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Login}{11}{subsection.3.2.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Diagrama de \textit  {Use Cases} da login}}{11}{figure.3.3}}
+\newlabel{fig:login}{{3.3}{11}{Diagrama de \textit {Use Cases} da login\relax }{figure.3.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.4}Pagamentos}{12}{subsection.3.2.4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Diagrama de \textit  {Use Cases} para os pagamentos}}{12}{figure.3.4}}
+\newlabel{fig:pagamentos}{{3.4}{12}{Diagrama de \textit {Use Cases} para os pagamentos\relax }{figure.3.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.5}Gest\IeC {\~a}o de Pagamentos}{12}{subsection.3.2.5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Diagrama de \textit  {Use Cases} para a Gest\IeC {\~a}o de Pagamentos}}{13}{figure.3.5}}
+\newlabel{fig:gestaopag}{{3.5}{13}{Diagrama de \textit {Use Cases} para a Gestão de Pagamentos\relax }{figure.3.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.6}Gest\IeC {\~a}o Im\IeC {\'o}veis}{13}{subsection.3.2.6}}
+\@writefile{toc}{\contentsline {subsubsection}{Adicionar im\IeC {\'o}vel}{13}{section*.13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces Diagrama de \textit  {Use Cases} para a Gest\IeC {\~a}o de Im\IeC {\'o}veis}}{14}{figure.3.6}}
+\newlabel{fig:gestaoimv}{{3.6}{14}{Diagrama de \textit {Use Cases} para a Gestão de Imóveis\relax }{figure.3.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Editar im\IeC {\'o}vel}{14}{section*.14}}
+\@writefile{toc}{\contentsline {subsubsection}{Declarar venda/remover im\IeC {\'o}vel}{14}{section*.15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.7}Gest\IeC {\~a}o de utilizadores}{15}{subsection.3.2.7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces Diagrama de \textit  {Use Cases} para a Gest\IeC {\~a}o de Utilizadores}}{15}{figure.3.7}}
+\newlabel{fig:gestaoutil}{{3.7}{15}{Diagrama de \textit {Use Cases} para a Gestão de Utilizadores\relax }{figure.3.7}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Edi\IeC {\c c}\IeC {\~a}o dos dados pessoais}{15}{section*.16}}
+\@writefile{toc}{\contentsline {subsubsection}{Remo\IeC {\c c}\IeC {\~a}o/fecho da conta}{15}{section*.17}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Conclus\IeC {\~o}es e Trabalho Futuro}{16}{chapter.4}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {chapter}{Bibliografia}{17}{chapter*.18}}
+\@writefile{toc}{\contentsline {chapter}{Refer\IeC {\^e}ncias WWW}{18}{chapter*.19}}

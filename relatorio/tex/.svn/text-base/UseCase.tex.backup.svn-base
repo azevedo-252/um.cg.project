@@ -1,0 +1,112 @@
+% vim: set ts=4 sw=4 ai et tw=74:
+\chapter{Desenho do Sistema}
+%\addcontentsline{toc}{section}{Desenho do Sistema}
+
+
+A partir dos objectivos estudados na secção anterior, é necessário desenvolver planos do sistema de software de modo a que, aquando da programação, os programadores se preocupem apenas em implementar os objectivos, não atendendo a possíveis necessidades não previstas do programa. De forma a facilitar a especificação e concepção do sistema, de seguida, dividem-se os objectivos em unidades independentes, para que no futuro, o grupo de trabalho possa desenvolver diferentes partes do mesmo projecto simultaneamente. Esta divisão será organizada por funcionalidades da aplicação a desenvolver, tendo em conta que será utilizado o \textit{Visual Paradigm}.\\
+
+Assim, esta secção começa por abordar o Diagrama de Componentes de forma a ter uma visão geral do Sistema, sendo que, de seguida, se detalha especificamente cada uma das funcionalidades através de Use Cases e Diagramas de Seguência e finaliza-se com os Diagramas de Classe. \\ 
+
+Desta maneira, evitam-se erros inesperados e maior precisão nas funcionalidades e necessidades que o sistema terá. \\
+
+\section{Diagrama de Componentes}
+Tendo em conta os requisitos inicialmente definidos, chegou-se a um desenho do sistema que se divide em três camadas distintas. Cada camada tem as suas funcionalidades especificas e são independentes entre elas. Isto significa que se for necessário realizar alterações numa camada, as outras não serão afectadas, o que facilita possiveis actualizações. Utilizando o Visual Paradigm, através de um diagrama de componentes, o grupo de trabalho chegou ao desenho da figura ~\ref{fig:diagramaComponentes}.
+
+ \begin{figure}[here]
+                 \centering{\includegraphics[width=1\textwidth]{images/diagramaComponentes.png}}
+                 \caption{Diagrama de Componentes}
+                 \label{fig:diagramaComponentes}
+\end{figure}
+
+
+\section{Diagramas de \textit{Use Cases}}
+
+Nesta secção o objectivo principal é o de definir concretamente cada funcionalidade que o sistema irá disponibilizar. Estes diagramas permitirão, uma maior compreensão daquilo que o programa será capaz de realizar e descreve de uma forma ainda um pouco abstracta como é que o programa deverá interagir com o utilizador (dados vindos do exterior). Isto permitirá desenvolver, posteriormente, os diagramas de sequência de uma forma mais eficaz.
+\subsection{Pesquisa}
+Como o objectivo desta ferramente é o de anunciar imóveis aos utilizadores que navegam pela internet, torna-se necessário criar um sistema de pesquisa que se adeque às suas exigências. Isto fará com que os utilizadores possam, facilmente, encontrar o produto desejado, explorando todas as possibilidades que se adequam aos seus critérios. Numa fase posterior, este utilizador poderá querer entrar em contacto com o vendedor de um determinado imóvel encontrado na pesquisa.\\
+
+Deverão ser definidos dois tipos de pesquisa, sendo que haverá uma pesquisa rápidas em todas as páginas e um pesquisa avançada que possibilite definir mais especificamente os seus critérios de selecção, nomeadamente limites de preços ou tipos, entre outros.
+
+ \begin{figure}[here]
+                 \centering{\includegraphics[width=0.5\textwidth]{images/pesquisa.png}}
+                 \caption{Diagrama de \textit{Use Cases} da pesquisa}
+                 \label{fig:pesquisa}
+\end{figure}
+
+\subsubsection{Pesquisa Rápida}
+Esta pesquisa, tal como referido acima, estará presente em todas as páginas do site, sob a forma de uma caixa de texto. Nesta caixa, o utilizador poderá inserir a localidade pretendida sendo que, após a inserção, este será redireccionado para uma página com a lista de resultados e, abaixo desta, um mapa das localizações desses imóveis.
+
+No caso de não haver resultados para esse critério, não será mostrada nenhuma lista nem mapa, surgindo uma página com mensagem de resultado vazio para esse critério.
+
+\subsubsection{Pesquisa Avançada}
+De forma a permitir ao utilizador a realização de uma pesquisa mais aprofundada em relação aos seus critérios, esta funcionalidade deverá mostrar o conjunto de possibilidades de selecção para o utilizador. Nesta deverão estar presentes todos os campos relativos a imóveis, nomeadamente: localidade, código de postal, tipo de imóvel, tipo de negócio, estado do imóvel, tipo da zona, número de quartos, casas de banho, assoalhadas e garagens, tamanho do terreno, preço minimo e máximo.
+
+Os resultados serão apresentados de uma forma muito semelhante à pesquisa rápida, isto é, com a lista e o mapa correspondente, com a excepção que neste caso deverá surgir, também, uma zona onde os critérios de selecção são apresentados e modificáveis.
+
+
+\subsection{Registo}
+De forma a que se possa controlar o acesso ao sistema, este incorporará uma funcionalidade que permite o registo do utilizador na base de dados, de forma a que este possa submeter imóveis e/ou pedir informações dos vendedores.
+
+O acesso a esta funcionalidade estará presente em todas as páginas Web deste serviço, desde que o utilizador ainda não tenha sido autenticado. Esta funcionalidade caracteriza-se por um conjunto de caixas de texto onde o utilizador irá inserir a sua informação pessoal, sendo alguns destes de preenchimento obrigatório, nomeadamente nome, nome de utilizador, password, data de nascimento, morada e e-mail. Depois da submissão dos dados, o sistema irá enviar um e-mail de confirmação que o utilizador terá de responder num prazo de 24horas. Caso contrário o sistema remove esse registo temporário.
+
+\subsection{Login}
+De forma a permitir que os utilizadores já registados, possam aceder à sua conta e, por conseguinte, possam submeter imóveis e/ou requisitar informação pessoal dos vendedores, é necessário criar uma zona de autenticação. Esta zona, será chamada de Login e estará acessivel a partir de qualquer página Web, enquanto não houver nenhuma autenticação.
+
+O Login será constituido por duas partes distintas: uma constituida por duas caixas de texto para a submissão dos dados de autenticação (\textit{Username} e \textit{Password}) e outra acessivel através de um \textit{link} para recuperação da \textit{password} pessoal, sendo que, neste caso, será pedido o e-mail com o qual o utilizador se registou e para onde será enviada a password.
+
+\begin{figure}[here]
+                 \centering{\includegraphics[width=0.5\textwidth]{images/login.png}}
+                 \caption{Diagrama de \textit{Use Cases} da login}
+                 \label{fig:login}
+\end{figure}
+
+\subsection{Pagamentos}
+Tal como foi referido na secção anterior, um utilizador normal pode submeter imóveis. No entanto, para que estes imóveis fiquem públicos precisa de pagar uma determinada quota conforme os administradores o exijam. O pagamento será feito por tranferência bancária e será aceite manualmente pelos administradores.
+
+Haverá mais que um tipo de quota conforme as necessidades do vendedor: uma quota básica e uma quota que dê destaque ao imóvel na página principal. Para além destes dois tipos de quota, também será disponibilizada a possibilidade do utilizador escolher o período de tempo de publicação, dentro das possibilidades pre-definidas pelos administradores.
+
+\begin{figure}[here]
+                 \centering{\includegraphics[width=0.4\textwidth]{images/pagamentos.png}}
+                 \caption{Diagrama de \textit{Use Cases} para os pagamentos}
+                 \label{fig:pagamentos}
+\end{figure}
+
+Como se pode verificar na figura ~\ref{fig:pagamentos} esta secção deverá estar dividida em duas partes distintas: uma para visualizar a tabela de preços em vigor e outra para visualizar o estado dos pagamentos relativos à conta actual. Na primeira deverá ser apresentada a tabela com os preços em vigor exigidos pelos administradores do sistema por períodos de tempo. Neste mesmo sítio é apresentado, também, as informações necessárias para a transferência do dinheiro para o pagamento das quotas. A segunda parte desta secção permitirá ao utilizador visualizar o estado dos seus pagamentos, bem como o tempo que resta para a finalização do prazo de publicação de um determinado imóvel.
+
+
+\subsection{Gestão de Pagamentos}
+De modo a definir as quotas torna-se necessário criar uma zona que possibilite a edição dos valores das quotas cobrados e a confirmação de pagamentos dos utilizadores. Para a edição das quotas, deverá surgir uma nova página onde esteja presente uma tabela editavel onde estejam presentes os preços actualmente em vigor. Caso algum campo seja alterado a tabela deverá ser actualizada na Base de Dados e deverá ser confirmada ao utilizador essa actualização. Por padrão o programa deverá ter os valores das quotas a zero. Quanto à outra funcionalidade, terá como objectivo confirmar os pagamentos dos pedidos pendentes dos utilizadores, isto é, o administrador quando tiver a confirmação da transferência bancária deverá, através desta funcionalidade, actualizar o estado do pedido que estava pendente para um estado de pagamento efectuado.
+\begin{figure}[here]
+                 \centering{\includegraphics[width=0.5\textwidth]{images/gestaopag.png}}
+                 \caption{Diagrama de \textit{Use Cases} para a Gestão de Pagamentos}
+                 \label{fig:gestaopag}
+\end{figure}
+
+\subsection{Gestão Imóveis}
+Esta será, talvez, a parte mais importante do sistema, uma vez que todo o programa gira em torno de imóveis. Sendo assim, é necessário que exista a possibilidade de adicionar novos imóveis de forma a que o sistema possa exibir a informação, objectivo principal deste programa. Para além da adição, é necessário ter em conta que o imóvel pode sofrer obras, obrigando, assim, a que seja possilitada a edição dos dados. Outro caso necessário a ter em conta nesta secção é o da remoção do imóvel, podendo ocorrer no caso de venda ou por iniciativa própria do vendedor.
+
+\begin{figure}[here]
+                 \centering{\includegraphics[width=0.5\textwidth]{images/gestaoimv.png}}
+                 \caption{Diagrama de \textit{Use Cases} para a Gestão de Imóveis}
+                 \label{fig:gestaoimv}
+\end{figure}
+
+Estas funcionalidades serão destinadas apenas aos imóveis de cada utilizador e não para qualquer imóvel, prevenindo, assim, acções maliciosas na base de dados. No entanto, haverão utilizadores (administradores) que poderão utilizar estas funcionalidades para qualquer imóvel.
+
+\subsubsection{Adicionar imóvel}
+A adição de imóveis exigirá campos obrigatórios de forma a manter a integridade do sistema e a facilitar as pesquisas dos possiveis compradores. Sendo assim, foi decidido que na adição o utilizador terá de preencher os campos seuguintes: morada, valor, tipo de imóvel, tipo de negócio, estado do imóvel, número de garagens e terá de, também, localizar o imóvel no GoogleMaps, através de um mapa que deverá surgir aquando do preenchimento da morada. Para além destes campos obrigatórios, o utilizador poderá detalhar ainda mais a informação relativa ao imóvel, com os seguintes campos: Número de assoalhadas, de quartos, de casas de banho, andares, metros quadrados do terreno e observações.
+
+\subsubsection{Editar imóvel}
+Como foi descrito acima, é dada a possibilidade de o utilizador poder editar os dados do imóvel. É necessário ter em conta que esta edição deverá ser limitada em determinados campos, de modo a que o utilizador não possa anunciar um determinado imóvel e depois deste ser vendido, altere os campos para um outro imóvel, visto que foi especificado que o utilizador paga uma quota por imóvel. Foi estipulado que, os campos não editaveis, para o utilizador normal, serão a morada e a localização, no GoogleMaps, do imóvel. Para além disso, existem campos obrigatórios que não poderão ficar vazios, tal como na adição.
+
+É de salientar que o administrador poderá editar todos os campos de qualquer imóvel, uma vez que poderão haver excepções, por exemplo, o preenchimento incorrecto aquando do registo do imóvel por parte do utilizador.
+
+\subsubsection{Declarar venda/remover imóvel}
+Tal como será possivel adicionar imóveis, também será possivel ocultar imóveis ou definir o seu estado como vendido. A qualquer altura o utilizador terá o direito de esconder as informações relativas ao seu imóvel. De salientar que estes registos nunca serão removidos da base de dados, apenas ocultados.
+
+\subsection{Gestão de utilizadores}
+Outra secção muito importante neste sistema é a gestão de utilizadores. É necessário ter uma boa organização para manusear todos os utilizadores de forma a poder dar conta de qualquer tipo de problema da informação pessoal de cada utilizador. Assim, será dada a possibilidade de o utilizador editar quase toda a sua informação pessoal (não será permitido modificar o nome de utilizador nem a data de nascimento) e, no caso do administrador, poderá editar qualquer informação relativa a qualquer utilizador.
+
+
+
+

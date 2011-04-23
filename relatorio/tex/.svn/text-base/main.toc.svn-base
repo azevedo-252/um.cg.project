@@ -1,0 +1,42 @@
+\select@language {portuges}
+\contentsline {chapter}{Resumo}{i}{chapter*.1}
+\contentsline {chapter}{Conte\'udo}{iii}{chapter*.2}
+\contentsline {chapter}{\numberline {1}Introdu\IeC {\c c}\IeC {\~a}o}{1}{chapter.1}
+\contentsline {chapter}{\numberline {2}An\IeC {\'a}lise e Especifica\IeC {\c c}\IeC {\~a}o do Problema}{2}{chapter.2}
+\contentsline {section}{\numberline {2.1}Descri\IeC {\c c}\IeC {\~a}o informal do problema}{2}{section.2.1}
+\contentsline {section}{\numberline {2.2}Especifica\IeC {\c c}\IeC {\~a}o dos objectivos}{2}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Camada de dados}{3}{subsection.2.2.1}
+\contentsline {subsubsection}{API para a camada de dados}{3}{section*.3}
+\contentsline {subsection}{\numberline {2.2.2}Camada de Neg\IeC {\'o}cios}{4}{subsection.2.2.2}
+\contentsline {subsubsection}{Parsings}{4}{section*.4}
+\contentsline {subsubsection}{Web-Services}{4}{section*.5}
+\contentsline {subsubsection}{API para interac\IeC {\c c}\IeC {\~a}o com a camada de dados}{4}{section*.6}
+\contentsline {subsection}{\numberline {2.2.3}Camada de apresenta\IeC {\c c}\IeC {\~a}o}{5}{subsection.2.2.3}
+\contentsline {subsubsection}{P\IeC {\'a}gina Web}{5}{section*.7}
+\contentsline {subsubsection}{Aplica\IeC {\c c}\IeC {\~a}o de administra\IeC {\c c}\IeC {\~a}o}{6}{section*.8}
+\contentsline {section}{\numberline {2.3}Decis\IeC {\~o}es pretinentes}{6}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}M\IeC {\'e}todo de desenvolvimento}{6}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Software a utilizar}{6}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Considera\IeC {\c c}\IeC {\~o}es}{7}{subsection.2.3.3}
+\contentsline {subsubsection}{Tipos de Utilizadores}{7}{section*.9}
+\contentsline {subsubsection}{Tipos de dados}{7}{section*.10}
+\contentsline {chapter}{\numberline {3}Desenho do Sistema}{8}{chapter.3}
+\contentsline {section}{\numberline {3.1}Diagrama de Componentes}{8}{section.3.1}
+\contentsline {section}{\numberline {3.2}Diagramas de \textit {Use Cases}}{9}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Pesquisa}{9}{subsection.3.2.1}
+\contentsline {subsubsection}{Pesquisa R\IeC {\'a}pida}{10}{section*.11}
+\contentsline {subsubsection}{Pesquisa Avan\IeC {\c c}ada}{10}{section*.12}
+\contentsline {subsection}{\numberline {3.2.2}Registo}{11}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Login}{11}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Pagamentos}{12}{subsection.3.2.4}
+\contentsline {subsection}{\numberline {3.2.5}Gest\IeC {\~a}o de Pagamentos}{12}{subsection.3.2.5}
+\contentsline {subsection}{\numberline {3.2.6}Gest\IeC {\~a}o Im\IeC {\'o}veis}{13}{subsection.3.2.6}
+\contentsline {subsubsection}{Adicionar im\IeC {\'o}vel}{13}{section*.13}
+\contentsline {subsubsection}{Editar im\IeC {\'o}vel}{14}{section*.14}
+\contentsline {subsubsection}{Declarar venda/remover im\IeC {\'o}vel}{14}{section*.15}
+\contentsline {subsection}{\numberline {3.2.7}Gest\IeC {\~a}o de utilizadores}{15}{subsection.3.2.7}
+\contentsline {subsubsection}{Edi\IeC {\c c}\IeC {\~a}o dos dados pessoais}{15}{section*.16}
+\contentsline {subsubsection}{Remo\IeC {\c c}\IeC {\~a}o/fecho da conta}{15}{section*.17}
+\contentsline {chapter}{\numberline {4}Conclus\IeC {\~o}es e Trabalho Futuro}{16}{chapter.4}
+\contentsline {chapter}{Bibliografia}{17}{chapter*.18}
+\contentsline {chapter}{Refer\IeC {\^e}ncias WWW}{18}{chapter*.19}

@@ -1,0 +1,12 @@
+*.o
+*.a
+main
+*.gch
+.project
+.cproject
+*.toc
+*.log
+*.aux
+*.out
+*.pdf
+*.lof

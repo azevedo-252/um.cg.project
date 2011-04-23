@@ -1,0 +1,16 @@
+% vim: set ts=4 sw=4 ai et tw=74:
+\chapter{Conclusões e Trabalho Futuro}
+%\addcontentsline{toc}{section}{Conclusões e Trabalho Futuro}
+
+
+Ao iniciar esta conclusão, assumida pela equipa responsável por este relatório sobre a primeira fase de desenvolvimento da aplicação Web para uma agência imobiliária, como uma reflexão crítica, torna-se importante diferenciar o processo de desenvolvimento do resultado final.
+
+Analisamos vários “sites” da possível concorrência e detectamos que existem algumas lacunas neste tipo de serviço, que pode ser muito útil a quem pretender transaccionar imóveis. Em algumas das visitas que efectuamos detectou-se que os “sites” estavam um pouco confusos e que a navegação e tempo de carregamento das páginas podiam ser bastante optimizados.
+
+Neste projecto pretendemos que a nossa aplicação seja bastante rápida e intuitiva, de forma a que haja uma boa interacção entre clientes e vendedores, evitando os elevados custos de intermediação imobiliária.
+
+O nosso projecto, além de inovador, visa um contacto directo entre as duas partes interessadas, a um custo muito baixo, mas com segurança e com toda a comodidade que a Internet proporciona.
+
+Na 2ª fase do trabalho iremos especificar todos os pormenores de interacção dos utilizadores com o sistema, os automatismos que iremos proporcionar e as análises da informação da base de dados.
+
+Temos a certeza que a partir destes fundamentos qualquer engenheiro de software pode conceber uma especificação de requisitos mais detalhada, pois a ideia e a forma de interagir com os utilizadores já está devidamente estudada. 

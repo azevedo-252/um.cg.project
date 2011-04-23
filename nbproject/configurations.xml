@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="69">
+  <logicalFolder name="root" displayName="root" projectFiles="true">
+    <df name="cg26.project" root=".">
+      <df name="iniparser">
+        <df name="doc" kind="SOURCE_LOGICAL_FOLDER">
+        </df>
+        <df name="src" kind="SOURCE_LOGICAL_FOLDER">
+          <in>dictionary.c</in>
+          <in>dictionary.h</in>
+          <in>iniparser.c</in>
+          <in>iniparser.h</in>
+        </df>
+      </df>
+      <df name="md2loader" kind="SOURCE_LOGICAL_FOLDER">
+        <in>Anorms.h</in>
+        <in>DataManager.h</in>
+        <in>Image.cpp</in>
+        <in>Image.h</in>
+        <in>Main.cpp</in>
+        <in>Md2Model.cpp</in>
+        <in>Md2Model.h</in>
+        <in>Md2Player.cpp</in>
+        <in>Md2Player.h</in>
+        <in>Texture.cpp</in>
+        <in>Texture.h</in>
+        <in>TextureManager.h</in>
+      </df>
+      <df name="relatorio">
+        <df name="tex">
+          <df name="images" kind="SOURCE_LOGICAL_FOLDER">
+            <in>1.png</in>
+            <in>10.png</in>
+            <in>11.png</in>
+            <in>12.png</in>
+            <in>13.png</in>
+            <in>14.png</in>
+            <in>15.png</in>
+            <in>1imagem.png</in>
+            <in>2.png</in>
+            <in>2imagem.png</in>
+            <in>3.png</in>
+            <in>4.png</in>
+            <in>5.png</in>
+            <in>6.png</in>
+            <in>7.png</in>
+            <in>8.png</in>
+            <in>9.png</in>
+            <in>bdvistageral.png</in>
+            <in>diagramaComponentes.png</in>
+            <in>gestaoimv.png</in>
+            <in>gestaopag.png</in>
+            <in>gestaoutil.png</in>
+            <in>global.png</in>
+            <in>login.png</in>
+            <in>modeloer.jpg</in>
+            <in>pagamentos.png</in>
+            <in>pesquisa.png</in>
+            <in>seqregistar.png</in>
+          </df>
+          <df name="style" kind="SOURCE_LOGICAL_FOLDER">
+            <df name="images" kind="SOURCE_LOGICAL_FOLDER">
+              <in>di.png</in>
+              <in>eng.png</in>
+              <in>um.png</in>
+            </df>
+            <in>Makefile</in>
+            <in>commands.aux</in>
+            <in>commands.tex</in>
+            <in>myreport.cls</in>
+            <in>myreport.sty</in>
+          </df>
+          <df name="tex" kind="SOURCE_LOGICAL_FOLDER">
+            <in>0resumo.tex</in>
+            <in>1consideracoes.tex</in>
+            <in>1introducao.tex</in>
+            <in>2models.tex</in>
+            <in>3cameras.tex</in>
+            <in>4radar.tex</in>
+            <in>5conclusao.tex</in>
+            <in>6bibliografia.tex</in>
+            <in>6referenciasWWW.tex</in>
+            <in>ini.tex</in>
+          </df>
+          <in>0resumo.aux</in>
+          <in>Makefile</in>
+          <in>l_generator.pl</in>
+          <in>main.aux</in>
+          <in>main.lof</in>
+          <in>main.log</in>
+          <in>main.out</in>
+          <in>main.tex</in>
+          <in>main.tex.new</in>
+          <in>main.toc</in>
+          <in>relatorio.pdf</in>
+        </df>
+      </df>
+      <df name="resources" kind="SOURCE_LOGICAL_FOLDER">
+        <df name="models" kind="SOURCE_LOGICAL_FOLDER">
+          <df name="bosscube" kind="SOURCE_LOGICAL_FOLDER">
+          </df>
+          <df name="box" kind="SOURCE_LOGICAL_FOLDER">
+          </df>
+          <df name="brand">
+          </df>
+          <df name="BUZZ">
+          </df>
+          <df name="cyborg" kind="SOURCE_LOGICAL_FOLDER">
+          </df>
+          <df name="dino" kind="SOURCE_LOGICAL_FOLDER">
+          </df>
+          <df name="dumbster" kind="SOURCE_LOGICAL_FOLDER">
+          </df>
+          <df name="faerie" kind="SOURCE_LOGICAL_FOLDER">
+          </df>
+          <df name="fence" kind="SOURCE_LOGICAL_FOLDER">
+          </df>
+          <df name="fighter" kind="SOURCE_LOGICAL_FOLDER">
+          </df>
+          <df name="generator" kind="SOURCE_LOGICAL_FOLDER">
+          </df>
+          <df name="hheli" kind="SOURCE_LOGICAL_FOLDER">
+          </df>
+          <df name="hueteotl" kind="SOURCE_LOGICAL_FOLDER">
+          </df>
+          <df name="KNUCKLES">
+          </df>
+          <df name="marine_warrior" kind="SOURCE_LOGICAL_FOLDER">
+          </df>
+          <df name="mario_flood">
+            <df name="Mario" kind="SOURCE_LOGICAL_FOLDER">
+            </df>
+          </df>
+          <df name="mighty">
+          </df>
+          <df name="Ogro" kind="SOURCE_LOGICAL_FOLDER">
+          </df>
+          <df name="pknight" kind="SOURCE_LOGICAL_FOLDER">
+          </df>
+          <df name="plant2" kind="SOURCE_LOGICAL_FOLDER">
+          </df>
+          <df name="SKIM">
+          </df>
+          <df name="sonic_amy">
+          </df>
+          <df name="sonic_brawl_knuckles">
+          </df>
+          <df name="sonic_brawl_knuckles_blue">
+          </df>
+          <df name="sonic_brawl_shadow">
+          </df>
+          <df name="sonic_brawl_silver">
+          </df>
+          <df name="sonic_brawl_tails">
+          </df>
+          <df name="sonic_classic_amy">
+          </df>
+          <df name="sonic_classic_sonic">
+          </df>
+          <df name="sonic_espio">
+          </df>
+          <df name="sonic_fourest">
+          </df>
+          <df name="sonic_knuckles">
+          </df>
+          <df name="sonic_metal_knuckles">
+          </df>
+          <df name="sonic_metal_sonic">
+          </df>
+          <df name="sonic_shadow">
+          </df>
+          <df name="sonic_silver_unleashed">
+          </df>
+          <df name="sonic_tails_doll">
+          </df>
+          <df name="sonic_unknown">
+          </df>
+          <df name="sonic_yoshi">
+          </df>
+          <df name="toilet">
+          </df>
+          <df name="toon_link">
+          </df>
+          <df name="turret">
+            <in>CC_attribution_licence.txt</in>
+            <in>GNU_licence.txt</in>
+            <in>Readme.txt</in>
+            <in>turret.md2</in>
+            <in>turret.mtl</in>
+            <in>turret.obj</in>
+            <in>turret.pcx</in>
+          </df>
+          <df name="waterput">
+          </df>
+          <df name="weapon1">
+            <in>CC_attribution_licence.txt</in>
+            <in>GNU_licence.txt</in>
+            <in>Readme.txt</in>
+            <in>weapon1.md2</in>
+            <in>weapon1.mtl</in>
+            <in>weapon1.obj</in>
+            <in>weapon1.pcx</in>
+          </df>
+        </df>
+        <df name="sounds">
+          <in>antonio_cascais.wav</in>
+        </df>
+        <df name="textures" kind="SOURCE_LOGICAL_FOLDER">
+          <df name="sky">
+          </df>
+          <df name="soil" kind="SOURCE_LOGICAL_FOLDER">
+          </df>
+        </df>
+      </df>
+      <in>Camera.cpp</in>
+      <in>Camera.h</in>
+      <in>Config.cpp</in>
+      <in>Config.h</in>
+      <in>Frame.cpp</in>
+      <in>Frame.h</in>
+      <in>GLManager.cpp</in>
+      <in>GLManager.h</in>
+      <in>InputManager.cpp</in>
+      <in>InputManager.h</in>
+      <in>Key.cpp</in>
+      <in>Key.h</in>
+      <in>Keys.cpp</in>
+      <in>Keys.h</in>
+      <in>Main.cpp</in>
+      <in>Map.cpp</in>
+      <in>Map.h</in>
+      <in>Model.h</in>
+      <in>Model_MD2.cpp</in>
+      <in>Model_MD2.h</in>
+      <in>Player.cpp</in>
+      <in>Player.h</in>
+      <in>Radar.cpp</in>
+      <in>Radar.h</in>
+      <in>Rainbow.cpp</in>
+      <in>Rainbow.h</in>
+      <in>SkyBox.cpp</in>
+      <in>SkyBox.h</in>
+      <in>Sound.cpp</in>
+      <in>Sound.h</in>
+      <in>Textures.cpp</in>
+      <in>Textures.h</in>
+      <in>Toilet.cpp</in>
+      <in>Toilet.h</in>
+      <in>Tower.cpp</in>
+      <in>Tower.h</in>
+      <in>Towers.cpp</in>
+      <in>Towers.h</in>
+      <in>Vertex.cpp</in>
+      <in>Vertex.h</in>
+      <in>externs.h</in>
+      <in>stb_image.c</in>
+      <in>teste.c</in>
+    </df>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+      <itemPath>Makefile-cg26.project.mk</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile-cg26.project.mk</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <compilerSet>GNU|GNU</compilerSet>
+        <platform>2</platform>
+      </toolsSet>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>$(MAKE) -f Makefile</buildCommand>
+          <cleanCommand>$(MAKE) -f Makefile clean</cleanCommand>
+          <executablePath>main</executablePath>
+          <ccTool>
+            <preprocessorList>
+              <Elem>ILUT_USE_OPENGL</Elem>
+            </preprocessorList>
+          </ccTool>
+        </makeTool>
+      </makefileType>
+      <item path="md2loader/Anorms.h" ex="true" tool="3">
+      </item>
+      <item path="md2loader/DataManager.h" ex="true" tool="3">
+      </item>
+      <item path="md2loader/Image.cpp" ex="true" tool="1">
+      </item>
+      <item path="md2loader/Main.cpp" ex="true" tool="1">
+      </item>
+      <item path="md2loader/Md2Model.cpp" ex="true" tool="1">
+      </item>
+      <item path="md2loader/Md2Player.cpp" ex="true" tool="1">
+      </item>
+      <item path="md2loader/Texture.cpp" ex="true" tool="1">
+      </item>
+      <item path="md2loader/TextureManager.h" ex="true" tool="3">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

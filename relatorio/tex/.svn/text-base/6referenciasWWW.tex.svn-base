@@ -1,0 +1,20 @@
+% vim: set ts=4 sw=4 ai et tw=74:
+\chapter*{Referências WWW}
+\addcontentsline{toc}{chapter}{Referências WWW}
+
+\begin{itemize}
+
+\item [01]  \textbf{\href{http://www.remax.pt}{REMAX}}(Visitado em Março) \\
+\item [02]  \textbf{\href{http://www.era.pt}{Era}}(Visitado em Março) \\
+\item [03]  \textbf{\href{http://www.imokapa.com}{Aplicação IMOKAPA}}(Visitado em Março) \\
+\item [04]  \textbf{\href{http://www.laforet.pt}{laforet}}(Visitado em Março) \\
+\item [05]  \textbf{\href{http://www.bci.cgd.pt}{bci}}(Visitado em Março) \\
+\item [06]  \textbf{\href{http://www.aeiou.bpiexpressoimobiliario.pt}{bpi}}(Visitado em Março)\\
+\item [07]  \textbf{\href{http://www.office.microsoft.com/pt-br/project/FX100487771046.aspx}{Homepage do Microsoft Project}}(Visitado em Março)\\
+\item [08]  \textbf{\href{http://www.subversion.tigris.org}{SVN}}(Visitado em Março) \\
+\item [09]  \textbf{\href{http://www.msdn.microsoft.com/en-us/vstudio/default.aspx}{Homepage do Microsoft Visual Studio}}(Visitado em Março)\\
+\item [10]  \textbf{\href{http://www.code.google.com/apis/maps/}{API do Google Maps}}(Visitado em Março) \\
+\item [11]  \textbf{\href{http://www.w3.org/TR/wsdl}{WSDL}}(Visitado em Março) \\
+\item [12]  \textbf{\href{http://www.pt.wikipedia.org/wiki/SOAP}{SOAP}}(Visitado em Março) \\
+
+\end{itemize}

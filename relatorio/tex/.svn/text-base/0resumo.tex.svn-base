@@ -1,0 +1,8 @@
+% vim: set ts=4 sw=4 ai et tw=74:
+\chapter*{Resumo}
+\addcontentsline{toc}{chapter}{Resumo}
+
+
+Cada vez mais a quantidade, qualidade e rapidez dos serviços prestados por uma determinada empresa são fundamentais para que se tenha sucesso nas vendas e se consiga ganhar vantagem relativamente à concorrência numa sociedade actual cada vez mais consumista.
+
+Pelo evoluir das tecnologias e pela crescente oferta de imóveis devido à conjectura actual, ver facilitada a publicitação e venda de imóveis é imperativo. Sendo assim, desenvolveu-se uma aplicação capaz de realizar estas acções de uma forma dinâmica e com o menor uso de recursos possível. 

@@ -1,0 +1,90 @@
+% vim: set ts=4 sw=4 ai et tw=74:
+
+\chapter{Análise e Especificação do Problema}
+\section{Descrição informal do problema}
+Actualmente, o comércio de imóveis é uma das bases da economia de um país, pois sem este, a taxa de desemprego subiria drasticamente, causando graves problemas sociais. Existem actualmente em Portugal dezenas de empresas que diariamente transaccionam muitos imóveis, facilitando todo o processo de venda.\\
+
+Num mercado tão competitivo e face à recessão económica actual, um factor determinante para o explorar, é aborda-lo de uma forma simples, rápida e económica. Foi detectado que embora existam alguns portais no mercado que incidem sobre a venda de imóveis, estes não são suficientemente elucidativos para o cliente final, pois grande parte deles exibem problemas tanto ao nível da sua organização como ao nível da actualização dos dados e acesso à informação. Muitas vezes é também posta em causa a seriedade do vendedor, uma vez que existe sempre o medo por parte do cliente de que a propriedade esteja a ser sobrevalorizada e no final, este esteja a pagar mais por algo que não deve.\\
+
+Sendo assim, e depois de uma análise ostensiva ao mercado e de serem detectados os problemas dos vários portais existentes, propusemo-nos então realizar uma aplicação web inovadora e mais completa que a actual oferta, com o objectivo de minimizar o esforço entre clientes e vendedores. Para além disso, de forma a conseguir cativar o maior número de clientes, ao invés de utilizar um lucro proveniente da venda, será apenas cobrada uma taxa para a publicação do anúncio, semelhante ao que ocorre nos classificados dos jornais.
+
+\section{Especificação dos objectivos}
+
+De forma a produzir este software tornou-se necessário fazer, em primeiro lugar, uma análise aprofundada do tema em questão, de forma a avaliar as restrições e verificar os objectivos a concretizar. Posto isto, de seguida, mostra-se toda a especificação que deve ser seguida nas fases seguintes, por forma a que a aplicação vá de encontro ao que o cliente pediu.
+
+\subsection{Camada de dados}
+
+A camada de dados é onde a aplicação irá guardar de forma persistente todos os dados necessários ao seu funcionamento. Para tal teremos de ser capazes de guardar dados relativos aos clientes, imóveis e ainda dados que vão reger o negócio, como por exemplo, tabelas de preços para os serviços disponibilizados.\\
+
+Relativamente ao cliente, é necessário armazenar as suas informações pessoais, nomeadamente, o seu nome, morada, contactos, nome de utilizador e password. Estes dois últimos campos servirão para identificar o cliente no sistema, possibilitando-lhe assim, o acesso a funcionalidades que estão restritas a utilizadores registados, sendo que, dependendo do tipo da conta que este possua, os dados e operações a que tem acesso são diferenciados. É também necessário, guardar um histórico de todas as transacções realizadas por este no sistema.\\
+
+
+Sobre os imóveis iremos ter de guardar a sua localização, identificação, topologia, tipo de imóvel, tipo de anuncio, data de submissão, data de confirmação do pagamento, a sua área, preço, preço por metro quadrado, e o cliente (vendedor) que o adicionou. É necessário também guardar informação referente aos clientes que demonstraram interesse num determinado imóvel, bem como a data em que esse interesse foi mostrado. \\
+
+
+Para os serviços disponibilizados teremos de ter informação sobre os mesmo, tais como tipo de serviço, preço, duração. Para cada cliente que adira a um dado serviço teremos de guardar um registo que terá informação sobre o cliente, data de pagamento,montante pago.
+
+\subsubsection{API para a camada de dados}
+Para facilitar o acesso aos dados e para posterior actualização do sistema deverá ser criada uma API nesta camada, que diponibilizará um conjunto de métodos que darão acesso aos dados, de modo a dar resposta a todos os pedidos que a camada de negócios precisa. Desta maneira será possível, em futuras fases, modificar a camada de dados sem afectar directamente as outras camadas, podendo assim o sistema continuar em funcionamento.
+\newpage
+\subsection{Camada de Negócios}
+
+\subsubsection{Parsings}
+Uma vez que este projecto inclui a cadeira de Processamento de Linguagens, torna-se necessário a aplicação prática da teoria leccionada nesta disciplina, por forma a que a aplicação tenha mais e melhores capacidades.\\
+Sendo assim, e após a discussão deste problema com o cliente, decidiu-se então que a aplicação deveria ser igualmente capaz de executar as funcionalidades que de seguida se enunciam:
+\begin{itemize}
+ \item Ser capaz de interpretar e carregar para a Base de Dados, um ficheiro de texto com todos os Códigos Postais existentes no território português, disponível no \href{http://www2.ctt.pt}{sitio da Internet} dos Correios de Portugal.
+ \item Importar e exportar Bases de Dados: o programa deverá ser capaz de importar e exportar bases de dados da aplicação IMOKAPA, de forma a simplificar o processo de adição de dados por parte dos clientes profissionais que utilizam este sistema de informação.
+\end{itemize}
+\subsubsection{Web-Services}
+Para a cadeira de Comunicações por Computador o projecto deverá contemplar algo que faça a ligação entre a camada de apresentação e camada de negócios. Esta parte ainda está por definir uma vez que existe indecisões por parte do cliente.
+\subsubsection{API para interacção com a camada de dados}
+De forma a facilitar o desenvolvimento deste projecto, decidiu-se que seria mais fácil dividir esta secção nas suas duas áreas distintas. Esta organização por áreas permite também facilitar uma possivel alteração das funcionalidades numa fase posteriror à finalização da aplicação.
+\begin{itemize}
+\item \underline{Validações}
+\end{itemize}
+
+Para manter a integridade da base de dados é necessário existir uma API capaz de validar determinados dados e acções a serem feitas pela manutenção. Isto exige que todas as regras impostas na implementação da base de dados sejam cumpridas e que os dados nela inseridos sejam sempre verificados de modo a aceitar dados coerentes.\\
+Nesta parte da camada de negócios também é tratada a autenticação dos utilizadores, ou seja, a aplicação deve estar preparada para receber os dados de utilizadores e verificar a sua existência na base de dados. Esta autenticação terá duas vertentes (ou métodos): uma para o \textit{login}, que inclui a validação entre o nome de utilizador e password; e outra para confirmação de possibilidade de edição, que requer uma confirmação interna entre os dois campos referidos na anterior.
+
+\begin{itemize}
+\item \underline{Manutenção}
+\end{itemize}
+
+A utilização de camadas num projecto exige que existam API's para abstrair os programadores das outras camadas. Ora, esta secção deve conter todos os métodos necessários para criar uma ponte entre a camada de apresentação e a camada de dados. É, então, caracterizada por um conjunto de métodos capazes de realizar toda a manutenção de uma base de dados, desde a adição, edição e remoção dos dados. Estes três tipos de acções serão sempre precedidas por perguntas feitas através da API das validações para evitar problemas.\\
+Para além disso, esta secção incluirá, também, métodos para fazer pesquisas na base de dados, que serão necessários para a criação das páginas web dinâmicas. \\
+Qualquer algorítmo de processamento de dados também será incluido nesta camada do projecto.
+
+\subsection{Camada de apresentação}
+
+\subsubsection{Página Web}
+O sistema de Gestão de Imobiliária irá contemplar um interface Web, que visa de uma forma simples e rápida dar a conhecer os imóveis. Este pacote da aplicação será a imagem do Sistema, e será esta interface que fará de intermediário entre o sistema e o Cliente. Do ponto de vista do cliente, este interface terá de ser, simples, intuitivo, fácil de navegar e rápido, pois só dessa forma poderemos garantir que independentemente do nível de experiência do cliente no âmbito dos sistemas de informação, este poderá sem qualquer problema navegar através do portal, podendo obter informações relativamente aos imóveis.
+
+Ao nível do vendedor Imobiliário, serão também desnecessários conhecimentos avançados na área das tecnologias de informação. Este poderá aceder facilmente a uma área pessoal, onde poderá inserir ou editar informações relativamente aos seus imóveis. A aplicação Web, poderá ser executada em qualquer computador, com ligação à  Internet, sem que para isso sejam necessários privilégios de Administrador. No que diz respeito às alterações estas poderão ser feitas em tempo real através do portal.
+
+Para apresentar os resultados da pesquisa na interface \textit{web} ou para a adição dos imóveis, iremos utilizar a API do \textit{Google Maps} para os localizar. Assim sendo, será mais fácil visualizar o resultado da pesquisa, bem como permitirá ao cliente ter uma prespectiva melhor desses mesmos resultados. Para cada imóvel, além da morada do mesmo também iremos utilizar a API para mostrar no mapa a localização exacta do imóvel.
+
+\subsubsection{Aplicação de administração}
+Para gerir o sistema imobiliário, iremos ter uma interface desenvolvida em C\#. Para poder ter acesso às operações que essa interface irá disponibilizar, será necessário uma conta de utilizador e respectiva \textit{password}, aos quais façam corresponder utilizadores que tenham privilégios de administrador. Esta será a interface na qual os administradores poderão validar os pagamentos efectuados pelos clientes, ou seja, após terem recebido o montante que o cliente tem de pagar pelo serviço pretendido. Poderá, também, mudar todos dados relativamente a clientes, adicionar serviços ao sistema e modificar preços dos mesmos, para além de permitir saber o total recebido pela instituição por um determinado período de tempo a ser definido pelo utilizador.
+
+\section{Decisões pretinentes}
+
+\subsection{Método de desenvolvimento}
+Este projecto segue o Método em Cascata, ou seja, é um processo sequêncial, que passa pelas fazes de análise do problema, especificação, implementação e testes. No caso de existir alguma falha o processo deverá ser reiniciado.
+
+\subsection{Software a utilizar}
+Visto o software que estamos a construir ser de uma dimensão razoavelmente grande, decidimos utilizar um software de controlo de versões que conseguisse trabalhar com as várias aplicações de programação e permitisse, também, criar um repositório que partilhasse o trabalho de todos os elementos em tempo real para aumentar a eficiência no desenvolvimento. Ora, visto a equipa de trabalho já ter experiência na utilização deste tipo de software para a realização de outros projectos, decidiu-se, então, continuar a utilizar o mesmo software, o SVN (Subversion).
+
+Como este projecto utilizará o método em cascata será necessário um software capaz de especificar toda a aplicação. Visto a equipa ter experiência em Visual Paradigm, deverá ser este o programa a utilizar para esta fase.
+
+Na parte de desenvolvimento do projecto utilizar-se-ão vários programas para as várias áreas que o projecto abrange. Assim, para a aplicação de administração será utilizado o Microsoft Visual C\#. Para fazer os \textit{parsings} utilizar-se-á o Flex em conjunto com o GCC. Visto o nosso projecto estar a utilizar produtos Microsoft, para a base de dados deverá ser usado o SQL Server. Quanto à página web, esta será desenvolvida em Dreamweaver para facilitar a programação.
+
+Como ferramenta de de controlo do \textit{Timing} de mão-de-obra, tentaremos utilizar ao máximo o programa Micrsoft Project.
+
+
+\subsection{Considerações}
+\subsubsection{Tipos de Utilizadores}
+Foi decidido que este projecto teria apenas uma tabela para os utilizadores que incluiría os diferentes tipos de utilizadores, variando apenas num campo. Ou seja, os utilizadores serão todos clientes e alguns deles terão determinados privilégios. Estes, ao nível da camada de apresentação, terão a possibilidade de aceder a áreas particulares. Ao nível da camada de dados, os utilizdores com maiores privilégios poderão editar determinados dados conforme o seu estatuto. Assim, depois destes requisitos concluiu-se que serão necessários três tipos de utilizadores: Administrativos, vendedores e clientes.
+
+\subsubsection{Tipos de dados}
+Visto este projecto apenas abranger imóveis portugueses, decidiu-se que este projecto não irá aceitar números estrangeiros. De certa forma deveriam ser aceite estes números pois podem existir vendedores que estejam fora do país. No entanto, consideraremos apenas números portugueses de forma a poder controlar a veracidade dos mesmos. Igualmente, serão apenas admitidos códigos postais do território nacional. Este controlo será feito através da base de dados que conterá todos os códigos postais nacionais. Numa fase posterior ao projecto, poder-se-à incluir estas funcionalidades.

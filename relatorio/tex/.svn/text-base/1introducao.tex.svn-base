@@ -1,0 +1,16 @@
+ %vim: set ts=4 sw=4 ai et tw=74:
+\chapter{Introdução}
+%\addcontentsline{toc}{chapter}{Introdução}
+
+
+No âmbito da disciplina de Laboratórios de Informática IV foi-nos proposta a realização de um projecto de software de tema livre, mas com as condições de que este fosse um projecto aplicável a um problema do mundo real e que utilizasse uma série de determinadas ferramentas profissionais.\\
+
+Sendo assim, a equipa responsável pela realização do projecto decidiu que o problema a resolver seria baseado numa imobiliária \textit{online} que fornece serviços de promoção para a venda e aluguer de imóveis. \\
+
+De facto, e com o surgir de novas exigências por parte da sociedade moderna, torna-se cada vez mais necessário um sistema capaz de automatizar todo o processo de vendas, garantindo um acesso rápido e eficaz à informação, por forma a aumentar a competitividade num mercado cada vez mais lotado e instável devido às oscilações económicas.\\
+
+Sendo assim, deverá ser disponibilizada aos utilizadores deste sistema, uma plataforma simples e de fácil percepção, que permita a troca de informação entre compradores e vendedores, possuindo igualmente um vasto leque de funcionalidades de utilidade comprovada. \\
+
+Propusemo-nos então realizar um projecto de software que permita ao utilizador aceder facilmente a esta informação, simplificando todo o processo de pesquisa de imóveis e posterior contacto para o negócio. \\
+
+%Este relatório de acompanhamento está organizado conforme o processo de desenvolvimento de um projecto segundo o Modelo em Cascata. Assim, começa-se por abordar a Análise e Especificação do problema onde será feita uma primeira análise do problema proposto e um primeiro desenho da resolução. De seguida, explica-se o funcionamento do software criado, mostrando a forma como os dados estão organizados e como são trabalhados. Por fim, mostra-se os testes realizados para comprovar o sucesso dos objectivos propostos inicialmente.

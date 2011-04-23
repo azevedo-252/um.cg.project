@@ -1,0 +1,39 @@
+% vim: set ts=4 sw=4 ai et tw=74:
+\chapter*{Lista de Acrónimos}
+\addcontentsline{toc}{chapter}{Lista de Acrónimos}
+
+
+\begin{acronym}
+%\acro{BD}{Base de Dados}
+\end{acronym}
+
+%\begin{acronym}
+%
+%\acro{IP}{Internet Protocol}
+%
+%\acro{QoS}{Quality of Service}
+%
+%\acro{UDP}{User Datagram Protocol}
+%
+%\acro{TCP}{Transmission Control Protocol}
+%
+%\acro{OSI}{Open System Interconection}
+%
+%\acro{API}{Application Program Interface}
+%
+%\acro{FUSE}{Filesystem in Userspace}
+%
+%\acro{SFR}{Sistema de Ficheiros Replicado}
+%
+%\acro{SF}{Sistema de Ficheiros}
+%
+%\acro{NFS}{Network File System}
+%
+%\acro{IO}{Input/Output}
+%
+%\acro{J2SE 5.0}{Java 2 Platform, Standard Edition, release 5.0}
+%
+%\acro{JNI}{Java Native Interface}
+%
+%\acro{POO}{Programação Orientada aos Objectos}
+%\end{acronym}
