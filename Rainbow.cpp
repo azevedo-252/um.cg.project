@@ -22,6 +22,7 @@ void Rainbow::render() {
 	glPushMatrix ();
 		glTranslatef (coords->x, coords->y, coords->z);
 		glRotatef(ang_x, 0, 1, 0);
+		glScalef(0.25, 0.25, 0.25);
 		// violeta
 		glColor3f(0.5,0.0,0.5); //red, green, blue
 		glutSolidTorus(10,240,100,100);

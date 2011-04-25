@@ -30,7 +30,17 @@ void InputManager::keyboardUpFunc(unsigned char key, int mouse_x, int mouse_y) {
 	InputManager::setKeyState(key, KEY_OFF);
 }
 
-void InputManager::keyboardSpecialFunc(int key, int mouse_x, int mouse_y) { }
+void InputManager::keyboardSpecialFunc(int key, int mouse_x, int mouse_y) {
+	switch(key) {
+		case GLUT_KEY_F1:
+			glPolygonMode(GL_FRONT, GL_LINE);
+			break;
+		case GLUT_KEY_F2:
+			glPolygonMode(GL_FRONT, GL_FILL);
+			break;
+	}
+
+}
 
 void InputManager::mouseButtons(int button, int state, int xx, int yy) {
 	/**if (state == GLUT_DOWN)  {

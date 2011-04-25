@@ -12,7 +12,6 @@ using namespace std;
 #include "iniparser/iniparser.h"
 
 class Config {
-
 private:
 	dictionary *ini;
 

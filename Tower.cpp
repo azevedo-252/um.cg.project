@@ -9,7 +9,7 @@ float Tower::_max_dist;
 Tower::Tower(const string &path) : Model_MD2(path) {
     coords = new Vertex(0, 0, 0);
     md2_rendermode = 0;
-    set_scale(_scale);
+    set_scale(conf.rfloat("game:tower_scale"));
     _max_dist = conf.rfloat("game:tower_range");
 }
 

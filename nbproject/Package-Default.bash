@@ -9,11 +9,12 @@ TOP=`pwd`
 CND_PLATFORM=GNU-Linux-x86
 CND_CONF=Default
 CND_DISTDIR=dist
-NBTMPDIR=build/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
+CND_BUILDDIR=build
+NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
 OUTPUT_PATH=main
 OUTPUT_BASENAME=main
-PACKAGE_TOP_DIR=cg26.project/
+PACKAGE_TOP_DIR=um.cg.project/
 
 # Functions
 function checkReturnCode
@@ -58,15 +59,15 @@ mkdir -p ${NBTMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory "${NBTMPDIR}/cg26.project/bin"
+makeDirectory "${NBTMPDIR}/um.cg.project/bin"
 copyFileToTmpDir "${OUTPUT_PATH}" "${NBTMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/cg26.project.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/um.cg.project.tar
 cd ${NBTMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/cg26.project.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/um.cg.project.tar *
 checkReturnCode
 
 # Cleanup

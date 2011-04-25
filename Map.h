@@ -16,10 +16,13 @@ class Map : public Model {
 
 private:
 	TexData tex_soil;
+	TexData tex_height;
 
 public:
 	int width;
-	int grid_n;
+	float grid_n;
+	float max_height;
+	float height_map_ratio;
 	float grid_width;
 	float wall_dist;
 
@@ -34,6 +37,11 @@ public:
 
 	/** determinal se as coordenadas estao dentro da area jogavel */
 	bool isPlayableCoords(Vertex* coords);
+	
+	float map_h(int x, int z);
+	float triangulateHeight(float x, float z);
+	
+	void heightedVertex(float mul, int x, int z);
 };
 
 #endif

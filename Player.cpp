@@ -13,7 +13,10 @@ extern Config conf;
 using namespace std;
 
 Player::Player (const string &path) : Model_MD2(path) {
-	coords = new Vertex(0,0,0);
+	coords = new Vertex();
+	coords->x = GLManager::distance(conf.rfloat("player:x"));
+	coords->z = GLManager::distance(conf.rfloat("player:z"));
+	
 	direction = new Vertex(0,0,1);
 	ang_x = 0;
 	ang_y = 0;
@@ -24,7 +27,6 @@ Player::Player (const string &path) : Model_MD2(path) {
 	speed_side	= GLManager::distance(conf.rfloat("player:speed_side"));
 	speed_rotate_x = conf.rfloat("player:speed_rotate_x");
 	speed_rotate_y = conf.rfloat("player:speed_rotate_y");
-
 
 
     anim = new Frame();
@@ -94,6 +96,7 @@ void Player::update() {
     }
 
     if (isMoving()) {
+		coords->y = g_map->triangulateHeight(coords->x, coords->z);
     	if (anim->get_anim() != MOVE_WALK)
     		anim->set_anim(MOVE_WALK);
     }
@@ -101,6 +104,7 @@ void Player::update() {
     	anim->set_anim(MOVE_NONE);
     }
 
+	
     g_map->adjustPlayableCoords(coords);
 }
 

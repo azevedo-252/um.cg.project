@@ -5,14 +5,20 @@
 #ifndef _TEXTURES_H
 #define _TEXTURES_H
 
+#include <GL/glut.h>
+#include <iostream>
+
+using namespace std;
+
 enum texture_id {
 	TERRAIN,
+	TERRAIN_HEIGHT,
 	SKYBOX1,
 	SKYBOX2,
-        SKYBOX3,
-        SKYBOX4,
-        SKYBOX5,
-        SKYBOX6,
+	SKYBOX3,
+	SKYBOX4,
+	SKYBOX5,
+	SKYBOX6,
 	TEXTURE_COUNT,
 };
 
@@ -24,7 +30,6 @@ typedef struct texture_data {
 } TexData;
 
 class Textures {
-
 public:
 	static TexData textures[TEXTURE_COUNT];
 
@@ -32,7 +37,9 @@ public:
 	static void load();
 
 	/** carrega uma textura para memoria */
-	static void loadSingle(enum texture_id id, char* path);
+	static void loadSingle(enum texture_id id, string path, GLuint gl_filter);
+	
+	static void loadHeightMap(string path);
 
 	/** Devolve info sobre uma textura */
 	static TexData get(enum texture_id id);

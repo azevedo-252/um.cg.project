@@ -6,7 +6,7 @@
 
 Model_MD2::Model_MD2(const string &path) {
 
-    char *ini = "resources:models_path";
+    char *ini = (char *) "resources:models_path";
     string dirname(conf.rstring(ini));
     dirname.append(path);
 
@@ -23,6 +23,7 @@ Model_MD2::Model_MD2(const string &path) {
 #endif
 
     md2_model = new Md2Player(dirname);
+	this->set_scale(0.25);
 }
 
 void Model_MD2::set_scale(GLfloat _scale) {
