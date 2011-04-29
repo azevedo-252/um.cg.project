@@ -16,10 +16,12 @@ public:
     Profiling();
     void render();
 private:
+    float timebase, time;
+    int fps, frame;
     Vertex *screen_coords;
     void setOrthographicProjection();
     void resetPerspectiveProjection();
-
+    void update();
 };
 
 #endif	/* PROFILING_H */

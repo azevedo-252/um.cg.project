@@ -11,6 +11,7 @@
 
 Profiling::Profiling() {
     screen_coords = new Vertex(40, 10, 0);
+    time = timebase = fps = frame = 0;
 }
 
 void Profiling::setOrthographicProjection() {
@@ -27,6 +28,16 @@ void Profiling::resetPerspectiveProjection() {
     glMatrixMode(GL_PROJECTION);
     glPopMatrix();
     glMatrixMode(GL_MODELVIEW);
+}
+
+void update() {
+    time = glutGet(GLUT_ELAPSED_TIME);
+    frame++;
+    if (time - timebase > 1000) {
+        fps = frame * 1000 / (time - timebase);
+        frame = 0;
+        timebase = time;
+    }
 }
 
 void Profiling::render() {
