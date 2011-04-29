@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="79">
-  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <df name="cg26.project" root=".">
-      <df name="iniparser">
+<configurationDescriptor version="69">
+  <logicalFolder name="root" displayName="root" projectFiles="true">
+    <df name="um.cg.project" root=".">
+      <df name="iniparser" kind="SOURCE_LOGICAL_FOLDER">
         <in>dictionary.c</in>
         <in>dictionary.h</in>
         <in>iniparser.c</in>
         <in>iniparser.h</in>
       </df>
-      <df name="md2loader">
+      <df name="md2loader" kind="SOURCE_LOGICAL_FOLDER">
         <in>Anorms.h</in>
         <in>DataManager.h</in>
         <in>Image.cpp</in>
@@ -22,47 +22,47 @@
         <in>Texture.h</in>
         <in>TextureManager.h</in>
       </df>
-      <df name="relatorio">
-        <df name="tex">
-          <df name="images">
+      <df name="relatorio" kind="SOURCE_LOGICAL_FOLDER">
+        <df name="tex" kind="SOURCE_LOGICAL_FOLDER">
+          <df name="images" kind="SOURCE_LOGICAL_FOLDER">
           </df>
-          <df name="style">
-            <df name="images">
+          <df name="style" kind="SOURCE_LOGICAL_FOLDER">
+            <df name="images" kind="SOURCE_LOGICAL_FOLDER">
             </df>
           </df>
-          <df name="tex">
+          <df name="tex" kind="SOURCE_LOGICAL_FOLDER">
           </df>
         </df>
       </df>
-      <df name="resources">
-        <df name="models">
-          <df name="BUZZ">
+      <df name="resources" kind="SOURCE_LOGICAL_FOLDER">
+        <df name="models" kind="SOURCE_LOGICAL_FOLDER">
+          <df name="BUZZ" kind="SOURCE_LOGICAL_FOLDER">
           </df>
-          <df name="SKIM">
+          <df name="SKIM" kind="SOURCE_LOGICAL_FOLDER">
           </df>
-          <df name="sonic_amy">
+          <df name="sonic_amy" kind="SOURCE_LOGICAL_FOLDER">
           </df>
-          <df name="sonic_brawl_knuckles">
+          <df name="sonic_brawl_knuckles" kind="SOURCE_LOGICAL_FOLDER">
           </df>
-          <df name="sonic_brawl_shadow">
+          <df name="sonic_brawl_shadow" kind="SOURCE_LOGICAL_FOLDER">
           </df>
-          <df name="sonic_brawl_silver">
+          <df name="sonic_brawl_silver" kind="SOURCE_LOGICAL_FOLDER">
           </df>
-          <df name="sonic_brawl_tails">
+          <df name="sonic_brawl_tails" kind="SOURCE_LOGICAL_FOLDER">
           </df>
-          <df name="sonic_classic_sonic">
+          <df name="sonic_classic_sonic" kind="SOURCE_LOGICAL_FOLDER">
           </df>
-          <df name="toilet">
+          <df name="toilet" kind="SOURCE_LOGICAL_FOLDER">
           </df>
-          <df name="toon_link">
+          <df name="toon_link" kind="SOURCE_LOGICAL_FOLDER">
           </df>
         </df>
-        <df name="sounds">
+        <df name="sounds" kind="SOURCE_LOGICAL_FOLDER">
         </df>
-        <df name="textures">
-          <df name="sky">
+        <df name="textures" kind="SOURCE_LOGICAL_FOLDER">
+          <df name="sky" kind="SOURCE_LOGICAL_FOLDER">
           </df>
-          <df name="soil">
+          <df name="soil" kind="SOURCE_LOGICAL_FOLDER">
           </df>
         </df>
       </df>
@@ -89,6 +89,8 @@
       <in>Model_MD2.h</in>
       <in>Player.cpp</in>
       <in>Player.h</in>
+      <in>Profiler.cpp</in>
+      <in>Profiler.h</in>
       <in>Radar.cpp</in>
       <in>Radar.h</in>
       <in>Rainbow.cpp</in>
@@ -116,47 +118,49 @@
                    projectFiles="false"
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
-      <itemPath>Makefile-cg26.project.mk</itemPath>
+      <itemPath>Makefile-um.cg.project.mk</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
     <Elem>.</Elem>
   </sourceRootList>
-  <projectmakefile>Makefile-cg26.project.mk</projectmakefile>
+  <projectmakefile>Makefile-um.cg.project.mk</projectmakefile>
   <confs>
     <conf name="Default" type="0">
       <toolsSet>
-        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <developmentServer>localhost</developmentServer>
         <compilerSet>GNU|GNU</compilerSet>
+        <platform>2</platform>
       </toolsSet>
       <makefileType>
         <makeTool>
           <buildCommandWorkingDir>.</buildCommandWorkingDir>
-          <buildCommand>make exec</buildCommand>
-          <cleanCommand>make clean</cleanCommand>
-          <executablePath>main</executablePath>
-          <ccTool>
-            <preprocessorList>
-              <Elem>ILUT_USE_OPENGL</Elem>
-            </preprocessorList>
-          </ccTool>
+          <buildCommand>$(MAKE) -f Makefile</buildCommand>
+          <cleanCommand>$(MAKE) -f Makefile clean</cleanCommand>
+          <executablePath>./main</executablePath>
         </makeTool>
       </makefileType>
-      <item path="md2loader/Anorms.h" ex="true" tool="3" flavor="0">
+      <item path="iniparser/dictionary.c" ex="true" tool="0">
       </item>
-      <item path="md2loader/DataManager.h" ex="true" tool="3" flavor="0">
+      <item path="iniparser/iniparser.c" ex="true" tool="0">
       </item>
-      <item path="md2loader/Image.cpp" ex="true" tool="1" flavor="0">
+      <item path="md2loader/Anorms.h" ex="true" tool="3">
       </item>
-      <item path="md2loader/Main.cpp" ex="true" tool="1" flavor="0">
+      <item path="md2loader/DataManager.h" ex="true" tool="3">
       </item>
-      <item path="md2loader/Md2Model.cpp" ex="true" tool="1" flavor="0">
+      <item path="md2loader/Image.cpp" ex="true" tool="1">
       </item>
-      <item path="md2loader/Md2Player.cpp" ex="true" tool="1" flavor="0">
+      <item path="md2loader/Main.cpp" ex="true" tool="1">
       </item>
-      <item path="md2loader/Texture.cpp" ex="true" tool="1" flavor="0">
+      <item path="md2loader/Md2Model.cpp" ex="true" tool="1">
       </item>
-      <item path="md2loader/TextureManager.h" ex="true" tool="3" flavor="0">
+      <item path="md2loader/Md2Player.cpp" ex="true" tool="1">
+      </item>
+      <item path="md2loader/Texture.cpp" ex="true" tool="1">
+      </item>
+      <item path="md2loader/TextureManager.h" ex="true" tool="3">
+      </item>
+      <item path="teste.c" ex="true" tool="0">
       </item>
     </conf>
   </confs>

@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=cg26.project
+PROJECTNAME=um.cg.project
 
 # Active Configuration
 DEFAULTCONF=Default

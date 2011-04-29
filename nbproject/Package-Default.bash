@@ -9,10 +9,9 @@ TOP=`pwd`
 CND_PLATFORM=GNU-Linux-x86
 CND_CONF=Default
 CND_DISTDIR=dist
-CND_BUILDDIR=build
-NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
+NBTMPDIR=build/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=main
+OUTPUT_PATH=./main
 OUTPUT_BASENAME=main
 PACKAGE_TOP_DIR=um.cg.project/
 

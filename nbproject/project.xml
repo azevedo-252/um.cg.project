@@ -3,7 +3,7 @@
     <type>org.netbeans.modules.cnd.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>cg26.project</name>
+            <name>um.cg.project</name>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
             <cpp-extensions>cpp</cpp-extensions>
@@ -14,10 +14,7 @@
                 <sourceRootElem>.</sourceRootElem>
             </sourceRootList>
             <confList>
-                <confElem>
-                    <name>Default</name>
-                    <type>0</type>
-                </confElem>
+                <confElem>Default</confElem>
             </confList>
         </data>
     </configuration>

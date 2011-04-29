@@ -32,7 +32,8 @@ SRC=Radar.cpp \
     Key.cpp \
     Sound.cpp \
     Model.cpp \
-    Frame.cpp
+    Frame.cpp \
+    Profiler.cpp
 
 	
 

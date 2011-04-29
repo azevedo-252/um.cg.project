@@ -13,3 +13,4 @@ main
 nbproject/*
 *.xml
 *.bash
+/Makefile-um.cg.project.mk

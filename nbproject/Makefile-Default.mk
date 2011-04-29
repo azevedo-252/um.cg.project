@@ -26,7 +26,7 @@ CND_CONF=Default
 CND_DISTDIR=dist
 
 # Include project Makefile
-include Makefile-cg26.project.mk
+include Makefile-um.cg.project.mk
 
 # Object Directory
 OBJECTDIR=build/${CND_CONF}/${CND_PLATFORM}
