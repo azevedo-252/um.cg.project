@@ -14,7 +14,6 @@
 #include "Radar.h"
 #include "Sound.h"
 #include "SkyBox.h"
-#include "Profiler.h"
 
 //configuracoes principais
 Config conf("config.ini");
@@ -33,7 +32,7 @@ SkyBox *g_skybox;
 
 Radar *g_radar;
 
-Profiler *g_profiler;
+//Profiler *g_profiler;
 
 /* armazenam o tamanho da janela */
 int g_win_w, g_win_h, g_win_half_w, g_win_half_h;

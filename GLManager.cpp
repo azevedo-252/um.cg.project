@@ -90,7 +90,7 @@ namespace GLManager {
         g_skybox = new SkyBox();
 
         g_radar = new Radar();
-        g_profiler = new Profiler();
+        //g_profiler = new Profiler();
         
         g_rainbow = new Rainbow();
         g_toilet = new Toilet(conf.rstring("models:toilet"));
@@ -136,7 +136,7 @@ namespace GLManager {
         g_map->render();
         g_rainbow->render();
         g_radar->render();
-        g_profiler->render();
+        //g_profiler->render();
 
         /** tudo o que seja MD2 deve ficar aqui, depois dos outros, para nao estragar as cores */
         g_player->render();
