@@ -37,7 +37,7 @@ void Textures::loadSingle(enum texture_id id, string path, GLuint gl_filter) {
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, gl_filter );
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, gl_filter );
 
-    gluBuild2DMipmaps( GL_TEXTURE_2D, 3, textures[id].w, textures[id].h,
+    gluBuild2DMipmaps( GL_TEXTURE_2D, GL_RGBA, textures[id].w, textures[id].h,
     			 GL_RGBA, GL_UNSIGNED_BYTE, textures[id].data);
     //glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, textures[id].w, textures[id].h,
     //        0, GL_RGBA, GL_UNSIGNED_BYTE, textures[id].data);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="79">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <df name="cg26.project" root=".">
+    <df name="um.cg.project" root=".">
       <df name="iniparser">
         <in>dictionary.c</in>
         <in>dictionary.h</in>
@@ -120,32 +120,31 @@
                    projectFiles="false"
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
-      <itemPath>Makefile-cg26.project.mk</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
   <sourceRootList>
     <Elem>.</Elem>
   </sourceRootList>
-  <projectmakefile>Makefile-cg26.project.mk</projectmakefile>
+  <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Default" type="0">
       <toolsSet>
         <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
-        <compilerSet>GNU|GNU</compilerSet>
+        <compilerSet>default</compilerSet>
       </toolsSet>
       <makefileType>
         <makeTool>
           <buildCommandWorkingDir>.</buildCommandWorkingDir>
-          <buildCommand>make exec</buildCommand>
-          <cleanCommand>make clean</cleanCommand>
-          <executablePath>main</executablePath>
-          <ccTool>
-            <preprocessorList>
-              <Elem>ILUT_USE_OPENGL</Elem>
-            </preprocessorList>
-          </ccTool>
+          <buildCommand>${MAKE} -f Makefile</buildCommand>
+          <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
+          <executablePath></executablePath>
         </makeTool>
       </makefileType>
+      <item path="iniparser/dictionary.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="iniparser/iniparser.c" ex="true" tool="0" flavor="0">
+      </item>
       <item path="md2loader/Anorms.h" ex="true" tool="3" flavor="0">
       </item>
       <item path="md2loader/DataManager.h" ex="true" tool="3" flavor="0">
@@ -161,6 +160,10 @@
       <item path="md2loader/Texture.cpp" ex="true" tool="1" flavor="0">
       </item>
       <item path="md2loader/TextureManager.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="stb_image.c" ex="false" tool="3" flavor="0">
+      </item>
+      <item path="teste.c" ex="true" tool="0" flavor="0">
       </item>
     </conf>
   </confs>
