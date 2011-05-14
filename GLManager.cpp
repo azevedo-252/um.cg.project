@@ -87,17 +87,27 @@ namespace GLManager {
         g_camera = new Camera();
         g_map = new Map();
         g_player = new Player(conf.rstring("models:player"));
+<<<<<<< HEAD
         g_towers = new Towers(conf.rstring("models:tower"));
 		g_bullets = new Bullets(conf.rstring("models:bullet"));
+=======
+        g_towers = new Towers();
+>>>>>>> 5dcf21b00efdacacf6e9260bf77a133c455c75a4
         g_keys = new Keys();
         g_skybox = new SkyBox();
 
         g_radar = new Radar();
+        //g_profiler = new Profiler();
+        
         g_rainbow = new Rainbow();
         g_toilet = new Toilet(conf.rstring("models:toilet"));
     	Sound::play(SOUND_MAIN);
+<<<<<<< HEAD
         glutTimerFunc(g_update_interval, GLManager::update, 0);
 		glutTimerFunc(g_anims_interval, GLManager::updateFrames, 0);
+=======
+        glutTimerFunc(g_update_interval, update, 0);
+>>>>>>> 5dcf21b00efdacacf6e9260bf77a133c455c75a4
     }
 
     void reshapeFunc(int w, int h) {
@@ -138,6 +148,7 @@ namespace GLManager {
         g_map->render();
         g_rainbow->render();
         g_radar->render();
+        //g_profiler->render();
 
         /** tudo o que seja MD2 deve ficar aqui, depois dos outros, para nao estragar as cores */
         g_player->render();

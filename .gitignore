@@ -11,5 +11,8 @@ main
 *.pdf
 *.lof
 nbproject/*
+nbproject/private/configurations.xml
+bnproject/configurations.xml
 *.xml
 *.bash
+/Makefile-um.cg.project.mk

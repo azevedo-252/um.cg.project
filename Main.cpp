@@ -34,6 +34,8 @@ SkyBox *g_skybox;
 
 Radar *g_radar;
 
+//Profiler *g_profiler;
+
 /* armazenam o tamanho da janela */
 int g_win_w, g_win_h, g_win_half_w, g_win_half_h;
 

@@ -25,6 +25,7 @@ extern Rainbow* g_rainbow;
 extern Toilet* g_toilet;
 
 extern Radar* g_radar;
+//extern Profiler *g_profiler;
 
 extern int g_win_w, g_win_h, g_win_half_w, g_win_half_h;
 extern float g_dist_factor;
