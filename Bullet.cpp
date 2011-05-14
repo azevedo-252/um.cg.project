@@ -21,7 +21,6 @@ Bullet::Bullet(Vertex *coords, float ang, float ang_rad) {
 	this->coords->z = coords->z;
 	this->coords->y = g_map->triangulateHeight(coords->x, coords->z);
 	
-	cout << "ang: " << ang << endl;
 	this->ang = ang;
 	this->ang_rad = ang_rad;
 	
