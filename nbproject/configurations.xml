@@ -66,6 +66,10 @@
           </df>
         </df>
       </df>
+      <in>Bullet.cpp</in>
+      <in>Bullet.h</in>
+      <in>Bullets.cpp</in>
+      <in>Bullets.h</in>
       <in>Camera.cpp</in>
       <in>Camera.h</in>
       <in>Config.cpp</in>

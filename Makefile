@@ -15,6 +15,7 @@ CC=g++
 
 SRC=Radar.cpp \
     Towers.cpp \
+    Bullets.cpp \
     Config.cpp \
     Camera.cpp \
     GLManager.cpp \
@@ -25,6 +26,7 @@ SRC=Radar.cpp \
     Player.cpp \
     Model_MD2.cpp \
     Tower.cpp \
+    Bullet.cpp \
     Rainbow.cpp \
     Toilet.cpp \
     SkyBox.cpp \

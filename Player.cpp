@@ -33,7 +33,7 @@ Player::Player (const string &path) : Model_MD2(path) {
     anim->add_anim(MOVE_NONE, conf.rint("player:stop_frame"), conf.rint("player:stop_frame_end"));
     anim->add_anim(MOVE_WALK, conf.rint("player:walk_frame"), conf.rint("player:walk_frame_end"));
 
-    glutTimerFunc(g_anims_interval, Player::inc_frame, 0);
+    //glutTimerFunc(g_anims_interval, GLManager::updateFrames, 0);
 }
 
 void Player::move(Vertex *new_coords) {

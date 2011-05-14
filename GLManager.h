@@ -30,6 +30,10 @@ namespace GLManager {
 
 	/** Gera um vertice aleatorio em cima do terreno */
 	Vertex* randomVertex();
+	
+	void updateFrames(int val);
+	
+	void allowTowerFire(int id);
 };
 
 #endif

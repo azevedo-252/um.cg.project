@@ -19,7 +19,7 @@ class Towers {
 public:
     int num_towers;
     Tower **towers;
-    Towers();
+    Towers(const string &path);
     int get_closest_distance();
     void render();
     void update();

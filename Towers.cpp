@@ -6,9 +6,11 @@
  */
 
 #include "Towers.h"
+#include "externs.h"
 #include "GLManager.h"
+#include "Map.h"
 
-Towers::Towers() {
+Towers::Towers(const string &path) {
 
     num_towers = conf.rint("game:num_towers");
     float towers_min_distance = conf.rfloat("game:towers_min_distance");
@@ -16,7 +18,7 @@ Towers::Towers() {
     towers = (Tower **) calloc(num_towers, sizeof (Tower*));
 
     for (int i = 0; i < num_towers; i++) {
-        towers[i] = new Tower(conf.rstring("models:tower"));
+        towers[i] = new Tower(i, path);
         Vertex* pos = NULL;
         do {
         	pos = GLManager::randomVertex();
@@ -26,6 +28,7 @@ Towers::Towers() {
         	}
         } while(pos == NULL);
 
+		pos->y = g_map->triangulateHeight(pos->x, pos->z);
         towers[i]->set_pos(pos);
     }
 

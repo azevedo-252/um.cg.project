@@ -78,6 +78,8 @@ namespace GLManager {
     	g_dist_factor = conf.rfloat("game:distance_factor");
     	g_update_interval = 1000 / conf.rint("game:updates_per_second");
     	g_anims_interval  = 1000 / conf.rint("game:anims_per_second");
+		Bullet::speed = conf.rint("game:bullet_speed");
+		Tower::bullet_delay = 1000 * conf.rfloat("game:seconds_per_bullet");		
 
         Textures::load();
         Sound::load();
@@ -85,7 +87,8 @@ namespace GLManager {
         g_camera = new Camera();
         g_map = new Map();
         g_player = new Player(conf.rstring("models:player"));
-        g_towers = new Towers();
+        g_towers = new Towers(conf.rstring("models:tower"));
+		g_bullets = new Bullets(conf.rstring("models:bullet"));
         g_keys = new Keys();
         g_skybox = new SkyBox();
 
@@ -93,7 +96,8 @@ namespace GLManager {
         g_rainbow = new Rainbow();
         g_toilet = new Toilet(conf.rstring("models:toilet"));
     	Sound::play(SOUND_MAIN);
-        glutTimerFunc(g_update_interval, update, 0);
+        glutTimerFunc(g_update_interval, GLManager::update, 0);
+		glutTimerFunc(g_anims_interval, GLManager::updateFrames, 0);
     }
 
     void reshapeFunc(int w, int h) {
@@ -138,6 +142,7 @@ namespace GLManager {
         /** tudo o que seja MD2 deve ficar aqui, depois dos outros, para nao estragar as cores */
         g_player->render();
         g_towers->render();
+		g_bullets->render();
         g_keys->render();
         g_skybox->render();
 
@@ -152,6 +157,7 @@ namespace GLManager {
     	g_player->update();
     	g_camera->placeCamera();
     	g_towers->update();
+		g_bullets->update();
     	g_keys->update();
     	g_radar->update();
     	g_rainbow->update();
@@ -168,5 +174,19 @@ namespace GLManager {
 
 	Vertex* randomVertex() {
 		return new Vertex(rand() % g_map->width, 0, rand() % g_map->width);
+	}
+	
+	void updateFrames(int val) {		
+		glutTimerFunc(g_anims_interval, GLManager::updateFrames, 0);
+		
+		if (g_player->isMoving()) {
+			g_player->anim->inc_frame();
+		}
+		
+		g_bullets->updateFrames();
+	}
+	
+	void allowTowerFire(int id) {
+		g_towers->towers[id]->allowFire();
 	}
 };

@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "Camera.h"
 #include "Towers.h"
+#include "Bullets.h"
 #include "Keys.h"
 #include "Rainbow.h"
 #include "Toilet.h"
@@ -18,6 +19,7 @@ extern Map* g_map;
 extern Player* g_player;
 extern Camera* g_camera;
 extern Towers* g_towers;
+extern Bullets* g_bullets;
 extern Keys* g_keys;
 extern Rainbow* g_rainbow;
 extern Toilet* g_toilet;

@@ -11,17 +11,25 @@ extern Player *g_player;
 
 class Tower : public Model_MD2 {
 private:
-    static GLfloat _scale;
-    static float _max_dist;
+	int id;
+	static GLfloat _scale;
+	static float _max_dist;
+	Vertex *direction;
+	bool can_fire;
 
-    void init_render();
+	void init_render();
 public:
-    
-    float dir_dist;
-    Tower(const std::string &path);
-    void set_pos(Vertex *new_coords);
-    void render();
-    void update();
+	static float bullet_delay;
+	float dir_dist;
+
+	Tower(int id, const std::string &path);
+	void set_pos(Vertex *new_coords);
+	void render();
+	void update();
+	void fire();
+	bool canFire();
+	void allowFire();
+	void disallowFire();
 };
 
 #endif

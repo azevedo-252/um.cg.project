@@ -9,6 +9,7 @@
 #include "Tower.h"
 #include "Keys.h"
 #include "Towers.h"
+#include "Bullets.h"
 #include "Rainbow.h"
 #include "Toilet.h"
 #include "Radar.h"
@@ -20,6 +21,7 @@ Config conf("config.ini");
 //instancia do jogador principal
 Player* g_player;
 Towers* g_towers;
+Bullets* g_bullets;
 Keys* g_keys;
 //instancia do mapa
 Map* g_map;
