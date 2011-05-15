@@ -15,11 +15,14 @@ extern Player* g_player;
 extern Config conf;
 
 
-class Towers {
+class Towers : Model_MD2 {
 public:
+	GLuint tower_list;
+	
     int num_towers;
     Tower **towers;
     Towers(const string &path);
+	void createTowerList();
     int get_closest_distance();
     void render();
     void update();

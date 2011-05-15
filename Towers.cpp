@@ -10,7 +10,7 @@
 #include "GLManager.h"
 #include "Map.h"
 
-Towers::Towers(const string &path) {
+Towers::Towers(const string &path) : Model_MD2(path) {
 
     num_towers = conf.rint("game:num_towers");
     float towers_min_distance = conf.rfloat("game:towers_min_distance");
@@ -31,7 +31,18 @@ Towers::Towers(const string &path) {
 		pos->y = g_map->triangulateHeight(pos->x, pos->z);
         towers[i]->set_pos(pos);
     }
+	
+	createTowerList();
+}
 
+void Towers::createTowerList() {
+    md2_rendermode = 0;
+    set_scale(conf.rfloat("game:tower_scale"));
+	
+	tower_list = glGenLists(1);
+	glNewList(tower_list, GL_COMPILE);
+	md2_model->drawPlayerItp(true, static_cast<Md2Object::Md2RenderMode> (0));
+	glEndList();
 }
 
 int Towers::get_closest_distance() {

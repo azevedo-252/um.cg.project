@@ -12,11 +12,9 @@ GLfloat Tower::_scale = 7.5;
 float Tower::_max_dist;
 float Tower::bullet_delay;
 
-Tower::Tower(int id, const string &path) : Model_MD2(path) {
+Tower::Tower(int id, const string &path) {
 	this->id = id;
     coords = new Vertex(0, 0, 0);
-    md2_rendermode = 0;
-    set_scale(conf.rfloat("game:tower_scale"));
     _max_dist = conf.rfloat("game:tower_range");
 	can_fire = true;
 	dir_dist = 999999;
@@ -54,7 +52,8 @@ void Tower::render() {
     glPushMatrix();
     glTranslatef(coords->x, coords->y, coords->z);
     glRotatef(90 + (ang_x * 180) / M_PI, 0, 1, 0);
-    md2_model->drawPlayerItp(true, static_cast<Md2Object::Md2RenderMode> (0));
+	glCallList(g_towers->tower_list);
+//    md2_model->drawPlayerItp(true, static_cast<Md2Object::Md2RenderMode> (0));
     glPopMatrix();
 }
 

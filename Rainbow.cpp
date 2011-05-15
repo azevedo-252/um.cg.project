@@ -16,6 +16,7 @@ Rainbow::Rainbow () {
 	coords = new Vertex(g_map->width, 0, g_map->width);
 	ang_x = 45;
 	g_map->adjustPlayableCoords(coords);
+	coords->y = g_map->triangulateHeight(coords->x, coords->z);
 }
 
 void Rainbow::render() {

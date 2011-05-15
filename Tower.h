@@ -1,7 +1,6 @@
 #ifndef _TOWER_H
 #define _TOWER_H
 
-#include "Model_MD2.h"
 #include "Vertex.h"
 #include "Config.h"
 #include "Player.h"
@@ -9,7 +8,7 @@
 
 extern Player *g_player;
 
-class Tower : public Model_MD2 {
+class Tower : public Model {
 private:
 	int id;
 	static GLfloat _scale;
