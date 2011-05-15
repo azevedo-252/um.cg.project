@@ -10,7 +10,6 @@
 #define VZ 2
 
 class Vertex {
-
 public:
 	float x, y, z;
 
@@ -20,19 +19,18 @@ public:
 	~Vertex();
 
 	/** operators */
-	const Vertex operator+(const Vertex &v);
-	const Vertex operator-(const Vertex &v);
-        const Vertex operator=(const Vertex &v);
-        const Vertex operator*(const Vertex &v);
-        const Vertex operator*(float num);
-        const Vertex operator+(float num);
-        const Vertex operator-(float num);
-        const Vertex operator-(void);
-	Vertex & operator+=(const Vertex &v);
-	Vertex & operator-=(const Vertex &v);
+	Vertex operator+(Vertex &v);
+	Vertex operator-(const Vertex &v);
+	Vertex operator*(Vertex &v);
+	Vertex operator*(float num);
+//	Vertex operator+(float num);
+//	Vertex operator-(const float num);
+	Vertex operator-(void);
+	Vertex & operator+=(Vertex &v);
+	Vertex & operator-=(Vertex &v);
 	float distance(Vertex* v2);
-        float inner_product(Vertex *v);
-        void normalize();
+	float inner_product(Vertex *v);
+	void normalize();
 	/** debug */
 	void dump();
 };
