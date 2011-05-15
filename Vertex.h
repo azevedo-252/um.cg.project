@@ -22,10 +22,13 @@ public:
 	/** operators */
 	const Vertex operator+(const Vertex &v);
 	const Vertex operator-(const Vertex &v);
+        const Vertex operator=(const Vertex &v);
+        Vertex & operator*(const Vertex &v);
 	Vertex & operator+=(const Vertex &v);
 	Vertex & operator-=(const Vertex &v);
 	float distance(Vertex* v2);
-
+        float inner_product(Vertex *v);
+        void normalize();
 	/** debug */
 	void dump();
 };
