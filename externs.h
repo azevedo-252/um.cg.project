@@ -13,6 +13,9 @@
 #include "Radar.h"
 #include "SkyBox.h"
 #include "Sound.h"
+#include "Vertex.h"
+#include "Plane.h"
+#include "Frustum.h"
 
 extern Config conf;
 extern Map* g_map;
@@ -34,5 +37,7 @@ extern int g_anims_interval;
 extern int g_update_interval;
 
 extern SkyBox* g_skybox;
+
+extern Frustum *g_frustum;
 
 #endif

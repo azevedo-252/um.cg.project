@@ -15,48 +15,63 @@ int Camera::persp_z_near;
 int Camera::persp_z_far;
 
 Camera::Camera() {
-	Camera::persp_ratio = 1;
-	Camera::persp_ang    = conf.rint("camera:persp_ang");
-	Camera::persp_z_near = conf.rint("camera:persp_z_near");
-	Camera::persp_z_far  = conf.rint("camera:persp_z_far");
+    Camera::persp_ratio = 1;
+    Camera::persp_ang = conf.rint("camera:persp_ang");
+    Camera::persp_z_near = conf.rint("camera:persp_z_near");
+    Camera::persp_z_far = conf.rint("camera:persp_z_far");
+    look_eye = new Vertex();
+    look_center = new Vertex();
+    look_up = new Vertex(0, 1, 0);
 }
 
 void Camera::placeCamera() {
-	Vertex* pos = g_player->coords;
-	Vertex* dir = g_player->direction;
+    Vertex* pos = g_player->coords;
+    Vertex* dir = g_player->direction;
 
-	glLoadIdentity();
+    glLoadIdentity();
 
-	int cam_mode = InputManager::getOpState(CAMERA_MODE);
+    int cam_mode = InputManager::getOpState(CAMERA_MODE);
 
-	if (cam_mode == KEY_OFF) {
-		int tps_off		= conf.rint("camera:tps_off");
-		int tps_y_off	= conf.rint("camera:tps_y_off");
-		int tps_dir_y_off = conf.rint("camera:tps_dir_y_off");
+    if (cam_mode == KEY_OFF) {
+        int tps_off = conf.rint("camera:tps_off");
+        int tps_y_off = conf.rint("camera:tps_y_off");
+        int tps_dir_y_off = conf.rint("camera:tps_dir_y_off");
 
-		gluLookAt(	pos->x - tps_off * dir->x,
-					pos->y - tps_off * dir->y + tps_y_off,
-					pos->z - tps_off * dir->z,
+        gluLookAt(pos->x - tps_off * dir->x,
+                pos->y - tps_off * dir->y + tps_y_off,
+                pos->z - tps_off * dir->z,
 
-					pos->x,
-					pos->y + tps_dir_y_off,
-					pos->z,
+                pos->x,
+                pos->y + tps_dir_y_off,
+                pos->z,
 
-					0, 1, 0);
-	}
-	else {
-		int fps_off			= conf.rint("camera:fps_off");
-		int fps_y_off		= conf.rint("camera:fps_y_off");
-		int fps_dir_y_off	= conf.rint("camera:fps_dir_y_off");
+                0, 1, 0);
+        look_eye->x = pos->x - tps_off * dir->x;
+        look_eye->y = pos->y - tps_off * dir->y + tps_y_off;
+        look_eye->z = pos->z - tps_off * dir->z;
+        look_center->x = pos->x;
+        look_center->y = pos->y + tps_dir_y_off;
+        look_center->z = pos->z;
 
-		gluLookAt(	pos->x + fps_off * dir->x,
-					pos->y + fps_y_off,
-					pos->z + fps_off * dir->z,
+    } else {
+        int fps_off = conf.rint("camera:fps_off");
+        int fps_y_off = conf.rint("camera:fps_y_off");
+        int fps_dir_y_off = conf.rint("camera:fps_dir_y_off");
 
-					pos->x + (fps_off + 1) * dir->x,
-					pos->y + dir->y + fps_dir_y_off,
-					pos->z + (fps_off + 1) * dir->z,
+        gluLookAt(pos->x + fps_off * dir->x,
+                pos->y + fps_y_off,
+                pos->z + fps_off * dir->z,
 
-					0, 1, 0);
-	}
+                pos->x + (fps_off + 1) * dir->x,
+                pos->y + dir->y + fps_dir_y_off,
+                pos->z + (fps_off + 1) * dir->z,
+
+                0, 1, 0);
+        look_eye->x = pos->x + fps_off * dir->x;
+        look_eye->y = pos->y + fps_y_off;
+        look_eye->z = pos->z + fps_off * dir->z;
+        look_center->x = pos->x + (fps_off + 1) * dir->x;
+        look_center->y = pos->y + dir->y + fps_dir_y_off;
+        look_center->z = pos->z + (fps_off + 1) * dir->z;        
+    }
 }

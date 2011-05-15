@@ -15,6 +15,7 @@
 #include "Radar.h"
 #include "Sound.h"
 #include "SkyBox.h"
+#include "Frustum.h"
 
 //configuracoes principais
 Config conf("config.ini");
@@ -34,6 +35,7 @@ SkyBox *g_skybox;
 
 Radar *g_radar;
 
+Frustum *g_frustum;
 //Profiler *g_profiler;
 
 /* armazenam o tamanho da janela */

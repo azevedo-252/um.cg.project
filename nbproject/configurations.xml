@@ -11,6 +11,7 @@
       <df name="md2loader">
         <in>Anorms.h</in>
         <in>DataManager.h</in>
+        <in>DataManager.inl</in>
         <in>Image.cpp</in>
         <in>Image.h</in>
         <in>Main.cpp</in>
@@ -76,6 +77,8 @@
       <in>Config.h</in>
       <in>Frame.cpp</in>
       <in>Frame.h</in>
+      <in>Frustum.cpp</in>
+      <in>Frustum.h</in>
       <in>GLManager.cpp</in>
       <in>GLManager.h</in>
       <in>InputManager.cpp</in>

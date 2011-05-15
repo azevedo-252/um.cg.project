@@ -23,7 +23,7 @@
 namespace GLManager {
 
     void init(int *argc, char **argv) {
-    	srand(time(NULL));
+        srand(time(NULL));
         /** inicializacao do openGL */
         glutInit(argc, argv);
         glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
@@ -38,9 +38,9 @@ namespace GLManager {
 
         /** inicializacao do openAL */
         alutInit(argc, argv);
-		
-		/* inicializacao do glew */
-		glewInit();
+
+        /* inicializacao do glew */
+        glewInit();
 
         /** registo das funcoes de render */
         glutDisplayFunc(render);
@@ -61,11 +61,11 @@ namespace GLManager {
         /** mais alguns settings */
         glEnable(GL_DEPTH_TEST);
         glEnable(GL_CULL_FACE);
-		
-		/** inicializacao dos Vertex Buffer Objects */
-		glEnableClientState(GL_VERTEX_ARRAY);
-		//glEnableClientState(GL_NORMAL_ARRAY);
-		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
+        /** inicializacao dos Vertex Buffer Objects */
+        glEnableClientState(GL_VERTEX_ARRAY);
+        //glEnableClientState(GL_NORMAL_ARRAY);
+        glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
         /** activa a iluminacao */
         //glEnable(GL_LIGHTING);
@@ -84,11 +84,11 @@ namespace GLManager {
     }
 
     void game_init() {
-    	g_dist_factor = conf.rfloat("game:distance_factor");
-    	g_update_interval = 1000 / conf.rint("game:updates_per_second");
-    	g_anims_interval  = 1000 / conf.rint("game:anims_per_second");
-		Bullet::speed = conf.rint("game:bullet_speed");
-		Tower::bullet_delay = 1000 * conf.rfloat("game:seconds_per_bullet");		
+        g_dist_factor = conf.rfloat("game:distance_factor");
+        g_update_interval = 1000 / conf.rint("game:updates_per_second");
+        g_anims_interval = 1000 / conf.rint("game:anims_per_second");
+        Bullet::speed = conf.rint("game:bullet_speed");
+        Tower::bullet_delay = 1000 * conf.rfloat("game:seconds_per_bullet");
 
         Textures::load();
         Sound::load();
@@ -97,18 +97,19 @@ namespace GLManager {
         g_map = new Map();
         g_player = new Player(conf.rstring("models:player"));
         g_towers = new Towers(conf.rstring("models:tower"));
-		g_bullets = new Bullets(conf.rstring("models:bullet"));
+        g_bullets = new Bullets(conf.rstring("models:bullet"));
         g_keys = new Keys();
         g_skybox = new SkyBox();
 
         g_radar = new Radar();
         //g_profiler = new Profiler();
-        
+
         g_rainbow = new Rainbow();
         g_toilet = new Toilet(conf.rstring("models:toilet"));
-    	Sound::play(SOUND_MAIN);
+        Sound::play(SOUND_MAIN);
         glutTimerFunc(g_update_interval, GLManager::update, 0);
-		glutTimerFunc(g_anims_interval, GLManager::updateFrames, 0);
+        glutTimerFunc(g_anims_interval, GLManager::updateFrames, 0);
+        g_frustum = new Frustum();
     }
 
     void reshapeFunc(int w, int h) {
@@ -137,12 +138,15 @@ namespace GLManager {
         g_win_h = glutGet(GLUT_WINDOW_HEIGHT);
         g_win_half_w = g_win_w / 2;
         g_win_half_h = g_win_h / 2;
+        
+        g_frustum->setCamInternals(g_camera->persp_ang, g_camera->persp_ratio, g_camera->persp_z_near, g_camera->persp_z_far);
     }
 
     void render(void) {
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+        
+        g_frustum->setCamDef(*g_camera->look_eye, *g_camera->look_center, *g_camera->look_up);
         /**
          * @TODO draw stuff here
          */
@@ -154,9 +158,10 @@ namespace GLManager {
         /** tudo o que seja MD2 deve ficar aqui, depois dos outros, para nao estragar as cores */
         g_player->render();
         g_towers->render();
-		g_bullets->render();
+        g_bullets->render();
         g_keys->render();
         g_skybox->render();
+        g_frustum->drawPlanes();
 
         InputManager::resetMouseMove();
         // End of frame
@@ -165,40 +170,41 @@ namespace GLManager {
 
     void update(int val) {
 
-    	glutTimerFunc(g_update_interval, update, 0);
-    	g_player->update();
-    	g_camera->placeCamera();
-    	g_towers->update();
-		g_bullets->update();
-    	g_keys->update();
-    	g_radar->update();
-    	g_rainbow->update();
+        glutTimerFunc(g_update_interval, update, 0);
+        g_player->update();
+        g_camera->placeCamera();
+        g_towers->update();
+        g_bullets->update();
+        g_keys->update();
+        g_radar->update();
+        g_rainbow->update();
 
-    	glutPostRedisplay();
+        glutPostRedisplay();
     }
 
     float distance(float meters) {
-    	return meters * g_dist_factor;
-    }
-    float meters(float distance) {
-    	return distance / g_dist_factor;
+        return meters * g_dist_factor;
     }
 
-	Vertex* randomVertex() {
-		return new Vertex(rand() % g_map->width, 0, rand() % g_map->width);
-	}
-	
-	void updateFrames(int val) {		
-		glutTimerFunc(g_anims_interval, GLManager::updateFrames, 0);
-		
-		if (g_player->isMoving()) {
-			g_player->anim->inc_frame();
-		}
-		
-		g_bullets->updateFrames();
-	}
-	
-	void allowTowerFire(int id) {
-		g_towers->towers[id]->allowFire();
-	}
+    float meters(float distance) {
+        return distance / g_dist_factor;
+    }
+
+    Vertex* randomVertex() {
+        return new Vertex(rand() % g_map->width, 0, rand() % g_map->width);
+    }
+
+    void updateFrames(int val) {
+        glutTimerFunc(g_anims_interval, GLManager::updateFrames, 0);
+
+        if (g_player->isMoving()) {
+            g_player->anim->inc_frame();
+        }
+
+        g_bullets->updateFrames();
+    }
+
+    void allowTowerFire(int id) {
+        g_towers->towers[id]->allowFire();
+    }
 };
