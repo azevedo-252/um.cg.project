@@ -10,6 +10,11 @@
 class Camera {
 
 public:
+	static float persp_ratio;
+	static int persp_ang;
+	static int persp_z_near;
+	static int persp_z_far;
+	
 	Camera();
 
 	void placeCamera();

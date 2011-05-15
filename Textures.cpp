@@ -10,6 +10,7 @@ TexData Textures::textures[TEXTURE_COUNT];
 
 void Textures::load() {
     Textures::loadSingle(TERRAIN, "resources/textures/map_texture.jpg",GL_LINEAR_MIPMAP_LINEAR);
+	
 	Textures::loadHeightMap("resources/textures/map_height.jpg");
 	
     Textures::loadSingle(SKYBOX1, "resources/textures/sky/face1.pcx",	GL_LINEAR);

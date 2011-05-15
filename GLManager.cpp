@@ -1,3 +1,4 @@
+#include <GL/glew.h>
 #include <GL/glut.h>
 #include <IL/ilut.h>
 #include <AL/alut.h>
@@ -37,6 +38,9 @@ namespace GLManager {
 
         /** inicializacao do openAL */
         alutInit(argc, argv);
+		
+		/* inicializacao do glew */
+		glewInit();
 
         /** registo das funcoes de render */
         glutDisplayFunc(render);
@@ -57,6 +61,11 @@ namespace GLManager {
         /** mais alguns settings */
         glEnable(GL_DEPTH_TEST);
         glEnable(GL_CULL_FACE);
+		
+		/** inicializacao dos Vertex Buffer Objects */
+		glEnableClientState(GL_VERTEX_ARRAY);
+		//glEnableClientState(GL_NORMAL_ARRAY);
+		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
         /** activa a iluminacao */
         //glEnable(GL_LIGHTING);
@@ -109,7 +118,7 @@ namespace GLManager {
             h = 1;
 
         // compute window's aspect ratio
-        float ratio = w * 1.0 / h;
+        Camera::persp_ratio = w * 1.0 / h;
 
         // Reset the coordinate system before modifying
         glMatrixMode(GL_PROJECTION);
@@ -119,7 +128,7 @@ namespace GLManager {
         glViewport(0, 0, w, h);
 
         // Set the correct perspective
-        gluPerspective(45, ratio, 1, 10000);
+        gluPerspective(Camera::persp_ang, Camera::persp_ratio, Camera::persp_z_near, Camera::persp_z_far);
 
         // return to the model view matrix mode
         glMatrixMode(GL_MODELVIEW);
