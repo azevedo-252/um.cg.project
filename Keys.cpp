@@ -38,6 +38,7 @@ Keys::Keys() {
         	// as chaves tem que ficar na area jogavel do terreno
         } while(pos == NULL);
 
+		pos->y = g_map->triangulateHeight(pos->x, pos->z);
 	    keys[i]->set_pos(pos);
     }
 

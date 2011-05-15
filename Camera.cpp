@@ -9,8 +9,16 @@ extern Player* g_player;
 
 #include <math.h>
 
-Camera::Camera() {
+float Camera::persp_ratio;
+int Camera::persp_ang;
+int Camera::persp_z_near;
+int Camera::persp_z_far;
 
+Camera::Camera() {
+	Camera::persp_ratio = 1;
+	Camera::persp_ang    = conf.rint("camera:persp_ang");
+	Camera::persp_z_near = conf.rint("camera:persp_z_near");
+	Camera::persp_z_far  = conf.rint("camera:persp_z_far");
 }
 
 void Camera::placeCamera() {
