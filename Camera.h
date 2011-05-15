@@ -14,6 +14,9 @@ public:
 	static int persp_ang;
 	static int persp_z_near;
 	static int persp_z_far;
+        static Vertex *look_eye;
+        static Vertex *look_center;
+        static Vertex *look_up;
 	
 	Camera();
 

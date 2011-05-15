@@ -8,6 +8,12 @@
 #include "Plane.h"
 #include "externs.h"
 
+Plane::Plane() {
+    normal = new Vertex();
+    point = new Vertex();
+    d = 0;
+}
+
 Plane::Plane(Vertex *v1, Vertex *v2, Vertex *v3) {
 
     set3Points(v1, v2, v3);

@@ -30,15 +30,15 @@ void Frustum::setCamInternals(float angle, float ratio, float nearD, float farD)
 
 }
 
-void Frustum::setCamDef(Vertex *p, Vertex *l, Vertex *u) {
+void Frustum::setCamDef(Vertex &p, Vertex &l, Vertex &u) {
 
     Vertex dir, nc, fc, X, Y, Z;
 
     Z = p - l;
-    Z->normalize();
+    Z.normalize();
 
     X = u * Z;
-    X->normalize();
+    X.normalize();
 
     Y = Z * X;
 
@@ -63,7 +63,7 @@ void Frustum::setCamDef(Vertex *p, Vertex *l, Vertex *u) {
     pl[FARP].set3Points(ftr, ftl, fbl);
 }
 
-int Frustum::sphereInFrustum(Vertex &p, float raio) {
+int Frustum::sphereInFrustum(Vertex *p, float raio) {
 
     int result = INSIDE;
     float distance;

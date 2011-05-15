@@ -13,7 +13,8 @@
 class Plane {
 public:
     Vertex *normal, *point;
-    float d;    
+    float d;
+    Plane();
     Plane(Vertex *v1,  Vertex *v2,  Vertex *v3);
     void set3Points(Vertex *v1, Vertex *v2, Vertex *v3);
     void setNormalAndPoint(Vertex *normal, Vertex *point);

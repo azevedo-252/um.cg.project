@@ -145,7 +145,8 @@ namespace GLManager {
     void render(void) {
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+        
+        g_frustum->setCamDef(*g_camera->look_eye, *g_camera->look_center, *g_camera->look_up);
         /**
          * @TODO draw stuff here
          */
@@ -160,6 +161,7 @@ namespace GLManager {
         g_bullets->render();
         g_keys->render();
         g_skybox->render();
+        g_frustum->drawPlanes();
 
         InputManager::resetMouseMove();
         // End of frame

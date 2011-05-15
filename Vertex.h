@@ -23,7 +23,11 @@ public:
 	const Vertex operator+(const Vertex &v);
 	const Vertex operator-(const Vertex &v);
         const Vertex operator=(const Vertex &v);
-        Vertex & operator*(const Vertex &v);
+        const Vertex operator*(const Vertex &v);
+        const Vertex operator*(float num);
+        const Vertex operator+(float num);
+        const Vertex operator-(float num);
+        const Vertex operator-(void);
 	Vertex & operator+=(const Vertex &v);
 	Vertex & operator-=(const Vertex &v);
 	float distance(Vertex* v2);

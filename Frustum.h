@@ -8,6 +8,9 @@
 #ifndef FRUSTUM_H
 #define	FRUSTUM_H
 
+#include "Vertex.h"
+#include "Plane.h"
+
 class Frustum {
     
 private:
@@ -24,7 +27,7 @@ private:
 
 public:
 
-    static enum {
+    enum {
         OUTSIDE, INTERSECT, INSIDE
     };
 
@@ -35,19 +38,19 @@ public:
     float nearD, farD, ratio, angle, tang;
     float nw, nh, fw, fh;
 
-    Frustum::Frustum();
-    Frustum::~Frustum();
+    Frustum();
+    ~Frustum();
 
-    void Frustum::setCamInternals(float angle, float ratio, float nearD, float farD);
-    void Frustum::setCamDef(Vertex &p, Vertex &l, Vertex &u);
-    int Frustum::pointInFrustum(Vertex &p);
-    int Frustum::sphereInFrustum(Vertex &p, float raio);
-    //int Frustum::boxInFrustum(AABox &b);
+    void setCamInternals(float angle, float ratio, float nearD, float farD);
+    void setCamDef(Vertex &p, Vertex &l, Vertex &u);
+    int pointInFrustum(Vertex *p);
+    int sphereInFrustum(Vertex *p, float raio);
+    //int boxInFrustum(AABox &b);
 
-    void Frustum::drawPoints();
-    void Frustum::drawLines();
-    void Frustum::drawPlanes();
-    void Frustum::drawNormals();
+    void drawPoints();
+    void drawLines();
+    void drawPlanes();
+    void drawNormals();
     
 };
 
