@@ -42,7 +42,7 @@ public:
     ~Frustum();
 
     void setCamInternals(float angle, float ratio, float nearD, float farD);
-    void setCamDef(Vertex &p, Vertex &l, Vertex &u);
+    void setCamDef(Vertex *p, Vertex *l, Vertex *u);
     int pointInFrustum(Vertex *p);
     int sphereInFrustum(Vertex *p, float raio);
     //int boxInFrustum(AABox &b);

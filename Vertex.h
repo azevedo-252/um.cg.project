@@ -20,14 +20,22 @@ public:
 
 	/** operators */
 	Vertex operator+(Vertex &v);
-	Vertex operator-(const Vertex &v);
+	Vertex operator-(Vertex &v);
 	Vertex operator*(Vertex &v);
+        
 	Vertex operator*(float num);
-//	Vertex operator+(float num);
-//	Vertex operator-(const float num);
-	Vertex operator-(void);
+	Vertex operator+(float num);
+        Vertex operator-(float num);
+        
+//	Vertex operator-(void);
+        
 	Vertex & operator+=(Vertex &v);
 	Vertex & operator-=(Vertex &v);
+        
+        void mult(float num);
+        void sum(float num);
+        void sub(float num);
+        
 	float distance(Vertex* v2);
 	float inner_product(Vertex *v);
 	void normalize();

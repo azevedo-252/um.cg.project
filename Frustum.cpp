@@ -30,21 +30,68 @@ void Frustum::setCamInternals(float angle, float ratio, float nearD, float farD)
 
 }
 
-void Frustum::setCamDef(Vertex &p, Vertex &l, Vertex &u) {
+void Frustum::setCamDef(Vertex *p, Vertex *l, Vertex *u) {
 
     Vertex dir, nc, fc, X, Y, Z;
+    
+    Vertex aux1, aux2, aux3;
 
-    Z = p - l;
+    Z = *p - *l;
     Z.normalize();
 
-    X = u * Z;
+    X = *u * Z;
     X.normalize();
 
     Y = Z * X;
 
-    nc = p - Z * nearD;
-    fc = p - Z * farD;
+    //Z.mult(nearD);
+    aux1 = Z * nearD;
+    nc = *p - aux1;
+    //Z.mult(farD);
+    aux1 = Z * farD;
+    fc = *p - aux1;
+    
+    aux1 = X * nw;
+    aux2 = Y * nh;
+    aux3 = aux2 - aux1;
+    ntl = aux3 + nc;
+    
+    aux1 = X * nw;
+    aux2 = Y * nh;
+    aux3 = aux2 + aux1;
+    ntr = aux3 + nc;    
+    
+    aux1 = X * nw;
+    aux2 = Y * nh;
+    aux3 = aux2 + aux1;
+    nbl = nc - aux3;        
+    
+    aux1 = X * nw;
+    aux2 = Y * nh;
+    aux3 = aux1 - aux2;
+    nbr = nc + aux3;            
+    
+    aux1 = X * fw;
+    aux2 = Y * fh;
+    aux3 = aux2 - aux1;
+    ftl = aux3 + fc;
+    
+    aux1 = X * fw;
+    aux2 = Y * fh;
+    aux3 = aux2 + aux1;
+    ftr = aux3 + fc;    
+    
+    aux1 = X * fw;
+    aux2 = Y * fh;
+    aux3 = aux2 + aux1;
+    fbl = fc - aux3;        
+    
+    aux1 = X * fw;
+    aux2 = Y * fh;
+    aux3 = aux1 - aux2;
+    fbr = fc + aux3;                
 
+    /*
     ntl = nc + Y * nh - X * nw;
     ntr = nc + Y * nh + X * nw;
     nbl = nc - Y * nh - X * nw;
@@ -54,15 +101,17 @@ void Frustum::setCamDef(Vertex &p, Vertex &l, Vertex &u) {
     ftr = fc + Y * fh + X * fw;
     fbl = fc - Y * fh - X * fw;
     fbr = fc - Y * fh + X * fw;
-
-    pl[TOP].set3Points(ntr, ntl, ftl);
-    pl[BOTTOM].set3Points(nbl, nbr, fbr);
-    pl[LEFT].set3Points(ntl, nbl, fbl);
-    pl[RIGHT].set3Points(nbr, ntr, fbr);
-    pl[NEARP].set3Points(ntl, ntr, nbr);
-    pl[FARP].set3Points(ftr, ftl, fbl);
+    */
+    
+    pl[TOP].set3Points(&ntr, &ntl, &ftl);
+    pl[BOTTOM].set3Points(&nbl, &nbr, &fbr);
+    pl[LEFT].set3Points(&ntl, &nbl, &fbl);
+    pl[RIGHT].set3Points(&nbr, &ntr, &fbr);
+    pl[NEARP].set3Points(&ntl, &ntr, &nbr);
+    pl[FARP].set3Points(&ftr, &ftl, &fbl);
+    
 }
-
+/*
 int Frustum::sphereInFrustum(Vertex *p, float raio) {
 
     int result = INSIDE;
@@ -77,7 +126,7 @@ int Frustum::sphereInFrustum(Vertex *p, float raio) {
     }
     return (result);
 
-}
+}*/
 
 void Frustum::drawPoints() {
 
@@ -193,7 +242,7 @@ void Frustum::drawPlanes() {
     glEnd();
 
 }
-
+/*
 void Frustum::drawNormals() {
 
     Vertex a, b;
@@ -239,4 +288,4 @@ void Frustum::drawNormals() {
     glEnd();
 
 
-}
+}*/

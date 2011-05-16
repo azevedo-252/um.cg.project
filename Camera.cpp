@@ -13,15 +13,20 @@ float Camera::persp_ratio;
 int Camera::persp_ang;
 int Camera::persp_z_near;
 int Camera::persp_z_far;
+Vertex *Camera::look_eye;
+Vertex *Camera::look_center;
+Vertex *Camera::look_up;
 
 Camera::Camera() {
     Camera::persp_ratio = 1;
     Camera::persp_ang = conf.rint("camera:persp_ang");
     Camera::persp_z_near = conf.rint("camera:persp_z_near");
     Camera::persp_z_far = conf.rint("camera:persp_z_far");
-    look_eye = new Vertex();
-    look_center = new Vertex();
-    look_up = new Vertex(0, 1, 0);
+    Camera::look_eye = new Vertex();
+    Camera::look_center = new Vertex();
+    Camera::look_up = new Vertex(0, 1, 0);
+
+    set = false;
 }
 
 void Camera::placeCamera() {
@@ -46,12 +51,15 @@ void Camera::placeCamera() {
                 pos->z,
 
                 0, 1, 0);
-        look_eye->x = pos->x - tps_off * dir->x;
-        look_eye->y = pos->y - tps_off * dir->y + tps_y_off;
-        look_eye->z = pos->z - tps_off * dir->z;
-        look_center->x = pos->x;
-        look_center->y = pos->y + tps_dir_y_off;
-        look_center->z = pos->z;
+        if (!set) {
+            Camera::look_eye->x = pos->x - tps_off * dir->x;
+            Camera::look_eye->y = pos->y - tps_off * dir->y + tps_y_off;
+            Camera::look_eye->z = pos->z - tps_off * dir->z;
+            Camera::look_center->x = pos->x;
+            Camera::look_center->y = pos->y + tps_dir_y_off;
+            Camera::look_center->z = pos->z;
+            set = true;
+        }
 
     } else {
         int fps_off = conf.rint("camera:fps_off");
@@ -67,11 +75,11 @@ void Camera::placeCamera() {
                 pos->z + (fps_off + 1) * dir->z,
 
                 0, 1, 0);
-        look_eye->x = pos->x + fps_off * dir->x;
-        look_eye->y = pos->y + fps_y_off;
-        look_eye->z = pos->z + fps_off * dir->z;
-        look_center->x = pos->x + (fps_off + 1) * dir->x;
-        look_center->y = pos->y + dir->y + fps_dir_y_off;
-        look_center->z = pos->z + (fps_off + 1) * dir->z;        
+        Camera::look_eye->x = pos->x + fps_off * dir->x;
+        Camera::look_eye->y = pos->y + fps_y_off;
+        Camera::look_eye->z = pos->z + fps_off * dir->z;
+        Camera::look_center->x = pos->x + (fps_off + 1) * dir->x;
+        Camera::look_center->y = pos->y + dir->y + fps_dir_y_off;
+        Camera::look_center->z = pos->z + (fps_off + 1) * dir->z;
     }
 }

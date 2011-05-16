@@ -23,25 +23,25 @@ Vertex::~Vertex() {
     return;
 }
 
-Vertex Vertex::operator-(void) {
-
-	Vertex res;
-
-	res.x = -x;
-	res.y = -y;
-	res.z = -z;
-
-	return(res);
-}
+//Vertex Vertex::operator-(void) {
+//
+//	Vertex res;
+//
+//	res.x = -x;
+//	res.y = -y;
+//	res.z = -z;
+//
+//	return(res);
+//}
 
 Vertex Vertex::operator+(Vertex &v) {
     Vertex res(x + v.x, y + v.y, z + v.z);
     return res;
 }
 
-Vertex Vertex::operator-(const Vertex &v) {
+Vertex Vertex::operator-(Vertex &v) {
     Vertex res(x - v.x, y - v.y, z - v.z);
-    return res;
+    return res; 
 }
 
 Vertex & Vertex::operator+=(Vertex &v) {
@@ -73,15 +73,33 @@ Vertex Vertex::operator*(float num) {
     return res;
 }
 
-//Vertex Vertex::operator+(float num) {
-//    Vertex res(this->x+num,this->y+num,this->z+num);
-//    return res;
-//}
-//
-//Vertex Vertex::operator-(float num) {
-//    Vertex res(this->x-num,this->y-num,this->z-num);
-//    return res;
-//}
+Vertex Vertex::operator+(float num) {
+    Vertex res(this->x+num,this->y+num,this->z+num);
+    return res;
+}
+
+Vertex Vertex::operator-(float num) {
+    Vertex res(this->x-num,this->y-num,this->z-num);
+    return res;
+}
+
+void Vertex::mult(float num) {
+    x = x * num;
+    y = y * num;
+    z = z * num;
+}
+
+void Vertex::sum(float num) {
+    x = x + num;
+    y = y + num;
+    z = z + num;
+}
+
+void Vertex::sub(float num) {
+    x = x - num;
+    y = y - num;
+    z = z - num;
+}
 
 void Vertex::normalize() {
     float aux = sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
