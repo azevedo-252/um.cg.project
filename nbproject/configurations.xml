@@ -11,7 +11,6 @@
       <df name="md2loader">
         <in>Anorms.h</in>
         <in>DataManager.h</in>
-        <in>DataManager.inl</in>
         <in>Image.cpp</in>
         <in>Image.h</in>
         <in>Main.cpp</in>
@@ -94,6 +93,8 @@
       <in>Model.h</in>
       <in>Model_MD2.cpp</in>
       <in>Model_MD2.h</in>
+      <in>Plane.cpp</in>
+      <in>Plane.h</in>
       <in>Player.cpp</in>
       <in>Player.h</in>
       <in>Radar.cpp</in>
