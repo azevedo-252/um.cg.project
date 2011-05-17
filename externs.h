@@ -16,6 +16,7 @@
 #include "Vertex.h"
 #include "Plane.h"
 #include "Frustum.h"
+#include "externs.h"
 
 extern Config conf;
 extern Map* g_map;

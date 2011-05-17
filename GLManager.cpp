@@ -53,7 +53,7 @@ namespace GLManager {
         glutSpecialFunc(InputManager::keyboardSpecialFunc);
         glutMouseFunc(InputManager::mouseButtons);
 
-        /** @TODO: assume-se para ja, que nao ha diferenca entre estas duas
+            /** @TODO: assume-se para ja, que nao ha diferenca entre estas duas
          * com botoes premidos ou nao, o comportamento do movimento do rato e o mesmo para ja */
         glutMotionFunc(InputManager::mouseMotion);
         glutPassiveMotionFunc(InputManager::mouseMotion);

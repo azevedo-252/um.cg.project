@@ -25,7 +25,7 @@ Camera::Camera() {
     Camera::look_eye = new Vertex();
     Camera::look_center = new Vertex();
     Camera::look_up = new Vertex(0, 1, 0);
-
+    
     set = false;
 }
 
@@ -51,15 +51,13 @@ void Camera::placeCamera() {
                 pos->z,
 
                 0, 1, 0);
-        if (!set) {
-            Camera::look_eye->x = pos->x - tps_off * dir->x;
-            Camera::look_eye->y = pos->y - tps_off * dir->y + tps_y_off;
-            Camera::look_eye->z = pos->z - tps_off * dir->z;
-            Camera::look_center->x = pos->x;
-            Camera::look_center->y = pos->y + tps_dir_y_off;
-            Camera::look_center->z = pos->z;
-            set = true;
-        }
+        Camera::look_eye->x = pos->x - tps_off * dir->x;
+        Camera::look_eye->y = pos->y - tps_off * dir->y + tps_y_off;
+        Camera::look_eye->z = pos->z - tps_off * dir->z;
+        Camera::look_center->x = pos->x;
+        Camera::look_center->y = pos->y + tps_dir_y_off;
+        Camera::look_center->z = pos->z;
+        
 
     } else {
         int fps_off = conf.rint("camera:fps_off");

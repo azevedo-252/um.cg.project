@@ -111,7 +111,7 @@ void Frustum::setCamDef(Vertex *p, Vertex *l, Vertex *u) {
     pl[FARP].set3Points(&ftr, &ftl, &fbl);
     
 }
-/*
+
 int Frustum::sphereInFrustum(Vertex *p, float raio) {
 
     int result = INSIDE;
@@ -126,7 +126,7 @@ int Frustum::sphereInFrustum(Vertex *p, float raio) {
     }
     return (result);
 
-}*/
+}
 
 void Frustum::drawPoints() {
 
