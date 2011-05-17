@@ -94,6 +94,8 @@
       <in>Model.h</in>
       <in>Model_MD2.cpp</in>
       <in>Model_MD2.h</in>
+      <in>Plane.cpp</in>
+      <in>Plane.h</in>
       <in>Player.cpp</in>
       <in>Player.h</in>
       <in>Radar.cpp</in>

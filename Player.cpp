@@ -19,7 +19,7 @@ Player::Player (const string &path) : Model_MD2(path) {
 	
 	direction = new Vertex(0,0,1);
 	ang_x = 0;
-	ang_y = 0;
+	ang_y = M_PI/2;
 	md2_rendermode = 0;
 
 	speed_front	= GLManager::distance(conf.rfloat("player:speed_front"));
