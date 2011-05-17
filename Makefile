@@ -46,9 +46,9 @@ OBJH=$(SRC:.cpp=.h)
 OBJ_OTHER= Main.cpp
 	
 .cpp.o:
-	$(CC) -c -o $@ $? $(LIBSGL) $(LIBSIL) $(LIBSAL)
+	$(CC) -c -o $@ $? $(LIBSGL) $(LIBSIL) $(LIBSAL) -D$(USERNAME)
 .o:
-	$(CC) -c -o $@ $? $(LIBSGL) $(LIBSIL) $(LIBSAL)
+	$(CC) -c -o $@ $? $(LIBSGL) $(LIBSIL) $(LIBSAL) -D$(USERNAME)
 	
 .cpp.h:
 

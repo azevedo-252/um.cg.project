@@ -51,7 +51,10 @@ void Textures::loadHeightMap(string path) {
 
 	ilBindImage(textures[TERRAIN_HEIGHT].id);
 	ilLoadImage(path.c_str());
+
+	#ifndef rocket
 	ilConvertImage(IL_LUMINANCE,IL_UNSIGNED_BYTE);
+	#endif
 	
 	textures[TERRAIN_HEIGHT].w = ilGetInteger(IL_IMAGE_WIDTH);
 	textures[TERRAIN_HEIGHT].h = ilGetInteger(IL_IMAGE_HEIGHT);
