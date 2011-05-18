@@ -132,8 +132,12 @@ void InputManager::setKeyState(unsigned char key, int state) {
 		case 'S':
 			key_code = KEY_S;
 			break;
+			
+		case KEY_ASCII_SPACE:
+			key_code = KEY_SPACE;
+			break;
 
-		case KEY_ESC:
+		case KEY_ASCII_ESC:
 			exit(0);
 			break;
 	}

@@ -11,6 +11,7 @@
 typedef enum e_move_type {
 	MOVE_NONE,
 	MOVE_WALK,
+	MOVE_JUMP,
 
 	MOVE_COUNT,
 } MOVE_TYPE;
@@ -21,22 +22,21 @@ typedef struct s_anim {
 } ANIM;
 
 class Frame {
-    
 public:
 	int walk_frames;
 	ANIM frames[MOVE_COUNT];
 
 	MOVE_TYPE current_anim;
-    int current_frame;
+	int current_frame;
 
-    Frame();
-    void add_anim(MOVE_TYPE type, int start, int count);
-    void set_anim(MOVE_TYPE anim);
-    MOVE_TYPE get_anim();
-    int get_frame();
-    void inc_frame();
+	Frame();
+	void add_anim(MOVE_TYPE type, int start, int count);
+	void set_anim(MOVE_TYPE anim);
+	MOVE_TYPE get_anim();
+	int get_frame();
+	void inc_frame();
 private:
-    
+
 };
 
 #endif	/* Frame_H */

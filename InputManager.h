@@ -11,13 +11,15 @@
 #define KEY_ON  1
 #define KEY_UNDEF -1
 
-#define KEY_ESC 27
+#define KEY_ASCII_ESC	27
+#define KEY_ASCII_SPACE	32
 
 typedef enum e_key_code {
 	KEY_A,
 	KEY_W,
 	KEY_S,
 	KEY_D,
+	KEY_SPACE,
 
 	MOUSE_X,
 	MOUSE_Y,
@@ -37,7 +39,6 @@ typedef enum e_op_code {
 } OP_CODE;
 
 class InputManager {
-
 private:
 	static int keys[KEY_COUNT];
 	static int ops[OP_COUNT];
