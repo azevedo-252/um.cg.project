@@ -20,34 +20,49 @@ Rainbow::Rainbow () {
 }
 
 void Rainbow::render() {
+	GLfloat mat_ambient[4];
+	
 	glPushMatrix ();
 		glTranslatef (coords->x, coords->y, coords->z);
+		
+		
 		glRotatef(ang_x, 0, 1, 0);
 		glScalef(0.25, 0.25, 0.25);
+		
+        g_toilet->render();
+		
 		// violeta
-		glColor3f(0.5,0.0,0.5); //red, green, blue
+		mat_ambient[0] = 0.5; mat_ambient[1] =  0.0; mat_ambient[2] = 0.5; mat_ambient[3] = 1.0;
+		glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_ambient);
 		glutSolidTorus(10,240,100,100);
 		// indigo
-		glColor3f(0.2,0.0,0.8); //red, green, blue
+		mat_ambient[0] = 0.2; mat_ambient[1] =  0.0; mat_ambient[2] = 0.8; mat_ambient[3] = 1.0;
+		glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_ambient);
 		glutSolidTorus(10,250,100,100);
 		// azul
-		glColor3f(0.0,0.0,1.0); //red, green, blue
+		mat_ambient[0] = 0.0; mat_ambient[1] =  0.0; mat_ambient[2] = 1.0; mat_ambient[3] = 1.0;
+		glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_ambient);
 		glutSolidTorus(10,260,100,100);
 		// verde
-		glColor3f(0.0,1.0,0.0); //red, green, blue
+		mat_ambient[0] = 0.0; mat_ambient[1] =  1.0; mat_ambient[2] = 0.0; mat_ambient[3] = 1.0;
+		glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_ambient);
 		glutSolidTorus(10,270,100,100);
 		// amarelo
-		glColor3f(1.0,1.0,0.0); //red, green, blue
+		mat_ambient[0] = 1.0; mat_ambient[1] =  1.0; mat_ambient[2] = 0.0; mat_ambient[3] = 1.0;
+		glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_ambient);
 		glutSolidTorus(10,280,100,100);
 		// laranja
-		glColor3f(1.0,0.5,0.0); //red, green, blue
+		mat_ambient[0] = 1.0; mat_ambient[1] =  0.5; mat_ambient[2] = 0.0; mat_ambient[3] = 1.0;
+		glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_ambient);
 		glutSolidTorus(10,290,100,100);
 		// vermelho
-		glColor3f(1.0,0.0,0.0); //red, green, blue
+		mat_ambient[0] = 1.0; mat_ambient[1] =  0.0; mat_ambient[2] = 0.0; mat_ambient[3] = 1.0;
+		glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_ambient);
 		glutSolidTorus(10,300,100,100);
 		glColor3f(1, 1, 1);  // -> Porque ?
+		
+		GLManager::resetMaterials();
 
-        g_toilet->render();
 	glPopMatrix ();
 }
 

@@ -16,12 +16,12 @@ Lighting::Lighting() {
 	pos[3] = 0.0;
 	
 	amb[0] = 1.0;
-	amb[1] = 0.3;
-	amb[2] = 1.0;
+	amb[1] = 0.8;
+	amb[2] = 0.8;
 	
-	diff[0] = 0.8;
-	diff[1] = 0.8;
-	diff[2] = 0.8;
+	diff[0] = 0.0;
+	diff[1] = 0.0;
+	diff[2] = 0.0;
 }
 
 

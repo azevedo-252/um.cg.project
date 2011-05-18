@@ -131,13 +131,15 @@ void Map::render() {
 
 	glBindTexture(GL_TEXTURE_2D, tex_soil.gl_id);
 	
-	GLfloat mat_amb_diff[] = { 0.8, 0.5, 0.5, 1.0 };
-	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_amb_diff);
+	//GLfloat mat_amb_diff[] = { 0.5, 0.5, 0.5, 1.0 };
+	//glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_amb_diff);
 	
 	for(int x = 0; x < n_strips; x++) {
 		glDrawElements(GL_TRIANGLE_STRIP, grid_n * 2, GL_UNSIGNED_INT, grid_strips[x]);
 
 	}
+	
+	GLManager::resetMaterials();
 	
 //	for(x = 0; x < grid_n; x++) {
 //		glBegin(GL_TRIANGLE_STRIP);

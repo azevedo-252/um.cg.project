@@ -154,7 +154,6 @@ namespace GLManager {
          * @TODO draw stuff here
          */
         g_map->render();
-        g_rainbow->render();
         g_radar->render();
         //g_profiler->render();
 
@@ -166,11 +165,21 @@ namespace GLManager {
         g_skybox->render();
         
         g_frustum->drawPlanes();
+        g_rainbow->render();
 
         InputManager::resetMouseMove();
         // End of frame
         glutSwapBuffers();
     }
+	
+	void resetMaterials() {
+		GLfloat mat_ambient[4];
+		//reset aos materiais
+		mat_ambient[0] = 0.2; mat_ambient[1] =  0.2; mat_ambient[2] = 0.2; mat_ambient[3] = 1.0;
+		glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+		mat_ambient[0] = 0.8; mat_ambient[1] =  0.8; mat_ambient[2] = 0.8; mat_ambient[3] = 1.0;
+		glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+	}
 
     void update(int val) {
 

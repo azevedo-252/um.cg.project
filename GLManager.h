@@ -20,6 +20,8 @@ namespace GLManager {
 
 	/** funcao de render */
 	void render(void);
+	
+	void resetMaterials(void);
 
 	/** funcao de update dos dados */
 	void update(int val);
