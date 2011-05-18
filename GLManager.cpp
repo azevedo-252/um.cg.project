@@ -110,7 +110,8 @@ namespace GLManager {
         glutTimerFunc(g_update_interval, GLManager::update, 0);
         glutTimerFunc(g_anims_interval, GLManager::updateFrames, 0);
         g_frustum = new Frustum();
-		g_lighting = new Lighting();
+	g_lighting = new Lighting();
+        g_profiling = new Profiling();
     }
 
     void reshapeFunc(int w, int h) {
@@ -166,6 +167,7 @@ namespace GLManager {
         
         g_frustum->drawPlanes();
         g_rainbow->render();
+        g_profiling->render();
 
         InputManager::resetMouseMove();
         // End of frame
@@ -191,6 +193,7 @@ namespace GLManager {
         g_keys->update();
         g_radar->update();
         g_rainbow->update();
+        g_profiling->update();
 
         glutPostRedisplay();
     }

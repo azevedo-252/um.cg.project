@@ -37,7 +37,8 @@ SRC=Radar.cpp \
     Frame.cpp \
     Plane.cpp \
     Frustum.cpp \
-    Lighting.cpp
+    Lighting.cpp \
+    Profiling.cpp
 
 	
 
