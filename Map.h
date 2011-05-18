@@ -41,6 +41,7 @@ public:
 	Map();
 	~Map();
 
+	Vertex* vertexFromBuffer(float *buff, int x, int y);
 	void initVBO();
 	
 	void render();

@@ -16,9 +16,12 @@
 #include "Sound.h"
 #include "SkyBox.h"
 #include "Frustum.h"
+#include "Lighting.h"
 
 //configuracoes principais
 Config conf("config.ini");
+
+Lighting *g_lighting;
 //instancia do jogador principal
 Player* g_player;
 Towers* g_towers;

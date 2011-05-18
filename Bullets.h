@@ -15,14 +15,17 @@ using namespace std;
 #include "Model_MD2.h"
 #include "Bullet.h"
 
-class Bullets : Model_MD2 {
+class Bullets {
 private:
-	list<Bullet> bullets;	
+	list<Bullet> bullets;
+	GLuint *bulletFrames;	
 	
 public:
 	static int anim_start, anim_end;
 	
 	Bullets(const string &path);
+	
+	void createBulletsLists(const string &path);
 	
 	void update();
 	void updateFrames();

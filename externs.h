@@ -17,8 +17,10 @@
 #include "Plane.h"
 #include "Frustum.h"
 #include "externs.h"
+#include "Lighting.h"
 
 extern Config conf;
+extern Lighting* g_lighting;
 extern Map* g_map;
 extern Player* g_player;
 extern Camera* g_camera;

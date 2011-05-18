@@ -12,6 +12,7 @@
 
 class Bullet {
 public:
+	
     Frame *anim;
 	Vertex *coords;
     float ang, ang_rad; //ang em graus

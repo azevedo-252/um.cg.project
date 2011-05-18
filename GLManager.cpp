@@ -68,8 +68,8 @@ namespace GLManager {
         glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
         /** activa a iluminacao */
-        //glEnable(GL_LIGHTING);
-        //glEnable(GL_LIGHT0);
+        glEnable(GL_LIGHTING);
+        glEnable(GL_LIGHT0);
 
         /** da main do md2loader */
         glShadeModel(GL_SMOOTH);
@@ -110,6 +110,7 @@ namespace GLManager {
         glutTimerFunc(g_update_interval, GLManager::update, 0);
         glutTimerFunc(g_anims_interval, GLManager::updateFrames, 0);
         g_frustum = new Frustum();
+		g_lighting = new Lighting();
     }
 
     void reshapeFunc(int w, int h) {
@@ -145,6 +146,8 @@ namespace GLManager {
     void render(void) {
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		
+		g_lighting->render();
         
         g_frustum->setCamDef(g_camera->look_eye, g_camera->look_center, g_camera->look_up);
         /**

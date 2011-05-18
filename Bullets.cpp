@@ -11,10 +11,26 @@
 int Bullets::anim_start;
 int Bullets::anim_end;
 
-Bullets::Bullets(const string &path) : Model_MD2(path) {
+Bullets::Bullets(const string &path) {
     anim_start = conf.rint("game:bullet_walk_frame");
     anim_end = conf.rint("game:bullet_walk_frame_end");
-    md2_rendermode = 0;
+	
+	createBulletsLists(path);
+	
+}
+
+void Bullets::createBulletsLists(const string &path) {
+	int anims = anim_end - anim_start + 1;
+	bulletFrames = (GLuint *) malloc(sizeof(GLuint) * anims);
+	
+	Model_MD2 *bullet = new Model_MD2(path);
+	bullet->md2_rendermode = 0;
+	for(int i = 0; i <= anims; i++) {
+		bulletFrames[i] = glGenLists(1);
+		glNewList(bulletFrames[i], GL_COMPILE);
+		bullet->md2_model->drawPlayerFrame(i + anim_start - 1,  static_cast<Md2Object::Md2RenderMode> (bullet->md2_rendermode));
+		glEndList();
+	}
 }
 
 void Bullets::update() {
@@ -45,7 +61,8 @@ void Bullets::render() {
             glPushMatrix();
             glTranslatef(coords->x, coords->y, coords->z);
             glRotatef(ang, 0, 1, 0);
-            md2_model->drawPlayerFrame(frame, static_cast<Md2Object::Md2RenderMode> (md2_rendermode));
+			glCallList(bulletFrames[frame - anim_start]);
+            //md2_model->drawPlayerFrame(frame, static_cast<Md2Object::Md2RenderMode> (md2_rendermode));
             glTranslatef(0, 5, 0);
             //glutSolidSphere(5, 36, 36);
             glPopMatrix();
