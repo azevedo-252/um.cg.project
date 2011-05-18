@@ -201,6 +201,7 @@ namespace GLManager {
         glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
     }
 
+
     void update(int val) {
 
         glutTimerFunc(g_update_interval, update, 0);

@@ -74,3 +74,7 @@ void Bullets::addBullet(Vertex* coords, float ang, float ang_rad) {
     Bullet *b = new Bullet(coords, ang, ang_rad);
     bullets.push_front(*b);
 }
+
+void Bullets::end_game() {
+    
+}

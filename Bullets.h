@@ -19,7 +19,7 @@ class Bullets {
 private:
 	list<Bullet> bullets;
 	GLuint *bulletFrames;	
-	
+        void end_game();
 public:
 	static int anim_start, anim_end;
 	
