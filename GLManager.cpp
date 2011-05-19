@@ -216,6 +216,8 @@ namespace GLManager {
         g_profiling->update();
 
         glutPostRedisplay();
+        
+        g_bullets->bullet_hit_test();
     }
 
     float distance(float meters) {

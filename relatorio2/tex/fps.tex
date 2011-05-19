@@ -1,0 +1,8 @@
+Todos os objectos do jogo (jogador, torres, mapa, chaves, etc) têm dois métodos essenciais: \textbf{render()} e \textbf{update()}. O primeiro é chamado na função principal de render, que é chamada para desenhar a informação no ecrã.
+O segundo é chamado sempre que é necessário actualizar a informação do jogo, como as coordenadas dos objectos, criando movimento.
+
+É necessário de alguma forma separar estes dois métodos, porque o render será chamado sempre que possivel pelo OpenGL, para tentar desenhar o máximo de frames possivel. Isto faz com que o número de renders possa variar, não só em diferentes situações do jogo, mas mesmo entre dois computadores diferentes, com capacidades de processamento distintas.
+Se o update for chamado na mesma função de render (como é feito usualmente nos exercicios práticos), isto fará com que a taxa de actualização dos dados seja também feita um número variavel de vezes.
+A consequência disto será que a velocidade do jogo pode variar conforme a capacidade de processamento do computador
+
+Como forma de contornar este problema, recorreu-se a uma abordagem diferente. usando a função \textbf{glutTimerFunc} e um número de updates por segundo definido no ficheiro \textbf{config.ini} faz-se com que o método update seja chamado um número estático de vezes por segundo. Após o update, é usada a função \textbf{glutPostRedisplay()} para indicar que o ecrã precisa de ser actualizado. Isto limita também os FPS a 60 (valor definido no ficheiro ini), mas isso não é relevante, pois se não há mais actualizações do que essas nos dados, então a informação do ecrã iria-se manter a mesma durante uma ou mais frames, causando redundância.

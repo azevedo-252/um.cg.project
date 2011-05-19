@@ -1,0 +1,15 @@
+% vim: set ts=4 sw=4 ai et:
+
+% insere uma imagem com legenda, por omissao com 12cm de largura
+\newcommand{\image}[3][12cm]
+{
+    \begin{figure}[!h]
+        \begin{center}
+            \includegraphics[width=#1]{images/#2}
+                \caption{#3}
+                \label{fig:#2}
+        \end{center}
+    \end{figure}
+    % force dump image queue here
+    %\clearpage
+}
