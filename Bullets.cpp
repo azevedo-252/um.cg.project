@@ -76,5 +76,10 @@ void Bullets::addBullet(Vertex* coords, float ang, float ang_rad) {
 }
 
 void Bullets::end_game() {
-    
+    Vertex *c_bullet, *c_player = g_player->coords;
+    for(list<Bullet>::iterator it = bullets.begin(); it != bullets.end(); it++) {
+        if(sqrt(pow(c_player->x - c_bullet->x, 2) + pow(c_player->y - c_bullet->y, 2) + pow(c_player->z - c_bullet->z, 2)) <= 2) {
+            printf("BALA ACERTOU\n");
+        }
+    }
 }

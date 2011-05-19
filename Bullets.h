@@ -15,6 +15,9 @@ using namespace std;
 #include "Model_MD2.h"
 #include "Bullet.h"
 
+
+#define BULLET_HIT_DIST 2
+
 class Bullets {
 private:
 	list<Bullet> bullets;
