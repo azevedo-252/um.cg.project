@@ -64,7 +64,7 @@ void Tower::render() {
 }
 
 void Tower::fire() {
-    if (canFire()) {
+    if (canFire() && g_player->state == GAME_ON) {
         disallowFire();
         g_bullets->addBullet(coords, 90 + (ang_x * 180) / M_PI, -ang_x);
         glutTimerFunc(Tower::bullet_delay, GLManager::allowTowerFire, this->id);

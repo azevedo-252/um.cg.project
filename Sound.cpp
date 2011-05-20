@@ -5,11 +5,14 @@
 #include <string.h>
 #include <iostream>
 
+using namespace std;
+
 #include "Sound.h"
 #include "externs.h"
 
 string Sound::sounds_path;
 SOUND Sound::sounds[SOUND_COUNT];
+bool Sound::music_playing;
 
 void Sound::load() {
 	sounds_path = conf.rstring("resources:sounds_path");
@@ -31,7 +34,7 @@ void Sound::load() {
 	Sound::loadSingle(SOUND_GAME_OVER, conf.rstring("sound:game_over"));
 	alSourcei(sounds[SOUND_GAME_OVER].source, AL_LOOPING, AL_FALSE);
 	
-	
+	music_playing = true;
 }
 
 void Sound::loadSingle(SOUND_TYPE id, string path) {
@@ -49,4 +52,17 @@ void Sound::play(SOUND_TYPE id) {
 
 void Sound::stop(SOUND_TYPE id) {
 	alSourceStop(sounds[id].source);
+}
+
+void Sound::toogleMusic() {
+	if (music_playing) {
+		cout << "dsa" << endl;
+		Sound::stop(SOUND_MAIN);
+		music_playing = false;
+	}
+	else {
+		cout << "asd" << endl;
+		Sound::play(SOUND_MAIN);
+		music_playing = true;
+	}
 }

@@ -133,6 +133,12 @@ void InputManager::setKeyState(unsigned char key, int state) {
 			key_code = KEY_S;
 			break;
 			
+		case 'm':
+		case 'M':
+			if (state == KEY_ON)
+				Sound::toogleMusic();
+			break;
+			
 		case KEY_ASCII_SPACE:
 			key_code = KEY_SPACE;
 			break;
@@ -142,7 +148,7 @@ void InputManager::setKeyState(unsigned char key, int state) {
 			break;
 	}
 
-	if (key_code != -1)
+	if (key_code != KEY_VOID)
 		keys[key_code] = state;
 }
 

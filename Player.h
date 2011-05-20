@@ -8,6 +8,12 @@
 #include "Vertex.h"
 #include "Frame.h"
 
+typedef enum enum_state {
+    GAME_ON,
+    GAME_OVER,
+    GAME_WIN
+} GameState;
+
 
 #include "InputManager.h"
 
@@ -25,6 +31,7 @@ public:
     int jump_cooldown;
     int tower_colision_dist;
     int tower_colision_thresh;
+    GameState state;
 
     Player(const std::string &path);
 
@@ -36,7 +43,7 @@ public:
     float jumpOff(int off);
 
     static void inc_frame(int val);
-    
+
     void calcColisions();
 };
 

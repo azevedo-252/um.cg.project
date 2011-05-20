@@ -19,9 +19,9 @@ Lighting::Lighting() {
 	amb[1] = 0.8;
 	amb[2] = 0.8;
 	
-	diff[0] = 0.0;
-	diff[1] = 0.0;
-	diff[2] = 0.0;
+	diff[0] = 0.5;
+	diff[1] = 0.5;
+	diff[2] = 0.5;
 }
 
 

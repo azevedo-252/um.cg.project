@@ -13,6 +13,7 @@ extern Config conf;
 using namespace std;
 
 Player::Player(const string &path) : Model_MD2(path) {
+	state = GAME_ON;
 	coords = new Vertex();
 	coords->x = GLManager::distance(conf.rfloat("player:x"));
 	coords->z = GLManager::distance(conf.rfloat("player:z"));
@@ -89,19 +90,21 @@ void Player::update() {
 		cos(ang_y),
 		sin(ang_y) * sin(ang_x));
 
-	if (w == KEY_ON) {
-		coords->x += speed_front * direction->x;
-		coords->z += speed_front * direction->z;
-	} else if (s == KEY_ON) {
-		coords->x -= speed_back * direction->x;
-		coords->z -= speed_back * direction->z;
-	}
-	if (a == KEY_ON) {
-		coords->x += speed_side * direction->z;
-		coords->z -= speed_side * direction->x;
-	} else if (d == KEY_ON) {
-		coords->x -= speed_side * direction->z;
-		coords->z += speed_side * direction->x;
+	if (state == GAME_ON) {
+		if (w == KEY_ON) {
+			coords->x += speed_front * direction->x;
+			coords->z += speed_front * direction->z;
+		} else if (s == KEY_ON) {
+			coords->x -= speed_back * direction->x;
+			coords->z -= speed_back * direction->z;
+		}
+		if (a == KEY_ON) {
+			coords->x += speed_side * direction->z;
+			coords->z -= speed_side * direction->x;
+		} else if (d == KEY_ON) {
+			coords->x -= speed_side * direction->z;
+			coords->z += speed_side * direction->x;
+		}
 	}
 
 	if (space == KEY_ON && !isJumping && canJump) {
@@ -124,16 +127,17 @@ void Player::update() {
 			canJump = false;
 			glutTimerFunc(jump_cooldown, GLManager::allowPlayerJump, 0);
 		}
+
 	} else if (isMoving()) {
 		coords->y = g_map->triangulateHeight(coords->x, coords->z);
 		if (anim->get_anim() != MOVE_WALK)
 			anim->set_anim(MOVE_WALK);
 
-		calcColisions();
 	} else {
 		anim->set_anim(MOVE_NONE);
 	}
 
+	calcColisions();
 	g_map->adjustPlayableCoords(coords);
 }
 
@@ -157,18 +161,11 @@ void Player::inc_frame(int val) {
 
 void Player::calcColisions() {
 	for (int i = 0; i < g_towers->num_towers; i++) {
-		float dist = this->coords->distance(g_towers->towers[i]->coords);
+		float dist = this->coords->horizontalDistance(g_towers->towers[i]->coords);
 		if (dist < tower_colision_dist) {
 			float ang = g_towers->towers[i]->ang_x;
 			coords->x = (g_towers->towers[i]->coords->x + (tower_colision_thresh + tower_colision_dist) * cos(-ang));
 			coords->z = (g_towers->towers[i]->coords->z + (tower_colision_thresh + tower_colision_dist) * sin(-ang));
-			cout << coords->x << " " << coords->z << endl;
-			//			float inc_dist = tower_colision_dist - dist;
-
-			//			
-			//			cout << ang << endl;
-			//			this->coords->x -= (10+inc_dist) * sin(ang);
-			//			this->coords->z -= (10+inc_dist) * cos(ang);
 		}
 	}
 }

@@ -37,6 +37,7 @@ public:
         void sub(float num);
         
 	float distance(Vertex* v2);
+        float horizontalDistance(Vertex* v2);
 	float inner_product(Vertex *v);
 	void normalize();
 	/** debug */

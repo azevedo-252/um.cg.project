@@ -34,6 +34,18 @@
           </df>
         </df>
       </df>
+      <df name="relatorio2">
+        <df name="images">
+        </df>
+        <df name="style">
+          <df name="images">
+          </df>
+        </df>
+        <df name="tex">
+        </df>
+        <df name="tex_files">
+        </df>
+      </df>
       <df name="resources">
         <df name="models">
           <df name="BUZZ">
@@ -60,6 +72,8 @@
         <df name="sounds">
         </df>
         <df name="textures">
+          <df name="lifes">
+          </df>
           <df name="sky">
           </df>
           <df name="soil">
@@ -72,6 +86,8 @@
       <in>Bullets.h</in>
       <in>Camera.cpp</in>
       <in>Camera.h</in>
+      <in>ChangeMode.cpp</in>
+      <in>ChangeMode.h</in>
       <in>Config.cpp</in>
       <in>Config.h</in>
       <in>Frame.cpp</in>
@@ -86,6 +102,8 @@
       <in>Key.h</in>
       <in>Keys.cpp</in>
       <in>Keys.h</in>
+      <in>Lifes.cpp</in>
+      <in>Lifes.h</in>
       <in>Lighting.cpp</in>
       <in>Lighting.h</in>
       <in>Main.cpp</in>

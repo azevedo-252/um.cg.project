@@ -10,6 +10,7 @@ using namespace std;
 
 Rainbow::Rainbow () {
 	win_distance = conf.rint("game:win_distance");
+	win_height = conf.rint("game:win_height");
 	win = false;
 	float min_dist = conf.rfloat("game:rainbow_min_distance");
 
@@ -71,10 +72,11 @@ void Rainbow::update() {
 		direction = this->directionVector(g_player->coords);
 		dir_dist = (sqrt(pow(direction->x, 2) + pow(direction->z, 2)));
 
-		if (dir_dist < win_distance) {
+		if (dir_dist < win_distance && g_player->coords->y > this->coords->y + win_height) {
 			win = true;
 			Sound::stop(SOUND_MAIN);
 			Sound::play(SOUND_WIN);
+			g_player->state = GAME_WIN;
 		}
 	}
 }

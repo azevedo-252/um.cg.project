@@ -154,7 +154,7 @@ namespace GLManager {
 
         g_lighting->render();
 
-        g_frustum->setCamDef(g_camera->look_eye, g_camera->look_center, g_camera->look_up);
+        g_frustum->setCamDef(g_camera->camPos, g_camera->camDir, g_camera->camUp);
         /**
          * @TODO draw stuff here
          */
@@ -252,6 +252,7 @@ namespace GLManager {
 			g_lifes->hasEnded = true;
             printf("FIM DO JOGO\n");
 			Sound::play(SOUND_GAME_OVER);
+			g_player->state = GAME_OVER;
 		}
     }
 };

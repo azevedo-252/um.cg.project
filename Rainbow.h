@@ -16,6 +16,7 @@ public:
 	float ang_x, ang_y;
 	float dir_dist;
 	float win_distance;
+        float win_height;
 	bool win;
 
 	Rainbow();

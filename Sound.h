@@ -29,12 +29,15 @@ class Sound {
 public:
     static string sounds_path;
     static SOUND sounds[];
+    static bool music_playing;
 
     static void load();
     static void loadSingle(SOUND_TYPE id, string path);
 
     static void play(SOUND_TYPE id);
     static void stop(SOUND_TYPE id);
+    
+    static void toogleMusic();
 };
 
 #endif
