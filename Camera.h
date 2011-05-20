@@ -18,6 +18,7 @@ public:
     Vertex *camDir;
     Vertex *camPos;
     Vertex *camUp;
+    float terrain_offset;
 
     Camera();
 
