@@ -267,6 +267,7 @@ namespace GLManager {
         if (g_lifes->lifes <= 0 && g_lifes->hasEnded == false) {
 			g_lifes->hasEnded = true;
             printf("FIM DO JOGO\n");
+			Sound::stop(SOUND_MAIN);
 			Sound::play(SOUND_GAME_OVER);
 			g_player->state = GAME_OVER;
 		}
