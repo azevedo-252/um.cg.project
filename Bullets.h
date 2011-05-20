@@ -15,11 +15,13 @@ using namespace std;
 #include "Model_MD2.h"
 #include "Bullet.h"
 
+
+#define BULLET_HIT_DIST 3
+
 class Bullets {
 private:
 	list<Bullet> bullets;
 	GLuint *bulletFrames;	
-	
 public:
 	static int anim_start, anim_end;
 	
@@ -31,6 +33,7 @@ public:
 	void updateFrames();
 	void render();
 	void addBullet(Vertex *coords, float ang, float ang_rad);
+        void bullet_hit_test();        
 };
 
 #endif	/* BULLETS_H */

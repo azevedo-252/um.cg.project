@@ -20,6 +20,9 @@
 #include "externs.h"
 #include "Radar.h"
 
+#define PROFILER_START //g_profiling->start_time
+#define PROFILER_END //g_profiling->end_time
+
 namespace GLManager {
 
     void init(int *argc, char **argv) {
@@ -53,7 +56,7 @@ namespace GLManager {
         glutSpecialFunc(InputManager::keyboardSpecialFunc);
         glutMouseFunc(InputManager::mouseButtons);
 
-            /** @TODO: assume-se para ja, que nao ha diferenca entre estas duas
+        /** @TODO: assume-se para ja, que nao ha diferenca entre estas duas
          * com botoes premidos ou nao, o comportamento do movimento do rato e o mesmo para ja */
         glutMotionFunc(InputManager::mouseMotion);
         glutPassiveMotionFunc(InputManager::mouseMotion);
@@ -110,8 +113,9 @@ namespace GLManager {
         glutTimerFunc(g_update_interval, GLManager::update, 0);
         glutTimerFunc(g_anims_interval, GLManager::updateFrames, 0);
         g_frustum = new Frustum();
-	g_lighting = new Lighting();
+        g_lighting = new Lighting();
         g_profiling = new Profiling();
+        g_lifes = new Lifes();
     }
 
     void reshapeFunc(int w, int h) {
@@ -140,23 +144,24 @@ namespace GLManager {
         g_win_h = glutGet(GLUT_WINDOW_HEIGHT);
         g_win_half_w = g_win_w / 2;
         g_win_half_h = g_win_h / 2;
-        
+
         g_frustum->setCamInternals(g_camera->persp_ang, g_camera->persp_ratio, g_camera->persp_z_near, g_camera->persp_z_far);
     }
 
     void render(void) {
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		
-		g_lighting->render();
-        
+
+        g_lighting->render();
+
         g_frustum->setCamDef(g_camera->look_eye, g_camera->look_center, g_camera->look_up);
         /**
          * @TODO draw stuff here
          */
+
         g_map->render();
+        
         g_radar->render();
-        //g_profiler->render();
 
         /** tudo o que seja MD2 deve ficar aqui, depois dos outros, para nao estragar as cores */
         g_player->render();
@@ -164,24 +169,34 @@ namespace GLManager {
         g_bullets->render();
         g_keys->render();
         g_skybox->render();
-        
+
         g_frustum->drawPlanes();
         g_rainbow->render();
+        
         g_profiling->render();
+        
+        g_profiling->reset_time();
 
         InputManager::resetMouseMove();
         // End of frame
         glutSwapBuffers();
     }
-	
-	void resetMaterials() {
-		GLfloat mat_ambient[4];
-		//reset aos materiais
-		mat_ambient[0] = 0.2; mat_ambient[1] =  0.2; mat_ambient[2] = 0.2; mat_ambient[3] = 1.0;
-		glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
-		mat_ambient[0] = 0.8; mat_ambient[1] =  0.8; mat_ambient[2] = 0.8; mat_ambient[3] = 1.0;
-		glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
-	}
+
+    void resetMaterials() {
+        GLfloat mat_ambient[4];
+        //reset aos materiais
+        mat_ambient[0] = 0.2;
+        mat_ambient[1] = 0.2;
+        mat_ambient[2] = 0.2;
+        mat_ambient[3] = 1.0;
+        glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+        mat_ambient[0] = 0.8;
+        mat_ambient[1] = 0.8;
+        mat_ambient[2] = 0.8;
+        mat_ambient[3] = 1.0;
+        glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+    }
+
 
     void update(int val) {
 
@@ -193,9 +208,13 @@ namespace GLManager {
         g_keys->update();
         g_radar->update();
         g_rainbow->update();
+        
         g_profiling->update();
 
         glutPostRedisplay();
+        
+        g_bullets->bullet_hit_test();
+        end_game_test();
     }
 
     float distance(float meters) {
@@ -222,5 +241,10 @@ namespace GLManager {
 
     void allowTowerFire(int id) {
         g_towers->towers[id]->allowFire();
+    }
+    
+    void end_game_test() {
+        if (g_lifes->lifes <= 0)
+            printf("FIM DO JOGO\n");
     }
 };

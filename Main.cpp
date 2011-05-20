@@ -18,6 +18,7 @@
 #include "Frustum.h"
 #include "Lighting.h"
 #include "Profiling.h"
+#include "Lifes.h"
 
 //configuracoes principais
 Config conf("config.ini");
@@ -41,6 +42,8 @@ Radar *g_radar;
 
 Frustum *g_frustum;
 Profiling *g_profiling;
+
+Lifes *g_lifes;
 
 /* armazenam o tamanho da janela */
 int g_win_w, g_win_h, g_win_half_w, g_win_half_h;

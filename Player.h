@@ -18,9 +18,9 @@ public:
     float speed_front, speed_back, speed_side;
     float speed_rotate_x, speed_rotate_y;
     float wall_dist;
-	bool isJumping;
-	int jump_time;
-	int jump_max;
+    bool isJumping;
+    int jump_time;
+    int jump_max;
 
     Player(const std::string &path);
 
@@ -28,9 +28,9 @@ public:
     bool isMoving();
     void update();
     void render();
-	
-	float jumpOff(int off);
-    
+
+    float jumpOff(int off);
+
     static void inc_frame(int val);
 };
 

@@ -1,0 +1,21 @@
+
+
+Um ponto relevante do projecto passa pelo ficheiro {\bf config.ini} . Neste documento estão todas as variáveis de uso frequente, ou melhor, todas as variáveis manipuláveis sem implicar recompilar o jogo, o que seria necessário para valores em \#define. Estes valores são "carregados"\ para o jogo quando necessário, mariotariamente no inicar do mesmo.
+
+\-
+\begin{center}
+\begin{tabular} {l | p{10cm}}
+\begin{lstlisting}
+[game]
+distance_factor		= 4
+updates_per_second	= 60
+anims_per_second	= 20
+num_towers			= 15
+num_keys			= 1
+tower_range			= 1000
+towers_min_distance = 500
+\end{lstlisting} 
+& 
+Este é um exemplo de algumas configurações do jogo no documento {\bf config.ini}. \\
+\end{tabular}
+\end{center}

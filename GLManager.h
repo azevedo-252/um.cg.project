@@ -36,6 +36,8 @@ namespace GLManager {
 	void updateFrames(int val);
 	
 	void allowTowerFire(int id);
+        
+        void end_game_test();
 };
 
 #endif

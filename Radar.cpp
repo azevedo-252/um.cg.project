@@ -9,11 +9,12 @@
 #include "Radar.h"
 #include "GLManager.h"
 #include "externs.h"
+#include "ChangeMode.h"
 
 using namespace std;
 
 Radar::Radar() {
-    screen_coords = new Vertex(10, 10, 0);
+    screen_coords = new Vertex(50, 20, 0);
     dist = 0;
     range = GLManager::distance(conf.rfloat("hud:radar_range"));
 }
@@ -45,18 +46,20 @@ void Radar::resetPerspectiveProjection() {
 }
 
 void Radar::render() {
+    ChangeMode::setOrthographicProjection();
     glPushMatrix();
     glLoadIdentity();
-    setOrthographicProjection();
+    
+    glColor3f(1.0f, 1.0f, 1.0f);
     glRasterPos2i(screen_coords->x, screen_coords->y);
     char *string = new char[50];
 
     if (g_keys->keys_left == 0)
-    	sprintf(string, "All keys catched. GO FOR THE TOILET!");
+        sprintf(string, "All keys catched. GO FOR THE TOILET!");
     else if (dist > range)
-    	sprintf(string, "Distance: > 500 meters");
+        sprintf(string, "Distance: > 500 meters");
     else
-    	sprintf(string, "Distance: %.4f", GLManager::meters(dist));
+        sprintf(string, "Distance: %.4f", GLManager::meters(dist));
 
     int len, i;
     len = strlen(string);
@@ -64,7 +67,6 @@ void Radar::render() {
     for (i = 0; i < len; i++) {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, string[i]);
     }
-    resetPerspectiveProjection();
-    glColor3f(1, 1, 1);
     glPopMatrix();
+    ChangeMode::resetPerspectiveProjection();
 }

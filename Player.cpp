@@ -41,18 +41,18 @@ Player::Player(const string &path) : Model_MD2(path) {
 }
 
 void Player::move(Vertex *new_coords) {
-	coords->x += new_coords->x;
-	coords->y += new_coords->y;
-	coords->z += new_coords->z;
+    coords->x += new_coords->x;
+    coords->y += new_coords->y;
+    coords->z += new_coords->z;
 }
 
 bool Player::isMoving() {
-	int w = InputManager::getKeyState(KEY_W);
-	int a = InputManager::getKeyState(KEY_A);
-	int d = InputManager::getKeyState(KEY_D);
-	int s = InputManager::getKeyState(KEY_S);
+    int w = InputManager::getKeyState(KEY_W);
+    int a = InputManager::getKeyState(KEY_A);
+    int d = InputManager::getKeyState(KEY_D);
+    int s = InputManager::getKeyState(KEY_S);
 
-	return w == KEY_ON || a == KEY_ON || d == KEY_ON || s == KEY_ON;
+    return w == KEY_ON || a == KEY_ON || d == KEY_ON || s == KEY_ON;
 }
 
 void Player::update() {
@@ -135,14 +135,14 @@ float Player::jumpOff(int off) {
 }
 
 void Player::render() {
-	glPushMatrix();
-	glTranslatef(coords->x, coords->y, coords->z);
-	glRotatef((-ang_x * 180 / M_PI) + 90, 0, 1, 0);
-	md2_model->drawPlayerFrame(anim->get_frame(), static_cast<Md2Object::Md2RenderMode> (md2_rendermode));
-	glPopMatrix();
+    glPushMatrix();
+    glTranslatef(coords->x, coords->y, coords->z);
+    glRotatef((-ang_x * 180 / M_PI) + 90, 0, 1, 0);
+    md2_model->drawPlayerFrame(anim->get_frame(), static_cast<Md2Object::Md2RenderMode> (md2_rendermode));
+    glPopMatrix();
 }
 
 void Player::inc_frame(int val) {
-	glutTimerFunc(g_anims_interval, Player::inc_frame, 0);
-	g_player->anim->inc_frame();
+    glutTimerFunc(g_anims_interval, Player::inc_frame, 0);
+    g_player->anim->inc_frame();
 }

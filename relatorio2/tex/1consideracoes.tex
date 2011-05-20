@@ -1,0 +1,20 @@
+% 
+%%terreno plano v
+%%dois tipos de camara v
+%%aleatoriedade e radar v
+%%modelos importados e formato v
+%%uma unidade em OpenGL corresponde a 0.1metros v
+
+Existem algumas considerações iniciais a ter em conta.
+
+São enunciadas várias dimensões,distâncias, em metros. Visto que em OpenGL não se realizam medições em metros foi necessário encontrar uma forma de relacionar as medidas do OpenGL com as medidas pedidas.
+Assim, para que seja possível criar o jogo de acordo com as medidas pedidas no enunciado, considerámos que 1 metro corresponde a 4 unidades em OpenGL.
+
+Quanto ao terreno, é pedido que seja plano com 4km quadrados de área. Utilizando texturas foi suficiente arranjar uma imagem de acordo com o pretendido e gerar o plano através dela.
+
+Em termos de jogabilidade é necessária a implementação de dois modos de câmara: \textit{Third Person Shooter} (tps) e outra \textit{First Person Shooter} (fps).
+Alternar entre estes dois modos é feito através de uma tecla pré-definida.
+
+O radar não indica a direcção em que está a chave e tem um raio de acção limitado a 500 metros.
+
+Por ultimo são necessário alguns modelos para as torres, chaves, herói, etc. Por opção, estes modelos são do formato \textit{.md2}. Adiante será desenvolvido este ponto e explicada esta escolha.
