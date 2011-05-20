@@ -22,16 +22,17 @@ Towers::Towers(const string &path) : Model_MD2(path) {
         Vertex* pos = NULL;
         do {
         	pos = GLManager::randomVertex();
+			g_map->adjustPlayableCoords(pos);
         	for(int j = 0; j < i && pos != NULL; j++) {
-        		if (pos->distance(towers[i]->coords) < towers_min_distance)
+        		if (pos->distance(towers[j]->coords) < towers_min_distance) {
         			pos = NULL;
+				}
         	}
         } while(pos == NULL);
 
 		pos->y = g_map->triangulateHeight(pos->x, pos->z);
         towers[i]->set_pos(pos);
     }
-	
 	createTowerList();
 }
 

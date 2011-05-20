@@ -3,15 +3,17 @@
  */
 
 #include "Textures.h"
+#include "externs.h"
 
 #include <IL/il.h>
+#include <IL/ilut.h>
 
 TexData Textures::textures[TEXTURE_COUNT];
 
 void Textures::load() {
     Textures::loadSingle(TERRAIN, "resources/textures/map_texture.jpg",GL_LINEAR_MIPMAP_LINEAR);
 	
-	Textures::loadHeightMap("resources/textures/map_height.jpg");
+	Textures::loadHeightMap("resources/textures/map_height.jpg", conf.rint("map:grid_n"));
 	
     Textures::loadSingle(SKYBOX1, "resources/textures/sky/face1.pcx",	GL_LINEAR);
     Textures::loadSingle(SKYBOX2, "resources/textures/sky/face2.pcx",	GL_LINEAR);
@@ -47,11 +49,12 @@ void Textures::loadSingle(enum texture_id id, string path, GLuint gl_filter) {
 
 }
 
-void Textures::loadHeightMap(string path) {
+void Textures::loadHeightMap(string path, int width) {
 	ilGenImages(1, &(textures[TERRAIN_HEIGHT].id));
 
 	ilBindImage(textures[TERRAIN_HEIGHT].id);
 	ilLoadImage(path.c_str());
+	iluScale(width, width, 8);
 
 	#ifndef rocket
 	ilConvertImage(IL_LUMINANCE,IL_UNSIGNED_BYTE);

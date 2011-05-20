@@ -114,7 +114,7 @@ void Vertex::dump() {
 }
 
 float Vertex::distance(Vertex* v2) {
-    return sqrt(pow(this->x - v2->x, 2) + pow(this->y - v2->y, 2) + pow(this->z - v2->x, 2));
+    return sqrt(pow(this->x - v2->x, 2) + pow(this->y - v2->y, 2) + pow(this->z - v2->z, 2));
 }
 
 float Vertex::inner_product(Vertex *v) {
