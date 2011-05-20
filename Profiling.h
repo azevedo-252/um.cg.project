@@ -18,7 +18,8 @@ public:
     void update();
     void render();
     void print(char *string);    
-    void reset();
+    void print_fps();
+    void reset_time();
     void start_time(int num, char* name);
     void end_time(int num);
     void print_time();

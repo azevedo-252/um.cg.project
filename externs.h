@@ -19,6 +19,9 @@
 #include "externs.h"
 #include "Lighting.h"
 #include "Profiling.h"
+#include "Lifes.h"
+
+extern Lifes *g_lifes;
 
 extern Config conf;
 extern Lighting* g_lighting;

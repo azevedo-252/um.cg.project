@@ -38,7 +38,9 @@ SRC=Radar.cpp \
     Plane.cpp \
     Frustum.cpp \
     Lighting.cpp \
-    Profiling.cpp
+    Profiling.cpp \
+    ChangeMode.cpp \
+    Lifes.cpp
 
 	
 

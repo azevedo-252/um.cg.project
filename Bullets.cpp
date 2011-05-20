@@ -80,7 +80,7 @@ void Bullets::bullet_hit_test() {
     for (list<Bullet>::iterator it = bullets.begin(); it != bullets.end(); it++) {
         c_bullet = it->coords;
         if (sqrt(pow(c_player->x - c_bullet->x, 2) + pow(c_player->y - c_bullet->y, 2) + pow(c_player->z - c_bullet->z, 2)) <= BULLET_HIT_DIST) {
-            printf("BALA ACERTOU\n");
+            g_lifes->lifes--;
         }
     }
 }

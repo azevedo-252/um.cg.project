@@ -115,6 +115,7 @@ namespace GLManager {
         g_frustum = new Frustum();
         g_lighting = new Lighting();
         g_profiling = new Profiling();
+        g_lifes = new Lifes();
     }
 
     void reshapeFunc(int w, int h) {
@@ -158,14 +159,9 @@ namespace GLManager {
          * @TODO draw stuff here
          */
 
-        PROFILER_START(0, "TESTE1");
-
         g_map->render();
         
-        PROFILER_END(0);
-        
         g_radar->render();
-        //g_profiler->render();
 
         /** tudo o que seja MD2 deve ficar aqui, depois dos outros, para nao estragar as cores */
         g_player->render();
@@ -179,7 +175,7 @@ namespace GLManager {
         
         g_profiling->render();
         
-        g_profiling->reset();
+        g_profiling->reset_time();
 
         InputManager::resetMouseMove();
         // End of frame
@@ -218,6 +214,7 @@ namespace GLManager {
         glutPostRedisplay();
         
         g_bullets->bullet_hit_test();
+        end_game_test();
     }
 
     float distance(float meters) {
@@ -244,5 +241,10 @@ namespace GLManager {
 
     void allowTowerFire(int id) {
         g_towers->towers[id]->allowFire();
+    }
+    
+    void end_game_test() {
+        if (g_lifes->lifes <= 0)
+            printf("FIM DO JOGO\n");
     }
 };
