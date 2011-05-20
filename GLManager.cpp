@@ -160,8 +160,6 @@ namespace GLManager {
          */
 
         g_map->render();
-        
-        g_radar->render();
 
         /** tudo o que seja MD2 deve ficar aqui, depois dos outros, para nao estragar as cores */
         g_player->render();
@@ -172,8 +170,11 @@ namespace GLManager {
 
         g_frustum->drawPlanes();
         g_rainbow->render();
-        
+
         g_profiling->render();
+
+        g_lifes->render();
+        g_radar->render();
         
         g_profiling->reset_time();
 
@@ -197,7 +198,6 @@ namespace GLManager {
         glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
     }
 
-
     void update(int val) {
 
         glutTimerFunc(g_update_interval, update, 0);
@@ -208,11 +208,11 @@ namespace GLManager {
         g_keys->update();
         g_radar->update();
         g_rainbow->update();
-        
+
         g_profiling->update();
 
         glutPostRedisplay();
-        
+
         g_bullets->bullet_hit_test();
         end_game_test();
     }

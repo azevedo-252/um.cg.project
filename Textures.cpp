@@ -21,6 +21,7 @@ void Textures::load() {
     Textures::loadSingle(SKYBOX4, "resources/textures/sky/facetop.jpg",	GL_LINEAR);
     Textures::loadSingle(SKYBOX5, "resources/textures/sky/face5.pcx",	GL_LINEAR);
     Textures::loadSingle(SKYBOX6, "resources/textures/sky/face62.jpg",	GL_LINEAR);
+    Textures::loadSingle(LIFES, "resources/textures/lifes/sonic.jpg",	GL_LINEAR);
 }
 
 void Textures::loadSingle(enum texture_id id, string path, GLuint gl_filter) {
