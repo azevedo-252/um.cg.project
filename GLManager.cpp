@@ -23,7 +23,7 @@
 namespace GLManager {
 
     void init(int *argc, char **argv) {
-        srand(time(NULL));
+        srand(time(0));
         /** inicializacao do openGL */
         glutInit(argc, argv);
         glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
@@ -93,8 +93,8 @@ namespace GLManager {
         Textures::load();
         Sound::load();
         InputManager::init();
-        g_camera = new Camera();
         g_map = new Map();
+        g_camera = new Camera();
         g_player = new Player(conf.rstring("models:player"));
         g_towers = new Towers(conf.rstring("models:tower"));
         g_bullets = new Bullets(conf.rstring("models:bullet"));

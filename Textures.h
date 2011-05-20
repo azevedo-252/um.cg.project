@@ -39,7 +39,7 @@ public:
 	/** carrega uma textura para memoria */
 	static void loadSingle(enum texture_id id, string path, GLuint gl_filter);
 	
-	static void loadHeightMap(string path);
+	static void loadHeightMap(string path, int width);
 
 	/** Devolve info sobre uma textura */
 	static TexData get(enum texture_id id);

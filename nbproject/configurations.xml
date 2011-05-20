@@ -86,6 +86,8 @@
       <in>Key.h</in>
       <in>Keys.cpp</in>
       <in>Keys.h</in>
+      <in>Lighting.cpp</in>
+      <in>Lighting.h</in>
       <in>Main.cpp</in>
       <in>Map.cpp</in>
       <in>Map.h</in>
@@ -97,6 +99,8 @@
       <in>Plane.h</in>
       <in>Player.cpp</in>
       <in>Player.h</in>
+      <in>Profiling.cpp</in>
+      <in>Profiling.h</in>
       <in>Radar.cpp</in>
       <in>Radar.h</in>
       <in>Rainbow.cpp</in>

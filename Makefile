@@ -7,7 +7,7 @@ COMPILERFLAGS = -Wall -funrool-loops -O2 -ffast-math
 
 #Bibliotecas glut
 LIBSGL = -lGL -lGLU -lglut -lGLEW
-LIBSIL = -lIL
+LIBSIL = -lIL -lILU
 LIBSAL = -lalut
 
 #Compilador

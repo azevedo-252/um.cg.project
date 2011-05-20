@@ -16,6 +16,7 @@ Keys::Keys() {
 	num_keys = conf.rint("game:num_keys");
     keys_left = num_keys;
 	float keys_min_distance = conf.rfloat("game:keys_min_distance");
+	float keys_towers_distance = conf.rfloat("game:keys_towers:distance");
 
 	keys = (Key **) calloc(num_keys, sizeof (Key *));
 
@@ -27,12 +28,12 @@ Keys::Keys() {
         	g_map->adjustPlayableCoords(pos);
 
 	       	for(int j = 0; j < i && pos != NULL; j++) {
-	       		if (pos->distance(keys[i]->coords) < keys_min_distance)
+	       		if (pos->distance(keys[j]->coords) < keys_min_distance)
 	       			pos = NULL;
 	       	}
         	// as chaves nao podem estar muito proximas das torres
         	for(int j = 0; j < g_towers->num_towers && pos != NULL; j++) {
-        		if (pos->distance(g_towers->towers[j]->coords) < keys_min_distance)
+        		if (pos->distance(g_towers->towers[j]->coords) < keys_towers_distance)
         			pos = NULL;
         		}
         	// as chaves tem que ficar na area jogavel do terreno

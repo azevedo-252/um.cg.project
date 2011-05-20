@@ -16,7 +16,7 @@ Player::Player(const string &path) : Model_MD2(path) {
 	coords = new Vertex();
 	coords->x = GLManager::distance(conf.rfloat("player:x"));
 	coords->z = GLManager::distance(conf.rfloat("player:z"));
-
+	coords->y = g_map->triangulateHeight(coords->x, coords->z);
 	direction = new Vertex(0, 0, 1);
 	ang_x = 0;
 	ang_y = M_PI / 2;
@@ -106,7 +106,6 @@ void Player::update() {
 	}
 
 	if (isJumping) {
-		cout << jump_time << " " << coords->x << " " << coords->y  << " " << coords->z << endl;
 		jump_time++;
 		coords->y += jumpOff(jump_time) - jumpOff(jump_time - 1);
 		if (anim->get_anim() != MOVE_JUMP)
@@ -131,7 +130,8 @@ void Player::update() {
 }
 
 float Player::jumpOff(int off) {
-	return - pow(off - jump_max, 2) + pow(jump_max, 2);
+	//return - pow(off - jump_max, 2) + pow(jump_max, 2);
+	return 0.1 * (- 0.5 * pow(off, 2) + 20 * off);
 }
 
 void Player::render() {
