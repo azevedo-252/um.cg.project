@@ -77,7 +77,7 @@ void Bullets::addBullet(Vertex* coords, float ang, float ang_rad) {
 
 void Bullets::bullet_hit_test() {
     Vertex *c_bullet, *c_player = g_player->coords;
-    for (list<Bullet>::iterator it = bullets.begin(); it != bullets.end(); it++) {
+    for (list<Bullet>::iterator it = bullets.begin(); g_lifes->lifes > 0 && it != bullets.end(); it++) {
         c_bullet = it->coords;
         if (sqrt(pow(c_player->x - c_bullet->x, 2) + pow(c_player->y - c_bullet->y, 2) + pow(c_player->z - c_bullet->z, 2)) <= BULLET_HIT_DIST) {
             g_lifes->lifes--;

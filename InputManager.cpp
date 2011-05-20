@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include "InputManager.h"
+#include "GLManager.h"
 #include <GL/glut.h>
 
 #include "externs.h"

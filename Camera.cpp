@@ -21,9 +21,11 @@ Camera::Camera() {
 	Camera::persp_ang = conf.rint("camera:persp_ang");
 	Camera::persp_z_near = conf.rint("camera:persp_z_near");
 	Camera::persp_z_far = conf.rint("camera:persp_z_far");
-	Camera::camPos = new Vertex();
-	Camera::camDir = new Vertex();
-	Camera::camUp = new Vertex(0, 1, 0);
+	this->camPos = new Vertex();
+	this->camDir = new Vertex();
+	this->camUp = new Vertex(0, 1, 0);
+	
+	terrain_offset = conf.rfloat("camera:terrain_offset");
 
 	set = false;
 }
@@ -43,7 +45,7 @@ void Camera::placeCamera() {
 
 		camPos->x = pos->x - tps_off * dir->x;
 		camPos->z = pos->z - tps_off * dir->z;
-		camPos->y = max(pos->y - tps_off * dir->y + tps_y_off, g_map->triangulateHeight(camPos->x, camPos->z));
+		camPos->y = max(pos->y - tps_off * dir->y + tps_y_off, g_map->triangulateHeight(camPos->x, camPos->z) + terrain_offset);
 
 		camDir->x = pos->x;
 		camDir->y = pos->y + tps_dir_y_off;

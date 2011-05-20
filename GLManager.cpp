@@ -1,3 +1,6 @@
+#include <iostream>
+#include <sstream>
+
 #include <GL/glew.h>
 #include <GL/glut.h>
 #include <IL/ilut.h>
@@ -31,11 +34,9 @@ namespace GLManager {
         glutInit(argc, argv);
         glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
         glutInitWindowSize(conf.rint("window:width"), conf.rint("window:height"));
-
-        char *win_title = strdup(conf.rstring("window:title").c_str());
-        glutCreateWindow(win_title);
-        free(win_title);
-
+        glutCreateWindow(conf.rstring("window:title").c_str());
+		
+		initGameMode();
         /* inicializacao do DevIL */
         ilInit();
 
@@ -44,6 +45,11 @@ namespace GLManager {
 
         /* inicializacao do glew */
         glewInit();
+		
+		initCallbacks();
+	}
+	
+	void initCallbacks() {
 
         /** registo das funcoes de render */
         glutDisplayFunc(render);
@@ -117,6 +123,16 @@ namespace GLManager {
         g_profiling = new Profiling();
         g_lifes = new Lifes();
     }
+	
+	void initGameMode() {		
+		stringstream stream;
+		stream << glutGet(GLUT_SCREEN_WIDTH) << 'x' << glutGet(GLUT_SCREEN_HEIGHT) <<
+			  ':' << conf.rint("window:def_window_depth") << '@' <<  conf.rint("window:def_refresh_rate");
+		
+		glutGameModeString( stream.str().c_str() );
+		if (conf.rint("window:fullscreen") && glutGameModeGet(GLUT_GAME_MODE_POSSIBLE))
+			glutEnterGameMode();
+	}
 
     void reshapeFunc(int w, int h) {
         // Prevent a divide by zero, when window is too short
@@ -251,8 +267,26 @@ namespace GLManager {
         if (g_lifes->lifes <= 0 && g_lifes->hasEnded == false) {
 			g_lifes->hasEnded = true;
             printf("FIM DO JOGO\n");
+			Sound::stop(SOUND_MAIN);
 			Sound::play(SOUND_GAME_OVER);
 			g_player->state = GAME_OVER;
 		}
     }
+	
+	void another(int id) {
+		glutLeaveGameMode();
+        /** registo das funcoes de render */
+        glutDisplayFunc(render);
+        //glutIdleFunc(render);
+        glutReshapeFunc(reshapeFunc);
+	}
+	
+	void toogleGameMode() {
+        /** registo das funcoes de render */
+        glutDisplayFunc(render);
+        //glutIdleFunc(render);
+        glutReshapeFunc(reshapeFunc);
+		if (glutGameModeGet(GLUT_GAME_MODE_ACTIVE))
+			glutTimerFunc(1000, another, 1);
+	}
 };
