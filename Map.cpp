@@ -23,7 +23,9 @@ Map::Map() {
 
 	wall_dist = conf.rint("map:wall_distance");
 
+#ifndef goku
 	initVBO();
+#endif
 }
 
 Map::~Map() {
@@ -133,6 +135,8 @@ void Map::render() {
 	int x = 0, y = 0;
 
 	glBindTexture(GL_TEXTURE_2D, tex_soil.gl_id);
+	
+#ifndef goku
 
 	//GLfloat mat_amb_diff[] = { 0.5, 0.5, 0.5, 1.0 };
 	//glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_amb_diff);
@@ -144,15 +148,16 @@ void Map::render() {
 
 	GLManager::resetMaterials();
 
-	//	for(x = 0; x < grid_n; x++) {
-	//		glBegin(GL_TRIANGLE_STRIP);
-	//			for(y = 0; y <= grid_n; y++) {
-	//				glTexCoord2f(y, 0); this->heightedVertex(grid_width, x+1, y); //glVertex3f(grid_width * (x+1), 0.0, grid_width * y);
-	//				glTexCoord2f(y, 1); this->heightedVertex(grid_width, x, y); //glVertex3f(grid_width * x,     0.0, grid_width * y);
-	//				}
-	//		glEnd();
-	//	}
-
+#else
+		for(x = 0; x < grid_n; x++) {
+			glBegin(GL_TRIANGLE_STRIP);
+				for(y = 0; y <= grid_n; y++) {
+					glTexCoord2f(y, 0); this->heightedVertex(grid_width, x+1, y); //glVertex3f(grid_width * (x+1), 0.0, grid_width * y);
+					glTexCoord2f(y, 1); this->heightedVertex(grid_width, x, y); //glVertex3f(grid_width * x,     0.0, grid_width * y);
+					}
+			glEnd();
+		}
+#endif
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
@@ -176,8 +181,12 @@ bool Map::isPlayableCoords(Vertex* coords) {
 }
 
 float Map::map_h(int x, int z) {
+#ifndef rocket
 	int heightVal = this->tex_height.data[(int) (x + this->tex_height.w * z)];
 	return (float) heightVal * max_height / 256;
+#else
+	return 0;
+#endif
 }
 
 float Map::triangulateHeight(float x, float z) {
