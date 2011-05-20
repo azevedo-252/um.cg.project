@@ -1,0 +1,17 @@
+\chapter{Profiling}
+Ainda que um extra, ou talvez mesmo não um extra uma vez que é uma componente de desenvolvimento não de jogo, cramos também um modulo para profiling. Para efectuar os calculos existem três arrays para guardar a informação:
+
+\begin{description}
+\item[\textit{start}] Registo o tempo no inicio da medição.
+\item[\textit{end}] Regista o tempo no final da medição.
+\item[\textit{name}] Regista a descrição da medição.
+\end{description}
+
+A utilização é intuitiva. É invocado o método start\_time com um identificador e uma descrição, ou nome no inicio da medição e end\_time com o mesmo identificador no final da medição. Feito render é impresso para o ecrã a subtração entre tempo final e inicial associado à descrição.
+
+\begin{lstlisting}
+void start_time(int num, char* name);
+void end_time(int num);
+void render();
+\end{lstlisting}
+

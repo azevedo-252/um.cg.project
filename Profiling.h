@@ -31,8 +31,6 @@ private:
     Vertex *coords;
     float old_count, new_count;
     int frames, fps;
-    void setOrthographicProjection();
-    void resetPerspectiveProjection();
 };
 
 #endif	/* PROFILING_H */

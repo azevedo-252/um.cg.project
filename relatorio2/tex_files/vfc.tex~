@@ -1,5 +1,6 @@
 \chapter{View Frsutum Culling}
 
-Depois do conhecimento teórico a dificuldade esteve a componente prática de lateimplementação. De entre as abordagens apresentadas, {\bf Geométrica} e {\bf COMPLETAR}, a primeira seria aceitável não havendo desvantagens face às restantes.
+Da teoria à prática, a maior dificuldade. De entre as diferentes abordagens, após alguma pesquisa, ficamos pela {\bf Geométrica}, pelo simples facto de não haver desvantagens face às restantes a menos em facilidade de implementação.
 
-Sendo um jogo "simples", digamos, existem poucos objectos em palco, todos eles de dimensões aceitaveis optou-se por bounding spheres.
+\section{Bounding Spheres}
+De \textit{axis aligned bounding boxes} a \textit{bounding spheres} advém performance face a uma maior margem de erro, contudo, esta margem não é significativa no contexto do jogo, como tal optamos por \textit{bounding spheres}, uma vez que é suficiente, de mais facil implementação e exige menos processamento.
