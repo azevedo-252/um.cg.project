@@ -39,23 +39,24 @@ Player::Player(const string &path) : Model_MD2(path) {
 	jump_time = 0;
 	canJump = true;
 	jump_cooldown = conf.rint("player:jump_cooldown");
-	
+
 	tower_colision_dist = conf.rint("player:tower_colision_dist");
+	tower_colision_thresh = conf.rint("player:tower_colision_thresh");
 }
 
 void Player::move(Vertex *new_coords) {
-    coords->x += new_coords->x;
-    coords->y += new_coords->y;
-    coords->z += new_coords->z;
+	coords->x += new_coords->x;
+	coords->y += new_coords->y;
+	coords->z += new_coords->z;
 }
 
 bool Player::isMoving() {
-    int w = InputManager::getKeyState(KEY_W);
-    int a = InputManager::getKeyState(KEY_A);
-    int d = InputManager::getKeyState(KEY_D);
-    int s = InputManager::getKeyState(KEY_S);
+	int w = InputManager::getKeyState(KEY_W);
+	int a = InputManager::getKeyState(KEY_A);
+	int d = InputManager::getKeyState(KEY_D);
+	int s = InputManager::getKeyState(KEY_S);
 
-    return w == KEY_ON || a == KEY_ON || d == KEY_ON || s == KEY_ON;
+	return w == KEY_ON || a == KEY_ON || d == KEY_ON || s == KEY_ON;
 }
 
 void Player::update() {
@@ -85,8 +86,8 @@ void Player::update() {
 		ang_y = 0.5;
 
 	this->direction = new Vertex(sin(ang_y) * cos(ang_x),
-			cos(ang_y),
-			sin(ang_y) * sin(ang_x));
+		cos(ang_y),
+		sin(ang_y) * sin(ang_x));
 
 	if (w == KEY_ON) {
 		coords->x += speed_front * direction->x;
@@ -127,30 +128,31 @@ void Player::update() {
 		coords->y = g_map->triangulateHeight(coords->x, coords->z);
 		if (anim->get_anim() != MOVE_WALK)
 			anim->set_anim(MOVE_WALK);
+
+		calcColisions();
 	} else {
 		anim->set_anim(MOVE_NONE);
 	}
 
-	calcColisions();
 	g_map->adjustPlayableCoords(coords);
 }
 
 float Player::jumpOff(int off) {
 	//return - pow(off - jump_max, 2) + pow(jump_max, 2);
-	return 0.1 * (- 0.5 * pow(off, 2) + 20 * off);
+	return 0.1 * (-0.5 * pow(off, 2) + 20 * off);
 }
 
 void Player::render() {
-    glPushMatrix();
-    glTranslatef(coords->x, coords->y, coords->z);
-    glRotatef((-ang_x * 180 / M_PI) + 90, 0, 1, 0);
-    md2_model->drawPlayerFrame(anim->get_frame(), static_cast<Md2Object::Md2RenderMode> (md2_rendermode));
-    glPopMatrix();
+	glPushMatrix();
+	glTranslatef(coords->x, coords->y, coords->z);
+	glRotatef((-ang_x * 180 / M_PI) + 90, 0, 1, 0);
+	md2_model->drawPlayerFrame(anim->get_frame(), static_cast<Md2Object::Md2RenderMode> (md2_rendermode));
+	glPopMatrix();
 }
 
 void Player::inc_frame(int val) {
-    glutTimerFunc(g_anims_interval, Player::inc_frame, 0);
-    g_player->anim->inc_frame();
+	glutTimerFunc(g_anims_interval, Player::inc_frame, 0);
+	g_player->anim->inc_frame();
 }
 
 void Player::calcColisions() {
@@ -158,14 +160,15 @@ void Player::calcColisions() {
 		float dist = this->coords->distance(g_towers->towers[i]->coords);
 		if (dist < tower_colision_dist) {
 			float ang = g_towers->towers[i]->ang_x;
-			coords->x = tower_colision_dist * sin(ang);
-			coords->z = tower_colision_dist * cos(ang);
-//			float inc_dist = tower_colision_dist - dist;
-			
-//			
-//			cout << ang << endl;
-//			this->coords->x -= (10+inc_dist) * sin(ang);
-//			this->coords->z -= (10+inc_dist) * cos(ang);
+			coords->x = (g_towers->towers[i]->coords->x + (tower_colision_thresh + tower_colision_dist) * cos(-ang));
+			coords->z = (g_towers->towers[i]->coords->z + (tower_colision_thresh + tower_colision_dist) * sin(-ang));
+			cout << coords->x << " " << coords->z << endl;
+			//			float inc_dist = tower_colision_dist - dist;
+
+			//			
+			//			cout << ang << endl;
+			//			this->coords->x -= (10+inc_dist) * sin(ang);
+			//			this->coords->z -= (10+inc_dist) * cos(ang);
 		}
 	}
 }

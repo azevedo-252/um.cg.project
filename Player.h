@@ -24,6 +24,7 @@ public:
     bool canJump;
     int jump_cooldown;
     int tower_colision_dist;
+    int tower_colision_thresh;
 
     Player(const std::string &path);
 
