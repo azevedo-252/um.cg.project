@@ -38,6 +38,7 @@ extern Radar* g_radar;
 extern Profiling *g_profiling;
 
 extern int g_win_w, g_win_h, g_win_half_w, g_win_half_h;
+
 extern float g_dist_factor;
 
 extern int g_anims_interval;

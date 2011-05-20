@@ -9,37 +9,44 @@
 
 namespace GLManager {
 
-	/** inicia o openGL */
-	void init(int *argc, char **argv);
+    /** inicia o openGL */
+    void init(int *argc, char **argv);
 
-	/** chamada no final de init */
-	void game_init();
+    /** chamada no final de init */
+    void game_init();
 
-	/** funcao de resize da janela */
-	void reshapeFunc(int w, int h);
+    void initCallbacks();
 
-	/** funcao de render */
-	void render(void);
-	
-	void resetMaterials(void);
+    void initGameMode();
 
-	/** funcao de update dos dados */
-	void update(int val);
+    /** funcao de resize da janela */
+    void reshapeFunc(int w, int h);
 
-	/** converte metros para a unidade de OpenGL, conforme */
-	float distance(float meters);
-	float meters(float distance);
+    /** funcao de render */
+    void render(void);
 
-	/** Gera um vertice aleatorio em cima do terreno */
-	Vertex* randomVertex();
-	
-	void updateFrames(int val);
-	
-	void allowTowerFire(int id);
-        
-        void allowPlayerJump(int id);
-        
-        void end_game_test();
+    void resetMaterials(void);
+
+    /** funcao de update dos dados */
+    void update(int val);
+
+    /** converte metros para a unidade de OpenGL, conforme */
+    float distance(float meters);
+    float meters(float distance);
+
+    /** Gera um vertice aleatorio em cima do terreno */
+    Vertex* randomVertex();
+
+    void updateFrames(int val);
+
+    void allowTowerFire(int id);
+
+    void allowPlayerJump(int id);
+
+    void end_game_test();
+
+    void another();
+    void toogleGameMode();
 };
 
 #endif
