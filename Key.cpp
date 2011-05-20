@@ -44,6 +44,7 @@ void Key::update() {
 		if (dir_dist < g_keys->catch_dist) {
 			catched = true;
 			g_keys->keys_left--;
+			Sound::play(SOUND_KEY_CATCH);
 		}
 	}
 }

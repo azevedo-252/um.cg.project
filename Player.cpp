@@ -37,7 +37,10 @@ Player::Player(const string &path) : Model_MD2(path) {
 	jump_max = conf.rint("player:jump_max");
 	isJumping = false;
 	jump_time = 0;
-	//glutTimerFunc(g_anims_interval, GLManager::updateFrames, 0);
+	canJump = true;
+	jump_cooldown = conf.rint("player:jump_cooldown");
+	
+	tower_colision_dist = conf.rint("player:tower_colision_dist");
 }
 
 void Player::move(Vertex *new_coords) {
@@ -100,9 +103,10 @@ void Player::update() {
 		coords->z += speed_side * direction->x;
 	}
 
-	if (space == KEY_ON && !isJumping) {
+	if (space == KEY_ON && !isJumping && canJump) {
 		isJumping = true;
 		jump_time = 0;
+		Sound::play(SOUND_JUMP);
 	}
 
 	if (isJumping) {
@@ -116,6 +120,8 @@ void Player::update() {
 			coords->y = max_height;
 			isJumping = false;
 			anim->set_anim(MOVE_NONE);
+			canJump = false;
+			glutTimerFunc(jump_cooldown, GLManager::allowPlayerJump, 0);
 		}
 	} else if (isMoving()) {
 		coords->y = g_map->triangulateHeight(coords->x, coords->z);
@@ -125,7 +131,7 @@ void Player::update() {
 		anim->set_anim(MOVE_NONE);
 	}
 
-
+	calcColisions();
 	g_map->adjustPlayableCoords(coords);
 }
 
@@ -145,4 +151,21 @@ void Player::render() {
 void Player::inc_frame(int val) {
     glutTimerFunc(g_anims_interval, Player::inc_frame, 0);
     g_player->anim->inc_frame();
+}
+
+void Player::calcColisions() {
+	for (int i = 0; i < g_towers->num_towers; i++) {
+		float dist = this->coords->distance(g_towers->towers[i]->coords);
+		if (dist < tower_colision_dist) {
+			float ang = g_towers->towers[i]->ang_x;
+			coords->x = tower_colision_dist * sin(ang);
+			coords->z = tower_colision_dist * cos(ang);
+//			float inc_dist = tower_colision_dist - dist;
+			
+//			
+//			cout << ang << endl;
+//			this->coords->x -= (10+inc_dist) * sin(ang);
+//			this->coords->z -= (10+inc_dist) * cos(ang);
+		}
+	}
 }

@@ -10,6 +10,7 @@
 
 Lifes::Lifes() {
     lifes = conf.rint("player:lifes");
+	hasEnded = false;
 }
 
 void Lifes::render() {

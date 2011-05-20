@@ -21,6 +21,9 @@ public:
     bool isJumping;
     int jump_time;
     int jump_max;
+    bool canJump;
+    int jump_cooldown;
+    int tower_colision_dist;
 
     Player(const std::string &path);
 
@@ -32,6 +35,8 @@ public:
     float jumpOff(int off);
 
     static void inc_frame(int val);
+    
+    void calcColisions();
 };
 
 #endif

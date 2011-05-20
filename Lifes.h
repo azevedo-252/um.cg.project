@@ -11,6 +11,7 @@
 class Lifes {
 public:
     int lifes;
+    bool hasEnded;
     Lifes();
     void render();
 private:

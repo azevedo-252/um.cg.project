@@ -232,7 +232,7 @@ namespace GLManager {
     void updateFrames(int val) {
         glutTimerFunc(g_anims_interval, GLManager::updateFrames, 0);
 
-        if (g_player->isMoving()) {
+        if (g_player->isMoving() || g_player->isJumping) {
             g_player->anim->inc_frame();
         }
 
@@ -242,9 +242,16 @@ namespace GLManager {
     void allowTowerFire(int id) {
         g_towers->towers[id]->allowFire();
     }
+	
+	void allowPlayerJump(int id) {
+		g_player->canJump = true;
+	}
     
     void end_game_test() {
-        if (g_lifes->lifes <= 0)
+        if (g_lifes->lifes <= 0 && g_lifes->hasEnded == false) {
+			g_lifes->hasEnded = true;
             printf("FIM DO JOGO\n");
+			Sound::play(SOUND_GAME_OVER);
+		}
     }
 };

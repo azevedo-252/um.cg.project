@@ -37,6 +37,8 @@ namespace GLManager {
 	
 	void allowTowerFire(int id);
         
+        void allowPlayerJump(int id);
+        
         void end_game_test();
 };
 

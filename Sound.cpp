@@ -20,7 +20,18 @@ void Sound::load() {
 	alSourcei(sounds[SOUND_MAIN].source,	AL_LOOPING,	AL_TRUE);
 
 	Sound::loadSingle(SOUND_WIN, conf.rstring("sound:win_music"));
-	alSourcei(sounds[SOUND_WIN].source,	AL_LOOPING,	AL_TRUE);
+	alSourcei(sounds[SOUND_WIN].source,	AL_LOOPING,	AL_FALSE);
+	
+	Sound::loadSingle(SOUND_KEY_CATCH, conf.rstring("sound:key_catch"));
+	alSourcei(sounds[SOUND_KEY_CATCH].source, AL_LOOPING, AL_FALSE);
+	
+	Sound::loadSingle(SOUND_JUMP, conf.rstring("sound:jump"));
+	alSourcei(sounds[SOUND_JUMP].source, AL_LOOPING, AL_FALSE);
+	
+	Sound::loadSingle(SOUND_GAME_OVER, conf.rstring("sound:game_over"));
+	alSourcei(sounds[SOUND_GAME_OVER].source, AL_LOOPING, AL_FALSE);
+	
+	
 }
 
 void Sound::loadSingle(SOUND_TYPE id, string path) {
