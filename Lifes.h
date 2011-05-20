@@ -8,13 +8,16 @@
 #ifndef LIFES_H
 #define	LIFES_H
 
+#include "Textures.h"
+
 class Lifes {
 public:
     int lifes;
     Lifes();
     void render();
 private:
-
+    void drawLife();
+    TexData image;
 };
 
 #endif	/* LIFES_H */
