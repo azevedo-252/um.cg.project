@@ -20,6 +20,7 @@
 #include "Lighting.h"
 #include "Profiling.h"
 #include "Lifes.h"
+#include "Trees.h"
 
 extern Lifes *g_lifes;
 
@@ -33,6 +34,7 @@ extern Bullets* g_bullets;
 extern Keys* g_keys;
 extern Rainbow* g_rainbow;
 extern Toilet* g_toilet;
+extern Trees* g_trees;
 
 extern Radar* g_radar;
 extern Profiling *g_profiling;

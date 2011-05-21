@@ -19,6 +19,7 @@
 #include "Lighting.h"
 #include "Profiling.h"
 #include "Lifes.h"
+#include "Trees.h"
 
 //configuracoes principais
 Config conf("config.ini");
@@ -31,6 +32,7 @@ Bullets* g_bullets;
 Keys* g_keys;
 //instancia do mapa
 Map* g_map;
+Trees* g_trees;
 //instancia da camera
 Camera* g_camera;
 Rainbow* g_rainbow;
