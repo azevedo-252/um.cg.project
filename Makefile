@@ -40,7 +40,9 @@ SRC=Radar.cpp \
     Lighting.cpp \
     Profiling.cpp \
     ChangeMode.cpp \
-    Lifes.cpp
+    Lifes.cpp \
+    Tree.cpp \
+    Trees.cpp
 
 	
 
