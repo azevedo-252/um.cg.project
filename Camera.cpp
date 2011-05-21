@@ -56,7 +56,7 @@ void Camera::placeCamera() {
 		int fps_dir_y_off = conf.rint("camera:fps_dir_y_off");
 
 		camPos->x = pos->x + fps_off * dir->x;
-		camPos->z = pos->z + fps_off * dir->x;
+		camPos->z = pos->z + fps_off * dir->z;
 		camPos->y = max(pos->y + fps_y_off, g_map->triangulateHeight(camPos->x, camPos->z));
 
 		camDir->x = pos->x + (fps_off + 1) * dir->x;

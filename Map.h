@@ -24,6 +24,7 @@ class Map : public Model {
 private:
 	TexData tex_soil;
 	TexData tex_height;
+        float *heightMapData;
 
 	GLuint buffers[MAP_BUFF_COUNT];
 	unsigned int **grid_strips;
@@ -42,6 +43,7 @@ public:
 	~Map();
 
 	Vertex* vertexFromBuffer(float *buff, int x, int y);
+        void loadHeightMap();
 	void initVBO();
 	
 	void render();

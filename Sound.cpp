@@ -56,12 +56,10 @@ void Sound::stop(SOUND_TYPE id) {
 
 void Sound::toogleMusic() {
 	if (music_playing) {
-		cout << "dsa" << endl;
 		Sound::stop(SOUND_MAIN);
 		music_playing = false;
 	}
 	else {
-		cout << "asd" << endl;
 		Sound::play(SOUND_MAIN);
 		music_playing = true;
 	}

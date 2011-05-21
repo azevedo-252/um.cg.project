@@ -13,14 +13,15 @@ using namespace std;
 Map::Map() {
 	tex_soil = Textures::get(TERRAIN);
 	tex_height = Textures::get(TERRAIN_HEIGHT);
+	
 
 	width = conf.rint("map:width");
 	grid_n = conf.rint("map:grid_n");
 	max_height = conf.rint("map:max_height");
 	grid_width = width / grid_n;
 	height_map_ratio = tex_height.w / grid_n;
-	cout << height_map_ratio << endl;
 
+	loadHeightMap();
 	wall_dist = conf.rint("map:wall_distance");
 
 #ifndef goku
@@ -33,6 +34,14 @@ Map::~Map() {
 		free(grid_strips[x]);
 	}
 	free(grid_strips);
+}
+
+void Map::loadHeightMap() {
+	int heightMapSize = tex_height.w * tex_height.h;
+	heightMapData = (float *) malloc(sizeof(float) * heightMapSize);
+	for(int i = 0; i < heightMapSize; i++) {
+		heightMapData[i] = (float) tex_height.data[i] * max_height / (float) 256;
+	}	
 }
 
 Vertex* Map::vertexFromBuffer(float *buff, int x, int y) {
@@ -69,8 +78,6 @@ void Map::initVBO() {
 			texAux += 2;
 		}
 	}
-	
-	cout << tex_height.h << endl;
 
 	float *normalAux = normalB;
 	for (int x = 0; x < grid_n; x++) {
@@ -182,8 +189,7 @@ bool Map::isPlayableCoords(Vertex* coords) {
 
 float Map::map_h(int x, int z) {
 #ifndef rocket
-	int heightVal = this->tex_height.data[(int) (x + this->tex_height.w * z)];
-	return (float) heightVal * max_height / 256;
+	return this->heightMapData[x + this->tex_height.w * z];
 #else
 	return 0;
 #endif
