@@ -137,7 +137,6 @@ void Player::update() {
 		anim->set_anim(MOVE_NONE);
 	}
 
-	calcColisions();
 	g_map->adjustPlayableCoords(coords);
 }
 

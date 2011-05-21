@@ -235,6 +235,8 @@ namespace GLManager {
         glutPostRedisplay();
 
         g_bullets->bullet_hit_test();
+		
+		g_player->calcColisions();
         end_game_test();
     }
 
