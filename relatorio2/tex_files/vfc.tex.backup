@@ -1,0 +1,8 @@
+\chapter{View Frsutum Culling}
+
+Da teoria à prática, a maior dificuldade. De entre as diferentes abordagens apresentadas e após alguma pesquisa ficamos pela {\bf Geométrica} pelo simples facto de não haver desvantagens face às restantes.
+
+\section{Bounding Spheres}
+Entre \axis aligned bounding boxes, ou bounding spheres 
+
+Sendo um jogo "simples", digamos, existem poucos objectos em palco, todos eles de dimensões aceitaveis optou-se por bounding spheres.
