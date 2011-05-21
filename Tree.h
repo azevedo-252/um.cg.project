@@ -9,15 +9,13 @@
 
 class Tree {
 public:
-    Tree();
-    void set_pos(Vertex* new_coords);
-    void render();
-    
-private:
-    TexData tex_tree;
     Vertex* coords;
     
-    void drawTree();
+    Tree();
+    void set_pos(Vertex* new_coords);
+    //void render();
+    static void drawTree(int tex_id);
+    
 };
 
 #endif

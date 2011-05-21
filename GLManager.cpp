@@ -70,11 +70,13 @@ namespace GLManager {
 
         /** mais alguns settings */
         glEnable(GL_DEPTH_TEST);
+		glEnable(GL_BLEND);
+		glEnable(GL_ALPHA_TEST);
         glEnable(GL_CULL_FACE);
 
         /** inicializacao dos Vertex Buffer Objects */
         glEnableClientState(GL_VERTEX_ARRAY);
-        //glEnableClientState(GL_NORMAL_ARRAY);
+        glEnableClientState(GL_NORMAL_ARRAY);
         glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
         /** activa a iluminacao */

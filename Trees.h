@@ -8,11 +8,15 @@
 
 class Trees {
 public:
-	int num_trees;
-	Tree** trees;
-	
-	Trees();
-	void render();
+    int num_trees;
+    Tree** trees;
+    TexData tex_tree;
+    GLuint treeList;
+    GLuint treesList;
+
+    Trees();
+    void createTreesList();
+    void render();
 
 private:
 
