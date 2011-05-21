@@ -19,6 +19,7 @@
 #include "Towers.h"
 #include "Rainbow.h"
 #include "Toilet.h"
+#include "Trees.h"
 
 #include "externs.h"
 #include "Radar.h"
@@ -122,6 +123,7 @@ namespace GLManager {
         g_lighting = new Lighting();
         g_profiling = new Profiling();
         g_lifes = new Lifes();
+        g_trees = new Trees();
     }
 	
 	void initGameMode() {		
@@ -191,6 +193,7 @@ namespace GLManager {
 
         g_lifes->render();
         g_radar->render();
+        g_trees->render();
         
         g_profiling->reset_time();
 
