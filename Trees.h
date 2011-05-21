@@ -13,6 +13,10 @@ public:
     TexData tex_tree;
     GLuint treeList;
     GLuint treesList;
+	
+	GLfloat mat_amb[4];
+	GLfloat mat_diff[4];
+	GLfloat mat_spec[4];
 
     Trees();
     void createTreesList();

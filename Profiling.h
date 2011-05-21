@@ -8,29 +8,34 @@
 #ifndef PROFILING_H
 #define	PROFILING_H
 
-#define TIME_SIZE 10
+typedef enum enum_times {
+	TIME_RENDER_TREES,
+	TIME_RENDER_TOTAL,
+	TIME_SIZE
+} TIMES;
+
 
 #include "Vertex.h"
 
 class Profiling {
 public:
-    Profiling();
-    void update();
-    void render();
-    void print(char *string);    
-    void print_fps();
-    void reset_time();
-    void start_time(int num, char* name);
-    void end_time(int num);
-    void print_time();
+	Profiling();
+	void update();
+	void render();
+	void print(char *string);
+	void print_fps();
+	void reset_time();
+	void start_time(TIMES num, char* name);
+	void end_time(TIMES num);
+	void print_time();
 private:
-    float start[TIME_SIZE];
-    float end[TIME_SIZE];
-    char* name[TIME_SIZE];
-    
-    Vertex *coords;
-    float old_count, new_count;
-    int frames, fps;
+	float start[TIME_SIZE];
+	float end[TIME_SIZE];
+	char* name[TIME_SIZE];
+
+	Vertex *coords;
+	float old_count, new_count;
+	int frames, fps;
 };
 
 #endif	/* PROFILING_H */

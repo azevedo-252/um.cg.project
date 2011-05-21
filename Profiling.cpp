@@ -75,7 +75,7 @@ void Profiling::print_time() {
     }
 }
 
-void Profiling::start_time(int num, char* new_name) {
+void Profiling::start_time(TIMES num, char* new_name) {
     start[num] = glutGet(GLUT_ELAPSED_TIME);
     if (name[num] == NULL) {
         name[num] = (char *) calloc(50, sizeof (char));
@@ -83,11 +83,11 @@ void Profiling::start_time(int num, char* new_name) {
     }
 }
 
-void Profiling::end_time(int num) {
+void Profiling::end_time(TIMES num) {
     end[num] = glutGet(GLUT_ELAPSED_TIME);
 }
 
 void Profiling::render() {
     print_fps();
-    //print_time();
+    print_time();
 }

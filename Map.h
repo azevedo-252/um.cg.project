@@ -30,6 +30,10 @@ private:
 	GLuint buffers[MAP_BUFF_COUNT];
 	unsigned int **grid_strips;
 	int n_strips;
+	
+	GLfloat mat_amb[4];
+	GLfloat mat_diff[4];
+	GLfloat mat_spec[4];
 
 public:
 	int width;

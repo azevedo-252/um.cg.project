@@ -23,10 +23,24 @@ Map::Map() {
 
 	loadHeightMap();
 	wall_dist = conf.rint("map:wall_distance");
-	
+
 	drawNormals = conf.rint("debug:draw_normals") == 1;
-	normalDist  = conf.rint("debug:normal_dist");
-	cout << drawNormals << normalDist << endl;
+	normalDist = conf.rint("debug:normal_dist");
+
+	mat_amb[0] = conf.rfloat("map:amb_r");
+	mat_amb[1] = conf.rfloat("map:amb_g");
+	mat_amb[2] = conf.rfloat("map:amb_b");
+	mat_amb[3] = conf.rfloat("map:amb_w");
+	
+	mat_diff[0] = conf.rfloat("map:diff_r");
+	mat_diff[1] = conf.rfloat("map:diff_g");
+	mat_diff[2] = conf.rfloat("map:diff_b");
+	mat_diff[3] = conf.rfloat("map:diff_w");
+	
+	mat_spec[0] = conf.rfloat("map:spec_r");
+	mat_spec[1] = conf.rfloat("map:spec_g");
+	mat_spec[2] = conf.rfloat("map:spec_b");
+	mat_spec[3] = conf.rfloat("map:spec_w");
 
 #ifndef goku
 	initVBO();
@@ -93,16 +107,16 @@ void Map::initVBO() {
 
 			Vertex *normA = new Vertex(S->x - N->x, S->y - N->y, S->z - N->z);
 			Vertex *normB = new Vertex(E->x - W->x, E->y - W->y, E->z - W->z);
-			
+
 			Vertex *norm = new Vertex(normA->y * normB->z - normA->z * normB->y,
-									normA->z * normB->x - normA->x * normB->z,
-									normA->x * normB->y - normA->y * normB->y);
-			
+				normA->z * normB->x - normA->x * normB->z,
+				normA->x * normB->y - normA->y * normB->y);
+
 			norm->normalize();
 
-			normalAux[0] = - norm->x;
-			normalAux[1] = - norm->y;
-			normalAux[2] = - norm->z;
+			normalAux[0] = -norm->x;
+			normalAux[1] = -norm->y;
+			normalAux[2] = -norm->z;
 			normalAux += 3;
 		}
 	}
@@ -157,8 +171,9 @@ void Map::render() {
 
 #ifndef goku
 
-	GLfloat mat_amb_diff[] = { 0.5, 0.5, 0.5, 1.0 };
-	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_amb_diff);
+	glMaterialfv(GL_FRONT, GL_AMBIENT, mat_amb);
+	glMaterialfv(GL_FRONT, GL_AMBIENT, mat_diff);
+	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_spec);
 
 	for (int x = 0; x < n_strips; x++) {
 		glDrawElements(GL_TRIANGLE_STRIP, grid_n * 2, GL_UNSIGNED_INT, grid_strips[x]);
@@ -174,7 +189,7 @@ void Map::render() {
 				glBegin(GL_LINES);
 				glColor3f(1.0, 0.0, 0.0);
 				glVertex3f(vertexAux[0], vertexAux[1], vertexAux[2]);
-				glVertex3f(vertexAux[0]+normalAux[0]*normalDist, vertexAux[1]+normalAux[1]*normalDist, vertexAux[2]+normalAux[2]*normalDist);
+				glVertex3f(vertexAux[0] + normalAux[0] * normalDist, vertexAux[1] + normalAux[1] * normalDist, vertexAux[2] + normalAux[2] * normalDist);
 				glEnd();
 				vertexAux += 3;
 				normalAux += 3;

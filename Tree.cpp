@@ -21,6 +21,8 @@ void Tree::drawTree(int tex_id) {
 	glBindTexture(GL_TEXTURE_2D, tex_id);
 	glBegin(GL_QUADS);
 
+	glNormal3f(0, 0, -1);
+	
 	glTexCoord2f(0.0f, 0.0f);
 	glVertex3f(30, 50, 0);
 

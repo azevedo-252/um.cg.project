@@ -16,6 +16,7 @@ public:
 	float pos[4];
 	GLfloat amb[3];
 	GLfloat diff[3];
+	GLfloat spec[4];
 	
 	Lighting();
 	virtual ~Lighting();
