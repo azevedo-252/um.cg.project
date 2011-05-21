@@ -216,7 +216,7 @@ namespace GLManager {
         mat_ambient[1] = 0.8;
         mat_ambient[2] = 0.8;
         mat_ambient[3] = 1.0;
-        glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+        glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_ambient);
     }
 
     void update(int val) {

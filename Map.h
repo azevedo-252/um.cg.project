@@ -22,6 +22,7 @@ typedef enum enum_map_buffs {
 
 class Map : public Model {
 private:
+	float *vertexB, *texB, *normalB;
 	TexData tex_soil;
 	TexData tex_height;
         float *heightMapData;
@@ -37,6 +38,8 @@ public:
 	float height_map_ratio;
 	float grid_width;
 	float wall_dist;
+	bool drawNormals;
+	int normalDist;
 
 	//construtores
 	Map();

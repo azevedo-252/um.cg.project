@@ -33,6 +33,8 @@ typedef enum e_key_code {
 
 typedef enum e_op_code {
 	CAMERA_MODE,
+	SOUND_MODE,
+	MUSIC_MODE,
 
 	OP_COUNT,
 	OP_VOID,

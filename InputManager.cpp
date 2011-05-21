@@ -11,15 +11,17 @@ int InputManager::ops[OP_COUNT];
 int InputManager::mouse_x, InputManager::mouse_y;
 
 void InputManager::init() {
-	for(int i = 0; i < KEY_COUNT; i++) {
+	for (int i = 0; i < KEY_COUNT; i++) {
 		keys[i] = KEY_OFF;
 	}
 	mouse_x = KEY_UNDEF;
 	mouse_y = KEY_UNDEF;
 
-	for(int i = 0; i < OP_COUNT; i++) {
+	for (int i = 0; i < OP_COUNT; i++) {
 		ops[i] = KEY_OFF;
 	}
+	ops[MUSIC_MODE] = KEY_ON;
+	ops[SOUND_MODE] = KEY_ON;
 }
 
 void InputManager::keyboardFunc(unsigned char key, int mouse_x, int mouse_y) {
@@ -32,38 +34,19 @@ void InputManager::keyboardUpFunc(unsigned char key, int mouse_x, int mouse_y) {
 }
 
 void InputManager::keyboardSpecialFunc(int key, int mouse_x, int mouse_y) {
-	switch(key) {
+	switch (key) {
 		case GLUT_KEY_F1:
-			glPolygonMode(GL_FRONT, GL_LINE);
+			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 			break;
 		case GLUT_KEY_F2:
-			glPolygonMode(GL_FRONT, GL_FILL);
+			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 			break;
 	}
 
 }
 
 void InputManager::mouseButtons(int button, int state, int xx, int yy) {
-	/**if (state == GLUT_DOWN)  {
-		startX = xx;
-		startY = yy;
-		if (button == GLUT_LEFT_BUTTON)
-			tracking = 1;
-	else if (button == GLUT_RIGHT_BUTTON)
-			tracking = 2;
-	}
-	else if (state == GLUT_UP) {
-		if (tracking == 1) {
-			alpha += (xx - startX);
-			beta += (yy - startY);
-		}
-		else if (tracking == 2) {			
-			r -= yy - startY;
-			if (r < 3)
-			r = 3.0;
-		}
-		tracking = 0;
-	}*/
+
 }
 
 void InputManager::mouseMotion(int xx, int yy) {
@@ -98,10 +81,22 @@ void InputManager::resetMouseMove() {
 void InputManager::setOpState(int key) {
 	OP_CODE op_code = OP_VOID;
 
-	switch(key) {
+	switch (key) {
 		case 'c':
 		case 'C':
 			op_code = CAMERA_MODE;
+			break;
+
+		case 'm':
+		case 'M':
+			op_code = MUSIC_MODE;
+			Sound::toogleMusic();
+			break;
+
+		case 'n':
+		case 'N':
+			op_code = SOUND_MODE;
+			break;
 	}
 
 	if (op_code != -1) {
@@ -113,7 +108,7 @@ void InputManager::setKeyState(unsigned char key, int state) {
 
 	KEY_CODE key_code = KEY_VOID;
 
-	switch(key) {
+	switch (key) {
 		case 'a':
 		case 'A':
 			key_code = KEY_A;
@@ -133,13 +128,7 @@ void InputManager::setKeyState(unsigned char key, int state) {
 		case 'S':
 			key_code = KEY_S;
 			break;
-			
-		case 'm':
-		case 'M':
-			if (state == KEY_ON)
-				Sound::toogleMusic();
-			break;
-			
+
 		case KEY_ASCII_SPACE:
 			key_code = KEY_SPACE;
 			break;
@@ -155,6 +144,6 @@ void InputManager::setKeyState(unsigned char key, int state) {
 
 void InputManager::setSpecialKeyState(int key, int state) {
 
-	switch(key) {
+	switch (key) {
 	}
 }

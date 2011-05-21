@@ -30,6 +30,7 @@ public:
     static string sounds_path;
     static SOUND sounds[];
     static bool music_playing;
+	static bool on;
 
     static void load();
     static void loadSingle(SOUND_TYPE id, string path);
@@ -38,6 +39,7 @@ public:
     static void stop(SOUND_TYPE id);
     
     static void toogleMusic();
+	static void toogleSounds();
 };
 
 #endif

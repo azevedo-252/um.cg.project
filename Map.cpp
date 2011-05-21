@@ -13,7 +13,7 @@ using namespace std;
 Map::Map() {
 	tex_soil = Textures::get(TERRAIN);
 	tex_height = Textures::get(TERRAIN_HEIGHT);
-	
+
 
 	width = conf.rint("map:width");
 	grid_n = conf.rint("map:grid_n");
@@ -23,6 +23,10 @@ Map::Map() {
 
 	loadHeightMap();
 	wall_dist = conf.rint("map:wall_distance");
+	
+	drawNormals = conf.rint("debug:draw_normals") == 1;
+	normalDist  = conf.rint("debug:normal_dist");
+	cout << drawNormals << normalDist << endl;
 
 #ifndef goku
 	initVBO();
@@ -38,10 +42,10 @@ Map::~Map() {
 
 void Map::loadHeightMap() {
 	int heightMapSize = tex_height.w * tex_height.h;
-	heightMapData = (float *) malloc(sizeof(float) * heightMapSize);
-	for(int i = 0; i < heightMapSize; i++) {
+	heightMapData = (float *) malloc(sizeof (float) * heightMapSize);
+	for (int i = 0; i < heightMapSize; i++) {
 		heightMapData[i] = (float) tex_height.data[i] * max_height / (float) 256;
-	}	
+	}
 }
 
 Vertex* Map::vertexFromBuffer(float *buff, int x, int y) {
@@ -50,7 +54,7 @@ Vertex* Map::vertexFromBuffer(float *buff, int x, int y) {
 }
 
 void Map::initVBO() {
-	float *vertexB, *texB, *normalB;
+	//float *vertexB, *texB, *normalB;
 	int vertexSize = grid_n * grid_n * 3 * sizeof (float);
 	int texSize = grid_n * grid_n * 2 * sizeof (float);
 	int normalSize = grid_n * grid_n * 3 * sizeof (float);
@@ -89,10 +93,16 @@ void Map::initVBO() {
 
 			Vertex *normA = new Vertex(S->x - N->x, S->y - N->y, S->z - N->z);
 			Vertex *normB = new Vertex(E->x - W->x, E->y - W->y, E->z - W->z);
+			
+			Vertex *norm = new Vertex(normA->y * normB->z - normA->z * normB->y,
+									normA->z * normB->x - normA->x * normB->z,
+									normA->x * normB->y - normA->y * normB->y);
+			
+			norm->normalize();
 
-			normalAux[0] = normA->y * normB->z - normA->z * normB->y;
-			normalAux[1] = normA->z * normB->x - normA->x * normB->z;
-			normalAux[2] = normA->x * normB->y - normA->y * normB->y;
+			normalAux[0] = - norm->x;
+			normalAux[1] = - norm->y;
+			normalAux[2] = - norm->z;
 			normalAux += 3;
 		}
 	}
@@ -133,37 +143,58 @@ void Map::initVBO() {
 	glNormalPointer(GL_FLOAT, 0, 0);
 
 	//liberta os buffers temporarios
-	free(vertexB);
 	free(texB);
-	free(normalB);
+	if (drawNormals == false) {
+		free(vertexB);
+		free(normalB);
+	}
 }
 
 void Map::render() {
 	int x = 0, y = 0;
 
 	glBindTexture(GL_TEXTURE_2D, tex_soil.gl_id);
-	
+
 #ifndef goku
 
-	//GLfloat mat_amb_diff[] = { 0.5, 0.5, 0.5, 1.0 };
-	//glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_amb_diff);
+	GLfloat mat_amb_diff[] = { 0.5, 0.5, 0.5, 1.0 };
+	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_amb_diff);
 
 	for (int x = 0; x < n_strips; x++) {
 		glDrawElements(GL_TRIANGLE_STRIP, grid_n * 2, GL_UNSIGNED_INT, grid_strips[x]);
 
 	}
 
+	if (drawNormals) {
+		float *vertexAux = vertexB;
+		float *normalAux = normalB;
+		for (int x = 0; x < grid_n; x++) {
+			for (int y = 0; y < grid_n; y++) {
+
+				glBegin(GL_LINES);
+				glColor3f(1.0, 0.0, 0.0);
+				glVertex3f(vertexAux[0], vertexAux[1], vertexAux[2]);
+				glVertex3f(vertexAux[0]+normalAux[0]*normalDist, vertexAux[1]+normalAux[1]*normalDist, vertexAux[2]+normalAux[2]*normalDist);
+				glEnd();
+				vertexAux += 3;
+				normalAux += 3;
+			}
+		}
+	}
+
 	GLManager::resetMaterials();
 
 #else
-		for(x = 0; x < grid_n; x++) {
-			glBegin(GL_TRIANGLE_STRIP);
-				for(y = 0; y <= grid_n; y++) {
-					glTexCoord2f(y, 0); this->heightedVertex(grid_width, x+1, y); //glVertex3f(grid_width * (x+1), 0.0, grid_width * y);
-					glTexCoord2f(y, 1); this->heightedVertex(grid_width, x, y); //glVertex3f(grid_width * x,     0.0, grid_width * y);
-					}
-			glEnd();
+	for (x = 0; x < grid_n; x++) {
+		glBegin(GL_TRIANGLE_STRIP);
+		for (y = 0; y <= grid_n; y++) {
+			glTexCoord2f(y, 0);
+			this->heightedVertex(grid_width, x + 1, y); //glVertex3f(grid_width * (x+1), 0.0, grid_width * y);
+			glTexCoord2f(y, 1);
+			this->heightedVertex(grid_width, x, y); //glVertex3f(grid_width * x,     0.0, grid_width * y);
 		}
+		glEnd();
+	}
 #endif
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
