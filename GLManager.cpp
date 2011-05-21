@@ -279,21 +279,4 @@ namespace GLManager {
 			g_player->state = GAME_OVER;
 		}
     }
-	
-	void another(int id) {
-		glutLeaveGameMode();
-        /** registo das funcoes de render */
-        glutDisplayFunc(render);
-        //glutIdleFunc(render);
-        glutReshapeFunc(reshapeFunc);
-	}
-	
-	void toogleGameMode() {
-        /** registo das funcoes de render */
-        glutDisplayFunc(render);
-        //glutIdleFunc(render);
-        glutReshapeFunc(reshapeFunc);
-		if (glutGameModeGet(GLUT_GAME_MODE_ACTIVE))
-			glutTimerFunc(1000, another, 1);
-	}
 };

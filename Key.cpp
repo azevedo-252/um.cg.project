@@ -38,7 +38,7 @@ void Key::render() {
 
 void Key::update() {
 	if (!catched) {
-		direction = this->directionVector(g_player->coords);
+		direction = this->coords->directionVector(g_player->coords);
 		dir_dist = (sqrt(pow(direction->x, 2) + pow(direction->z, 2)));
 
 		if (dir_dist < g_keys->catch_dist) {

@@ -9,9 +9,9 @@
 #include "Frame.h"
 
 typedef enum enum_state {
-    GAME_ON,
-    GAME_OVER,
-    GAME_WIN
+	GAME_ON,
+	GAME_OVER,
+	GAME_WIN
 } GameState;
 
 
@@ -19,32 +19,33 @@ typedef enum enum_state {
 
 class Player : public Model_MD2 {
 public:
-    Frame *anim;
-    float ang_x, ang_y;
-    float speed_front, speed_back, speed_side;
-    float speed_rotate_x, speed_rotate_y;
-    float wall_dist;
-    bool isJumping;
-    int jump_time;
-    int jump_max;
-    bool canJump;
-    int jump_cooldown;
-    int tower_colision_dist;
-    int tower_colision_thresh;
-    GameState state;
+	Frame *anim;
+	float ang_x, ang_y;
+	float speed_front, speed_back, speed_side;
+	float speed_rotate_x, speed_rotate_y;
+	float wall_dist;
+	bool isJumping;
+	int jump_time;
+	int jump_max;
+	bool canJump;
+	int jump_cooldown;
+	int tower_colision_dist;
+	int tree_colision_dist;
 
-    Player(const std::string &path);
+	GameState state;
 
-    void move(Vertex *new_coords);
-    bool isMoving();
-    void update();
-    void render();
+	Player(const std::string &path);
 
-    float jumpOff(int off);
+	void move(Vertex *new_coords);
+	bool isMoving();
+	void update();
+	void render();
 
-    static void inc_frame(int val);
+	float jumpOff(int off);
 
-    void calcColisions();
+	static void inc_frame(int val);
+
+	void calcColisions();
 };
 
 #endif

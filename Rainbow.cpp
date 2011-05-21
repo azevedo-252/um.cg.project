@@ -69,7 +69,7 @@ void Rainbow::render() {
 
 void Rainbow::update() {
 	if (g_keys->keys_left == 0 && !win) {
-		direction = this->directionVector(g_player->coords);
+		direction = this->coords->directionVector(g_player->coords);
 		dir_dist = (sqrt(pow(direction->x, 2) + pow(direction->z, 2)));
 
 		if (dir_dist < win_distance && g_player->coords->y > this->coords->y + win_height) {

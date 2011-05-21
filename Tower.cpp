@@ -27,17 +27,9 @@ void Tower::set_pos(Vertex *new_coords) {
     coords->z = new_coords->z;
 }
 
-void Tower::init_render() {
-    direction = new Vertex(g_player->coords->x - coords->x, 0, g_player->coords->z - coords->z);
-    dir_dist = (sqrt(pow(direction->x, 2) + pow(direction->z, 2)));
-
-    direction = this->directionVector(g_player->coords);
-    dir_dist = this->distance(g_player->coords);
-}
-
 void Tower::update() {
     //init_render();
-    direction = this->directionVector(g_player->coords);
+    direction = this->coords->directionVector(g_player->coords);
     dir_dist = (sqrt(pow(direction->x, 2) + pow(direction->z, 2)));
 
     if (dir_dist < _max_dist) {

@@ -16,8 +16,7 @@ private:
     static float _max_dist;
     Vertex *direction;
     bool can_fire;
-
-    void init_render();
+	
 public:
     static float bullet_delay;
     float dir_dist;

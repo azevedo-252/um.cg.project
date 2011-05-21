@@ -42,7 +42,7 @@ Player::Player(const string &path) : Model_MD2(path) {
 	jump_cooldown = conf.rint("player:jump_cooldown");
 
 	tower_colision_dist = conf.rint("player:tower_colision_dist");
-	tower_colision_thresh = conf.rint("player:tower_colision_thresh");
+	tree_colision_dist = conf.rint("player:tree_colision_dist");
 }
 
 void Player::move(Vertex *new_coords) {
@@ -159,12 +159,28 @@ void Player::inc_frame(int val) {
 }
 
 void Player::calcColisions() {
+	//colisoes com as torres
 	for (int i = 0; i < g_towers->num_towers; i++) {
 		float dist = this->coords->horizontalDistance(g_towers->towers[i]->coords);
 		if (dist < tower_colision_dist) {
 			float ang = g_towers->towers[i]->ang_x;
-			coords->x = (g_towers->towers[i]->coords->x + (tower_colision_thresh + tower_colision_dist) * cos(-ang));
-			coords->z = (g_towers->towers[i]->coords->z + (tower_colision_thresh + tower_colision_dist) * sin(-ang));
+			coords->x = (g_towers->towers[i]->coords->x + tower_colision_dist * cos(-ang));
+			coords->z = (g_towers->towers[i]->coords->z + tower_colision_dist * sin(-ang));
+		}
+	}
+	
+	//colisoes com as arvores
+	for (int i = 0; i < g_trees->num_trees; i++) {
+		float dist = this->coords->horizontalDistance(g_trees->trees[i]->coords);
+		if (dist < tree_colision_dist) {
+			Vertex *direction = g_trees->trees[i]->coords->directionVector(this->coords);
+			//direction->x = -direction->x;
+			//direction->z = -direction->z;
+			float ang = acos(direction->x / dist);
+			if (this->coords->z <= g_trees->trees[i]->coords->z)
+				ang = -ang;
+			coords->x = (g_trees->trees[i]->coords->x + tree_colision_dist * cos(-ang));
+			coords->z = (g_trees->trees[i]->coords->z + tree_colision_dist * sin(ang));
 		}
 	}
 }

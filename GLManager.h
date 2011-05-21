@@ -44,9 +44,6 @@ namespace GLManager {
     void allowPlayerJump(int id);
 
     void end_game_test();
-
-    void another();
-    void toogleGameMode();
 };
 
 #endif

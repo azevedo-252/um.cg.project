@@ -124,3 +124,15 @@ float Vertex::horizontalDistance(Vertex* v2) {
 float Vertex::inner_product(Vertex *v) {
     return (this->x*v->x + this->y*v->y + this->z*v->z) ;
 }
+
+/** vector da direccao deste vertice a um ponto */
+Vertex* Vertex::directionVector(Vertex* coords) {
+	return new Vertex(coords->x - this->x, 0, coords->z - this->z);
+}
+
+float Vertex::directionAngle(Vertex* coords) {
+	Vertex* dir = directionVector(coords);
+	float distance = this->distance(coords);
+
+	return acos(dir->x / distance);
+}

@@ -29,11 +29,11 @@ public:
 	/** distancia deste modelo a um ponto */
 	float distance(Vertex* coords);
 
-	/** vector da direccao deste modelo a um ponto */
-	Vertex* directionVector(Vertex* coords);
-
-	/** angulo da direccao deste modelo a um ponto */
-	float directionAngle(Vertex* coords);
+//	/** vector da direccao deste modelo a um ponto */
+//	Vertex* directionVector(Vertex* coords);
+//
+//	/** angulo da direccao deste modelo a um ponto */
+//	float directionAngle(Vertex* coords);
 };
 
 #endif
