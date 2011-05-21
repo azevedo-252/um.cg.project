@@ -21,6 +21,7 @@ enum texture_id {
     SKYBOX5,
     SKYBOX6,
     TEXTURE_COUNT,
+    TREE,
 };
 
 typedef struct texture_data {
