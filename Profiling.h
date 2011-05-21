@@ -29,11 +29,13 @@ public:
 	void end_time(TIMES num);
 	void print_time();
 private:
-	float start[TIME_SIZE];
-	float end[TIME_SIZE];
+	int start[TIME_SIZE];
+	int end[TIME_SIZE];
 	char* name[TIME_SIZE];
 
+        bool printed;
 	Vertex *coords;
+        float start_coord_y;
 	float old_count, new_count;
 	int frames, fps;
 };

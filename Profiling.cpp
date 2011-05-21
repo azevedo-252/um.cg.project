@@ -12,14 +12,17 @@
 Profiling::Profiling() {
     old_count = new_count = glutGet(GLUT_ELAPSED_TIME);
     frames = fps = 0;
-    coords = new Vertex(100, -175, 0);
+    start_coord_y = 400;
+    coords = new Vertex(400, start_coord_y, 0);
     for (int i = 0; i < TIME_SIZE; i++) {
         name[i] = NULL;
         start[i] = end[i] = 0;
     }
+    printed = false;
 }
 
 void Profiling::update() {
+    //int zero = InputManager::getKeyState(KEY_W);
     new_count = glutGet(GLUT_ELAPSED_TIME);
     frames++;
     if (new_count - old_count > 1000) {
@@ -27,18 +30,19 @@ void Profiling::update() {
         frames = 0;
         old_count = new_count;
     }
+    //    printed = true;
 }
 
 void Profiling::print(char* string) {
     ChangeMode::setOrthographicProjection();
 
-            
+
     glPushMatrix();
 
     glLoadIdentity();
 
     glColor3f(1.0f, 1.0f, 1.0f);
-    glRasterPos2i(g_win_w - g_win_w / 100 * 30, g_win_h - g_win_h / 100 * 10);
+    glRasterPos2i(coords->x, coords->y);
 
     int len, i;
 
@@ -47,18 +51,19 @@ void Profiling::print(char* string) {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, string[i]);
     }
 
-    coords->y = coords->y + 10;
+    coords->y += 30;
     //    glColor3f(1, 1, 1);
 
     glPopMatrix();
-    
+
     ChangeMode::resetPerspectiveProjection();
 }
 
 void Profiling::reset_time() {
-    coords->y = -200;
-    for (int i = 0; i < TIME_SIZE; i++)
-        start[i] = end[i] = 0.0;
+    coords->y = start_coord_y;
+//    for (int i = 0; i < TIME_SIZE; i++)
+//        start[i] = end[i] = 0.0;
+
 }
 
 void Profiling::print_fps() {
@@ -70,24 +75,29 @@ void Profiling::print_fps() {
 void Profiling::print_time() {
     char buff[50];
     for (int i = 0; i < TIME_SIZE && start[i] != 0.0; i++) {
-        sprintf(buff, "%s: %f", name[i], end[i] - start[i]);
+        sprintf(buff, "%s: %d", name[i], end[i] - start[i]);
         print(buff);
     }
 }
 
 void Profiling::start_time(TIMES num, char* new_name) {
-    start[num] = glutGet(GLUT_ELAPSED_TIME);
-    if (name[num] == NULL) {
-        name[num] = (char *) calloc(50, sizeof (char));
-        strcpy(this->name[num], new_name);
+    if (!printed) {
+        start[num] = glutGet(GLUT_ELAPSED_TIME);
+        if (name[num] == NULL) {
+            name[num] = (char *) calloc(50, sizeof (char));
+            strcpy(this->name[num], new_name);
+        }
     }
 }
 
 void Profiling::end_time(TIMES num) {
-    end[num] = glutGet(GLUT_ELAPSED_TIME);
+    if (!printed) {
+        end[num] = glutGet(GLUT_ELAPSED_TIME);
+    }
 }
 
 void Profiling::render() {
     print_fps();
     print_time();
+    printed = true;
 }
