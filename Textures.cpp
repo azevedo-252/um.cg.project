@@ -30,7 +30,7 @@ void Textures::loadSingle(enum texture_id id, string path, GLuint gl_filter) {
     /** textura do terreno */
     ilGenImages(1, &(textures[id].id));
     ilBindImage(textures[id].id);
-    ilLoadImage(path.c_str()) == IL_FALSE
+    ilLoadImage(path.c_str());
     ilConvertImage(IL_RGBA, IL_UNSIGNED_BYTE);
     textures[id].w = ilGetInteger(IL_IMAGE_WIDTH);
     textures[id].h = ilGetInteger(IL_IMAGE_HEIGHT);

@@ -47,20 +47,22 @@ void Trees::createTreesList() {
 	treeList = glGenLists(1);
 	glNewList(treeList, GL_COMPILE);
 	Tree::drawTree();
+	glRotatef(90, 0, 1, 0);
+	Tree::drawTree();
 	glEndList();
 
 	//gera a lista para todas as arvores, com base na lista anterior
-	treesList = glGenLists(1);
-	glNewList(treesList, GL_COMPILE);
-	for (int i = 0; i < num_trees; i++) {
-		glPushMatrix();
-		glTranslatef(trees[i]->coords->x, trees[i]->coords->y, trees[i]->coords->z);
-		glCallList(treeList);
-		glRotatef(90, 0, 1, 0);
-		glCallList(treeList);
-		glPopMatrix();
-	}
-	glEndList();
+//	treesList = glGenLists(1);
+//	glNewList(treesList, GL_COMPILE);
+//	for (int i = 0; i < num_trees; i++) {
+//		glPushMatrix();
+//		glTranslatef(trees[i]->coords->x, trees[i]->coords->y, trees[i]->coords->z);
+//		glCallList(treeList);
+//		glRotatef(90, 0, 1, 0);
+//		glCallList(treeList);
+//		glPopMatrix();
+//	}
+//	glEndList();
 
 }
 
@@ -69,11 +71,19 @@ void Trees::render() {
 	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, mat_diff);
 	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, mat_spec);
 
-	g_profiling->start_time(TIME_RENDER_TREES, "Tree Render");
+	g_profiling->start_time(TIME_RENDER_TREES, (char *) "Tree Render");
 	
 	glDisable(GL_CULL_FACE);
 	glAlphaFunc(GL_GREATER, 0.15);
-	glCallList(treesList);
+	
+	for (int i = 0; i < num_trees; i++) {
+		glPushMatrix();
+		glTranslatef(trees[i]->coords->x, trees[i]->coords->y, trees[i]->coords->z);
+		glCallList(treeList);
+		glPopMatrix();
+	}
+	
+//	glCallList(treesList);
 	glAlphaFunc(GL_ALWAYS, 0);
 	glEnable(GL_CULL_FACE);
 	
