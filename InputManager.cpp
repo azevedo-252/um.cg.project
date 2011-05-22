@@ -97,6 +97,11 @@ void InputManager::setOpState(int key) {
 		case 'N':
 			op_code = SOUND_MODE;
 			break;
+			
+		case 'p':
+		case 'P':
+			op_code = PROFILING_MODE;
+			break;
 	}
 
 	if (op_code != -1) {

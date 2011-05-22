@@ -206,26 +206,7 @@ namespace GLManager {
 		glColor3f(1.0, 1, 1);
 		g_radar->render();
 		g_lifes->render();
-		//glDisable(GL_DEPTH_TEST);
-		//glEnable(GL_DEPTH_TEST);
-
-//		GLfloat mat_ambient[4];
-//		mat_ambient[0] = 0.5;
-//		mat_ambient[1] = 0.5;
-//		mat_ambient[2] = 0.5;
-//		mat_ambient[3] = 1.0;
-//		glPushMatrix();
-//		glBindTexture(GL_TEXTURE_2D, 0);
-//		glTranslatef(conf.rint("player:x"), conf.rint("player:y")+5, conf.rint("player:z"));
-//		glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, mat_ambient);
-//		mat_ambient[0] = 0.1;
-//		mat_ambient[1] = 0.1;
-//		mat_ambient[2] = 0.1;
-//		mat_ambient[3] = 0.1;
-//		glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, mat_ambient);
-//		glutSolidSphere(50, 50, 50);
-//		glPopMatrix();
-//		GLManager::resetMaterials();
+		g_profiling->update();
 
 		InputManager::resetMouseMove();
 		

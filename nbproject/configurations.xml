@@ -37,6 +37,8 @@
       <df name="relatorio2">
         <df name="images">
         </df>
+        <df name="optimizacao">
+        </df>
         <df name="style">
           <df name="images">
           </df>

@@ -80,7 +80,8 @@ void Profiling::print_time() {
 }
 
 void Profiling::start_time(TIMES num, char* new_name) {
-    if (!printed) {
+	cout << InputManager::getOpState(PROFILING_MODE) << endl;
+    if (InputManager::getOpState(PROFILING_MODE) == KEY_OFF) {
         start[num] = glutGet(GLUT_ELAPSED_TIME);
         if (name[num] == NULL) {
             name[num] = (char *) calloc(50, sizeof (char));
@@ -90,7 +91,7 @@ void Profiling::start_time(TIMES num, char* new_name) {
 }
 
 void Profiling::end_time(TIMES num) {
-    if (!printed) {
+    if (InputManager::getOpState(PROFILING_MODE) == KEY_OFF) {
         end[num] = glutGet(GLUT_ELAPSED_TIME);
     }
 }
@@ -98,5 +99,4 @@ void Profiling::end_time(TIMES num) {
 void Profiling::render() {
     print_fps();
     print_time();
-    printed = true;
 }

@@ -61,7 +61,7 @@ void Map::loadHeightMap() {
 	for (int i = 0; i < heightMapSize; i++) {
 		if (tex_height.data[i] > maxHeight) maxHeight = tex_height.data[i];
 	}
-	cout << maxHeight << endl;
+	
 	for (int i = 0; i < heightMapSize; i++) {
 		heightMapData[i] = (float) tex_height.data[i] * max_height / (float) maxHeight;
 	}
