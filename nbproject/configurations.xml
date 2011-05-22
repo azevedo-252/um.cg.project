@@ -11,7 +11,6 @@
       <df name="md2loader">
         <in>Anorms.h</in>
         <in>DataManager.h</in>
-        <in>DataManager.inl</in>
         <in>Image.cpp</in>
         <in>Image.h</in>
         <in>Main.cpp</in>
@@ -79,6 +78,8 @@
           </df>
           <df name="soil">
           </df>
+          <df name="tree">
+          </df>
         </df>
       </df>
       <in>Bullet.cpp</in>
@@ -136,6 +137,10 @@
       <in>Tower.h</in>
       <in>Towers.cpp</in>
       <in>Towers.h</in>
+      <in>Tree.cpp</in>
+      <in>Tree.h</in>
+      <in>Trees.cpp</in>
+      <in>Trees.h</in>
       <in>Vertex.cpp</in>
       <in>Vertex.h</in>
       <in>externs.h</in>
