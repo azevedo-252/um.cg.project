@@ -69,5 +69,4 @@ void Sound::toogleMusic() {
 
 void Sound::toogleSounds() {
 	on = !on;
-	cout << on;
 }

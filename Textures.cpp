@@ -30,14 +30,7 @@ void Textures::loadSingle(enum texture_id id, string path, GLuint gl_filter) {
     /** textura do terreno */
     ilGenImages(1, &(textures[id].id));
     ilBindImage(textures[id].id);
-    if (ilLoadImage(path.c_str()) == IL_FALSE)
-	switch (ilGetError()) {
-		case IL_COULD_NOT_OPEN_FILE: cout << "IL_COULD_NOT_OPEN_FILE"; break;
-		case IL_ILLEGAL_OPERATION: cout << "IL_ILLEGAL_OPERATION"; break;
-		case IL_INVALID_EXTENSION: cout << "IL_INVALID_EXTENSION"; break;
-		case IL_INVALID_PARAM: cout << "IL_INVALID_PARAM"; break;
-		
-	}
+    ilLoadImage(path.c_str()) == IL_FALSE
     ilConvertImage(IL_RGBA, IL_UNSIGNED_BYTE);
     textures[id].w = ilGetInteger(IL_IMAGE_WIDTH);
     textures[id].h = ilGetInteger(IL_IMAGE_HEIGHT);

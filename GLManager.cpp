@@ -35,16 +35,16 @@ namespace GLManager {
 		srand(time(0));
 		/** inicializacao do openGL */
 		glutInit(argc, argv);
-		
-		//inicial o profiling
-		g_profiling = new Profiling();
-		PROFILER_START(TIME_STARTUP, (char *) "Startup");
-		
 		glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 		glutInitWindowSize(conf.rint("window:width"), conf.rint("window:height"));
 		glutCreateWindow(conf.rstring("window:title").c_str());
 
 		initGameMode();
+		
+		//inicial o profiling
+		g_profiling = new Profiling();
+		PROFILER_START(TIME_STARTUP, (char *) "Startup");
+		
 		/* inicializacao do DevIL */
 		ilInit();
 
@@ -55,6 +55,7 @@ namespace GLManager {
 		glewInit();
 
 		initCallbacks();
+		g_profiling->end_time(TIME_STARTUP);
 	}
 
 	void initCallbacks() {
@@ -103,7 +104,6 @@ namespace GLManager {
 
 		glutSetCursor(GLUT_CURSOR_NONE);
 		
-		g_profiling->end_time(TIME_STARTUP);
 	}
 
 	void game_init() {
@@ -132,8 +132,7 @@ namespace GLManager {
 		g_frustum = new Frustum();
 		g_lighting = new Lighting();
 		g_lifes = new Lifes();
-		g_trees = new Trees();
-		g_profiling = new Profiling();                
+		g_trees = new Trees();               
 	}
 
 	void initGameMode() {

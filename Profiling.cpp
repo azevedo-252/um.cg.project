@@ -14,8 +14,15 @@
 Profiling::Profiling() {
     old_count = new_count = glutGet(GLUT_ELAPSED_TIME);
     frames = fps = 0;
-    start_coord_y = 400;
-    coords = new Vertex(400, start_coord_y, 0);
+	
+	if (conf.rint("window:fullscreen") == 1) {
+		start_coord_y = glutGameModeGet(GLUT_GAME_MODE_HEIGHT) - 50;
+		coords = new Vertex(glutGameModeGet(GLUT_GAME_MODE_WIDTH) - 100, start_coord_y, 0);
+	}
+	else {
+		start_coord_y = glutGet(GLUT_WINDOW_HEIGHT) - 50;
+		coords = new Vertex(glutGet(GLUT_WINDOW_WIDTH) - 100, start_coord_y, 0);
+	}
     for (int i = 0; i < TIME_SIZE; i++) {
         name[i] = NULL;
         start[i] = end[i] = 0;
@@ -36,7 +43,6 @@ void Profiling::update() {
 void Profiling::print(char* string) {
 	ChangeMode::setOrthographicProjection();
 
-
 	glPushMatrix();
 	glLoadIdentity();
 
@@ -49,7 +55,7 @@ void Profiling::print(char* string) {
 		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10, string[i]);
 	}
 
-	coords->y = coords->y + 15;
+	coords->y = coords->y - 15;
 
 	glPopMatrix();
 
@@ -80,7 +86,6 @@ void Profiling::print_time() {
 }
 
 void Profiling::start_time(TIMES num, char* new_name) {
-	cout << InputManager::getOpState(PROFILING_MODE) << endl;
     if (InputManager::getOpState(PROFILING_MODE) == KEY_OFF) {
         start[num] = glutGet(GLUT_ELAPSED_TIME);
         if (name[num] == NULL) {
