@@ -1,0 +1,35 @@
+As display lists são, para além dos Vertex Buffer Objects e do View Frustum Culling, outro método de optimizar a aplicação. Podem ser vistas como a criação de listas de render pré-compiladas, que ficam armazenadas na placa gráfica. Deste modo, em vez de ser necessário a cada render, fazer sucessivas invocações a funções como \textbf{glVertex3f}, \textbf{glTranslatef}, etc, estas funções são chamadas apenas na inicialização dentro da definição de uma Display List, que é então compilada para a gráfica.
+Durante o render apenas é necessário invocar a lista criada, através do seu identificador.
+
+Neste projecto foram usadas Display Lists em vários pontos, e em algumas delas houve subtilezas que foi necessário ter em conta:
+\begin{itemize}
+\item[Torres] Foi criada uma Display List para representar uma torre. Como cada torre tem uma orientação diferente, que vai variando ao longo do jogo, não seria possivel criar uma Display List geral para fazer o render de todas as torres. Assim o render das torres resume-se a fazer a translação e rotação para o local correcto, seguido da invocação da DL.
+\item[Árvores] Para as árvores já seria possivel definir, primeiro uma DL para uma árvore individual, e depois uma DL geral para o render de todas as árvores, á custa da primeira DL.
+Porém isto também não foi implementado pois não permitiria aplicar o View Frustum Culling nas árvores, que revelou ser uma alternativa mais eficiente. Assim o método usado foi idêntico ao das torres, apenas com uma DL para uma árvore.
+\item[Balas] As balas têm a particularidade de possuirem animações. No total cada bala alterna entre 7 frames diferentes. Ainda assim, foi notado que, criando uma DL para cada uma das frames, a performance da aplicação era melhorada. Isto foi particularmente interessante ao verificar-se que deste modo, passou a ser possivel ter centenas de balas animadas em simultâneo em jogo, e ainda manter um nível de FPS aceitavel.
+\end{itemize}
+
+Eis como exemplo, a geração e invocação da DL para as torres:
+
+\begin{lstlisting}
+void Towers::createTowerList() {
+    md2_rendermode = 0;
+    set_scale(conf.rfloat("game:tower_scale"));
+	
+	tower_list = glGenLists(1);
+	glNewList(tower_list, GL_COMPILE);
+	md2_model->drawPlayerItp(true, static_cast<Md2Object::Md2RenderMode> (0));
+	glEndList();
+}
+
+void Tower::render() {
+    if (g_frustum->sphereInFrustum(new Vertex(coords->x, coords->y + 36, coords->z), radius)) {
+        glPushMatrix();
+        glTranslatef(coords->x, coords->y, coords->z);
+        glRotatef(90 + (ang_x * 180) / M_PI, 0, 1, 0);
+        glCallList(g_towers->tower_list);
+        glTranslatef(0, 37, 0);
+        glPopMatrix();
+    }
+}
+\end{lstlisting}

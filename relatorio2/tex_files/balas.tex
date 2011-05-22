@@ -3,3 +3,20 @@ Tẽm uma direcção fixa, que corresponde à direcção entre a torre e o jogad
 Para representar as balas, foram usados modelos MD2 animados, tal como para o jogador.
 
 Em cada actualização do estado do jogo, é verificado se existe colisão entre o jogador e alguma das balas. Caso isso aconteça, o jogador perde uma vida (perdendo o jogo caso fique sem vidas).
+
+Eis a função que testa a colisão entre uma bala e o jogador
+
+\begin{lstlisting}
+void Bullets::bullet_hit_test() {
+    Vertex *c_bullet, *c_player = g_player->coords;
+    for (list<Bullet>::iterator it = bullets.begin(); g_lifes->lifes > 0 && it != bullets.end(); it++) {
+        c_bullet = it->coords;
+        if (sqrt(pow(c_player->x - c_bullet->x, 2) + pow(c_player->y - c_bullet->y, 2) + pow(c_player->z - c_bullet->z, 2)) <= BULLET_HIT_DIST) {
+            g_lifes->lifes--;
+			it = bullets.erase(it);
+        }
+    }
+}
+\end{lstlisting}
+
+A função calcula a distância entre as coordenadas da bala e do jogador. Se esta distância for menor que um determinado valor, houve colisão, e o número de vidas do jogador é decrementado, e a bala eliminada do jogo.

@@ -1,0 +1,56 @@
+O terreno de jogo deve ser criado de forma a possuir ligeiras elevações, e não ser apenas plano. Consequentemente, o posicionamento e navegação dos objectos pelo terreno deve acompanhar esta ondulação. Para implementar isto, foi usado um mapa de alturas, que consiste numa imagem em tons de cinza, onde cada pixel, de acordo com a sua tonalidade, representa uma altura.
+Esse mapa é então escalado para corresponder ao número de pixeis necessários para gerar o terreno, e é feito um mapeamento entre cada pixel do terreno e a respectiva altura.
+
+É aqui apresentado o código do carregamento da imagem usada como mapa de alturas:
+
+\begin{lstlisting}
+void Textures::loadHeightMap(string path, int width) {
+	ilGenImages(1, &(textures[TERRAIN_HEIGHT].id));
+
+	ilBindImage(textures[TERRAIN_HEIGHT].id);
+	ilLoadImage(path.c_str());
+	iluScale(width, width, 8);
+
+	#ifndef rocket
+	ilConvertImage(IL_LUMINANCE,IL_UNSIGNED_BYTE);
+	#endif
+	
+	textures[TERRAIN_HEIGHT].w = ilGetInteger(IL_IMAGE_WIDTH);
+	textures[TERRAIN_HEIGHT].h = ilGetInteger(IL_IMAGE_HEIGHT);
+	textures[TERRAIN_HEIGHT].data = ilGetData();
+}
+\end{lstlisting}
+
+A imagem é carregada com recurso á biblioteca DevIL, e é convertida para o formato \emph{IL\_LUMINANCE} para representar uma escala de cinzentos.
+
+Com isto, é obtido um array com os dados da imagem a partir do qual se pode obter informação sobre a altura de cada vertice do mapa, da seguinte forma:
+
+\begin{lstlisting}[caption=Função de cálculo da altura de um vértice do mapa]
+float Map::map_h(int x, int z) {
+	return this->heightMapData[x + this->tex_height.w * z];
+	return 0;
+}
+\end{lstlisting}
+
+Além de calcular a altura de cada vértice, é necessário calcular também a altura intermédia de cada ponto no interior dos triangulos do terreno, para proporcionar um movimento fluido. Para isto é feita uma interpolação com base nas alturas dos vértices adjacentes ao ponto que se pretende calcular:
+
+\begin{lstlisting}[caption=Interpolação da altura de um ponto]
+float Map::triangulateHeight(float x, float z) {
+	double intX, intZ;
+	float fracX, fracZ;
+
+	x /= grid_width;
+	z /= grid_width;
+
+	fracX = modf(x, &intX);
+	fracZ = modf(z, &intZ);
+
+	float alt1, alt2;
+
+	alt1 = this->map_h(intX, intZ) * (1 - fracZ) + this->map_h(intX, intZ + 1) * fracZ;
+	alt2 = this->map_h(intX + 1, intZ) * (1 - fracZ) + this->map_h(intX + 1, intZ + 1) * fracZ;
+
+	return alt1 * (1 - fracX) + alt2 * fracX;
+}
+\end{lstlisting}
+

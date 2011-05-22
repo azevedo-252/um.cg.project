@@ -42,15 +42,12 @@ void Tower::update() {
 }
 
 void Tower::render() {
-    //    printf("%d\n", g_frustum->sphereInFrustum(new Vertex(coords->x, coords->y + 36, coords->z), radius));
     if (g_frustum->sphereInFrustum(new Vertex(coords->x, coords->y + 36, coords->z), radius)) {
         glPushMatrix();
         glTranslatef(coords->x, coords->y, coords->z);
         glRotatef(90 + (ang_x * 180) / M_PI, 0, 1, 0);
         glCallList(g_towers->tower_list);
         glTranslatef(0, 37, 0);
-        //glutSolidSphere(radius, 36, 37);
-        //    md2_model->drawPlayerItp(true, static_cast<Md2Object::Md2RenderMode> (0));
         glPopMatrix();
     }
 }
