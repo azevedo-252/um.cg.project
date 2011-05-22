@@ -1,0 +1,45 @@
+Um extra que foi relativamente fácil de implementar foi permitir que o jogador salte.
+Isto foi feito com recurso ao seguinte código acrescentado á função de update do jogador:
+
+\begin{lstlisting}
+if (space == KEY_ON && !isJumping && canJump) {
+		isJumping = true;
+		jump_time = 0;
+		Sound::play(SOUND_JUMP);
+	}
+
+	if (isJumping) {
+		jump_time++;
+		//coords->y += jumpOff(jump_time) - jumpOff(jump_time - 1);
+		coords->y += jumpOff(jump_time);
+		if (anim->get_anim() != MOVE_JUMP)
+			anim->set_anim(MOVE_JUMP);
+
+		float max_height = g_map->triangulateHeight(coords->x, coords->z);
+		if (coords->y < max_height) {
+			coords->y = max_height;
+			isJumping = false;
+			anim->set_anim(MOVE_NONE);
+			canJump = false;
+			glutTimerFunc(jump_cooldown, GLManager::allowPlayerJump, 0);
+		}
+
+	} else if (isMoving()) {
+		coords->y = g_map->triangulateHeight(coords->x, coords->z);
+		if (anim->get_anim() != MOVE_WALK)
+			anim->set_anim(MOVE_WALK);
+
+	} else {
+		anim->set_anim(MOVE_NONE);
+	}
+\end{lstlisting}
+
+A função de salto é a seguinte:
+
+\begin{lstlisting}
+float Player::jumpOff(int off) {
+	return -0.1 * off + 2;
+}
+\end{lstlisting}
+
+Esta função corresponde à derivada da função de salto idealizada para o jogador. Assim para cada instante sabe-se o incremento a dar à altura do jogador durante o tempo em que este está a saltar.

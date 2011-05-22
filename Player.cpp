@@ -115,7 +115,8 @@ void Player::update() {
 
 	if (isJumping) {
 		jump_time++;
-		coords->y += jumpOff(jump_time) - jumpOff(jump_time - 1);
+		//coords->y += jumpOff(jump_time) - jumpOff(jump_time - 1);
+		coords->y += jumpOff(jump_time);
 		if (anim->get_anim() != MOVE_JUMP)
 			anim->set_anim(MOVE_JUMP);
 
@@ -141,8 +142,7 @@ void Player::update() {
 }
 
 float Player::jumpOff(int off) {
-	//return - pow(off - jump_max, 2) + pow(jump_max, 2);
-	return 0.1 * (-0.5 * pow(off, 2) + 20 * off);
+	return -0.1 * off + 2;
 }
 
 void Player::render() {
