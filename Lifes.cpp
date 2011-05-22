@@ -18,6 +18,7 @@ Lifes::Lifes() {
 }
 
 void Lifes::drawLife() {
+	
     glBindTexture(GL_TEXTURE_2D, image.gl_id);
     glBegin(GL_QUADS);
 
@@ -34,6 +35,7 @@ void Lifes::drawLife() {
     glVertex2f(50, 0);
 
     glEnd();
+    glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 void Lifes::render() {
@@ -41,14 +43,13 @@ void Lifes::render() {
     glPushMatrix();
     glLoadIdentity();
 
-    glTranslatef(g_win_w / 2, 10, 0);
-
+    glTranslatef(g_win_w - 190, 10, 0);
+	
     for (int i = 0; i < lifes; i++) {
-        drawLife();
-        glTranslatef(55, 0, 0);
+	    drawLife();
+        glTranslatef(60, 0, 0);
     }
 
-    //    glEnable(GL_DEPTH_TEST);
 
     glPopMatrix();
     ChangeMode::resetPerspectiveProjection();

@@ -1,6 +1,7 @@
 #include <GL/glew.h>
 
 #include "Tree.h"
+#include "Textures.h"
 #include "externs.h"
 
 Tree::Tree() {
@@ -16,24 +17,25 @@ void Tree::set_pos(Vertex* new_coords) {
 //void Tree::render(GLuint treeList) {
 //}
 
-void Tree::drawTree(int tex_id) {
-
-	glBindTexture(GL_TEXTURE_2D, tex_id);
+void Tree::drawTree() {
+	TexData tex = Textures::get(TREE);
+	
+	glBindTexture(GL_TEXTURE_2D, tex.gl_id);
 	glBegin(GL_QUADS);
 
 	glNormal3f(0, 0, -1);
 	
 	glTexCoord2f(0.0f, 0.0f);
-	glVertex3f(30, 50, 0);
+	glVertex3f(50, 100, 0);
 
 	glTexCoord2f(0.0f, 1.0f);
-	glVertex3f(30, -2, 0);
+	glVertex3f(50, -2, 0);
 
 	glTexCoord2f(1.0f, 1.0f);
-	glVertex3f(-30, -2, 0);
+	glVertex3f(-50, -2, 0);
 
 	glTexCoord2f(1.0f, 0.0f);
-	glVertex3f(-30, 50, 0);
+	glVertex3f(-50, 100, 0);
 
 	glEnd();
 

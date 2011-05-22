@@ -9,8 +9,9 @@
 #define	PROFILING_H
 
 typedef enum enum_times {
-	TIME_RENDER_TREES,
+	TIME_STARTUP,
 	TIME_RENDER_TOTAL,
+	TIME_RENDER_TREES,
 	TIME_SIZE
 } TIMES;
 
@@ -29,12 +30,12 @@ public:
 	void end_time(TIMES num);
 	void print_time();
 private:
-	float start[TIME_SIZE];
-	float end[TIME_SIZE];
+	int start[TIME_SIZE];
+	int end[TIME_SIZE];
 	char* name[TIME_SIZE];
 
 	Vertex *coords;
-	float old_count, new_count;
+	int old_count, new_count;
 	int frames, fps;
 };
 

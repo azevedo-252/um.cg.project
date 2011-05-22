@@ -10,7 +10,6 @@ class Trees {
 public:
     int num_trees;
     Tree** trees;
-    TexData tex_tree;
     GLuint treeList;
     GLuint treesList;
 	

@@ -21,7 +21,7 @@ Trees::Trees() {
 		trees[i]->set_pos(pos);
 	}
 
-	tex_tree = Textures::get(TREE);
+	
 	createTreesList();
 
 	mat_amb[0] = conf.rfloat("trees:amb_r");
@@ -46,7 +46,7 @@ void Trees::createTreesList() {
 	//gera a lista para uma arvore
 	treeList = glGenLists(1);
 	glNewList(treeList, GL_COMPILE);
-	Tree::drawTree(tex_tree.gl_id);
+	Tree::drawTree();
 	glEndList();
 
 	//gera a lista para todas as arvores, com base na lista anterior
@@ -72,16 +72,10 @@ void Trees::render() {
 	g_profiling->start_time(TIME_RENDER_TREES, "Tree Render");
 	
 	glDisable(GL_CULL_FACE);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glAlphaFunc(GL_GREATER, 0);
+	glAlphaFunc(GL_GREATER, 0.15);
 	glCallList(treesList);
-	glBlendFunc(GL_ONE, GL_ZERO);
 	glAlphaFunc(GL_ALWAYS, 0);
 	glEnable(GL_CULL_FACE);
 	
 	g_profiling->end_time(TIME_RENDER_TREES);
-
-	//    for (int i = 0; i < num_trees; i++) {
-	//        trees[i]->render();
-	//    }
 }

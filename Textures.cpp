@@ -23,14 +23,21 @@ void Textures::load() {
     Textures::loadSingle(SKYBOX6, "resources/textures/sky/face62.jpg",	GL_LINEAR);
     Textures::loadSingle(LIFES, "resources/textures/lifes/sonic.jpg",	GL_LINEAR);
 	
-    Textures::loadSingle(TREE, "resources/textures/tree/arvore.gif", GL_LINEAR);
+    Textures::loadSingle(TREE, "resources/textures/tree/tree.tga", GL_LINEAR);
 }
 
 void Textures::loadSingle(enum texture_id id, string path, GLuint gl_filter) {
     /** textura do terreno */
     ilGenImages(1, &(textures[id].id));
     ilBindImage(textures[id].id);
-    ilLoadImage(path.c_str());
+    if (ilLoadImage(path.c_str()) == IL_FALSE)
+	switch (ilGetError()) {
+		case IL_COULD_NOT_OPEN_FILE: cout << "IL_COULD_NOT_OPEN_FILE"; break;
+		case IL_ILLEGAL_OPERATION: cout << "IL_ILLEGAL_OPERATION"; break;
+		case IL_INVALID_EXTENSION: cout << "IL_INVALID_EXTENSION"; break;
+		case IL_INVALID_PARAM: cout << "IL_INVALID_PARAM"; break;
+		
+	}
     ilConvertImage(IL_RGBA, IL_UNSIGNED_BYTE);
     textures[id].w = ilGetInteger(IL_IMAGE_WIDTH);
     textures[id].h = ilGetInteger(IL_IMAGE_HEIGHT);
@@ -43,7 +50,7 @@ void Textures::loadSingle(enum texture_id id, string path, GLuint gl_filter) {
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, gl_filter );
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, gl_filter );
 
-    gluBuild2DMipmaps( GL_TEXTURE_2D, GL_RGBA, textures[id].w, textures[id].h,
+    gluBuild2DMipmaps( GL_TEXTURE_2D, GL_RGBA8, textures[id].w, textures[id].h,
     			 GL_RGBA, GL_UNSIGNED_BYTE, textures[id].data);
     //glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, textures[id].w, textures[id].h,
     //        0, GL_RGBA, GL_UNSIGNED_BYTE, textures[id].data);

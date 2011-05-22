@@ -14,7 +14,7 @@ public:
     Tree();
     void set_pos(Vertex* new_coords);
     //void render();
-    static void drawTree(int tex_id);
+    static void drawTree();
     
 };
 

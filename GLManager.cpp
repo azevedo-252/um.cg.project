@@ -33,6 +33,11 @@ namespace GLManager {
 		srand(time(0));
 		/** inicializacao do openGL */
 		glutInit(argc, argv);
+		
+		//inicial o profiling
+		g_profiling = new Profiling();
+		g_profiling->start_time(TIME_STARTUP, "Startup");
+		
 		glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 		glutInitWindowSize(conf.rint("window:width"), conf.rint("window:height"));
 		glutCreateWindow(conf.rstring("window:title").c_str());
@@ -81,8 +86,8 @@ namespace GLManager {
 		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
 		/** activa a iluminacao */
-		glEnable(GL_LIGHTING);
-		glEnable(GL_LIGHT0);
+//		glEnable(GL_LIGHTING);
+//		glEnable(GL_LIGHT0);
 		glLightModelf(GL_LIGHT_MODEL_TWO_SIDE, 1);
 
 		/** da main do md2loader */
@@ -95,6 +100,8 @@ namespace GLManager {
 		game_init();
 
 		glutSetCursor(GLUT_CURSOR_NONE);
+		
+		g_profiling->end_time(TIME_STARTUP);
 	}
 
 	void game_init() {
@@ -125,7 +132,6 @@ namespace GLManager {
 		glutTimerFunc(g_anims_interval, GLManager::updateFrames, 0);
 		g_frustum = new Frustum();
 		g_lighting = new Lighting();
-		g_profiling = new Profiling();
 		g_lifes = new Lifes();
 		g_trees = new Trees();
 	}
@@ -195,11 +201,13 @@ namespace GLManager {
 		g_rainbow->render();
 
 
-		g_lifes->render();
-		g_radar->render();
 		g_trees->render();
-
-
+		
+		glColor3f(1.0, 1, 1);
+		g_radar->render();
+		g_lifes->render();
+		//glDisable(GL_DEPTH_TEST);
+		//glEnable(GL_DEPTH_TEST);
 
 //		GLfloat mat_ambient[4];
 //		mat_ambient[0] = 0.5;
@@ -222,6 +230,7 @@ namespace GLManager {
 		InputManager::resetMouseMove();
 		
 		g_profiling->end_time(TIME_RENDER_TOTAL);
+		g_profiling->update();
 		g_profiling->render();
 		g_profiling->reset_time();
 		// End of frame
@@ -258,8 +267,6 @@ namespace GLManager {
 		g_keys->update();
 		g_radar->update();
 		g_rainbow->update();
-
-		g_profiling->update();
 
 		glutPostRedisplay();
 
@@ -302,7 +309,7 @@ namespace GLManager {
 	void end_game_test() {
 		if (g_lifes->lifes <= 0 && g_lifes->hasEnded == false) {
 			g_lifes->hasEnded = true;
-			printf("FIM DO JOGO\n");
+			//printf("FIM DO JOGO\n");
 			Sound::stop(SOUND_MAIN);
 			Sound::play(SOUND_GAME_OVER);
 			g_player->state = GAME_OVER;

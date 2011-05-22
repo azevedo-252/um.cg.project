@@ -46,14 +46,7 @@ void Radar::resetPerspectiveProjection() {
 }
 
 void Radar::render() {
-	ChangeMode::setOrthographicProjection();
-	glPushMatrix();
-	glLoadIdentity();
-
-	glColor3f(1.0f, 1.0f, 1.0f);
-	glRasterPos2i(screen_coords->x, screen_coords->y);
 	char *string = new char[50];
-
 	switch (g_player->state) {
 		case GAME_ON:
 			if (g_keys->keys_left == 0)
@@ -73,7 +66,14 @@ void Radar::render() {
 
 	int len, i;
 	len = strlen(string);
-	glColor3f(0, 0, 0);
+	
+	ChangeMode::setOrthographicProjection();
+	glPushMatrix();
+	glLoadIdentity();
+
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glRasterPos2i(screen_coords->x, screen_coords->y);
+	
 	for (i = 0; i < len; i++) {
 		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, string[i]);
 	}
