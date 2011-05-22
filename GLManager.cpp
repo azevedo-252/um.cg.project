@@ -86,8 +86,8 @@ namespace GLManager {
 		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
 		/** activa a iluminacao */
-//		glEnable(GL_LIGHTING);
-//		glEnable(GL_LIGHT0);
+		glEnable(GL_LIGHTING);
+		glEnable(GL_LIGHT0);
 		glLightModelf(GL_LIGHT_MODEL_TWO_SIDE, 1);
 
 		/** da main do md2loader */

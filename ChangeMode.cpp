@@ -18,7 +18,7 @@ namespace ChangeMode {
 		gluOrtho2D(0, g_win_w, 0, g_win_h);
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
-//		glDisable(GL_LIGHTING);
+		glDisable(GL_LIGHTING);
 	}
 
 
@@ -27,7 +27,7 @@ namespace ChangeMode {
 		glPopMatrix();
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
-//		glEnable(GL_LIGHTING);
+		glEnable(GL_LIGHTING);
 	}
 
 }
