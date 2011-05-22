@@ -1,0 +1,15 @@
+O input é tratado através da classe InputManager. Esta classe mantém uma estrutura com o estado actual de todas as teclas utilizadas no jogo, bem como informação sobre as coordenadas e movimento do rato. Os eventos de pressionar ou libertar uma tecla apenas accionam um método que altera o estado da tecla correspondente na estrutura.
+
+Assim, em qualquer ponto do código, é possivel saber o estado de uma tecla (pressionada ou não), e consoante essa flag, executar uma determinada acção. Esta estruturação permite uma gestão mais flexivel do input do que aquela utilizada nas aulas práticas, em que a função de gestão do input executava as próprias acções. Isto fazia com que a interacção fosse mais limitada, não sendo considerada a utilização de várias teclas ao mesmo tempo. Essa funcionalidade já é obtida por uma estrutura como a classe aqui utilizada.
+
+Foi assim possivel implementar facilmente a utilização de várias teclas para ligar/desligar determinadas opções durante o decorrer do jogo:
+\begin{itemize}
+\item[C] Alternar entre os dois modos de câmera;
+\item[M] Ligar/Desligar a música;
+\item[N] Ligar/Desligar os restantes sons;
+\item[F1] Activar o modo GL_LINES da função \textbf{glPolygonMode} (para efeitos de Debug);
+\item[F2] Desactivar o modo GL_LINES;
+\item[W,A,S,D] Movimentar o jogador pelo terreno;
+\item[Espaço] Saltar;
+\item[Rato] O movimento do rato traduz-se em movimento da câmara na direcção correspondente, e também da orientação do jogador no terreno;
+\end{itemize}

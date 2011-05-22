@@ -1,0 +1,83 @@
+Para a gestão das torres e das existem duas classes, \textit{Towers.cpp} e \textit{Keys.cpp} respectivamente.
+
+\-
+\begin{center}
+\begin{tabular} {l | p{10cm}}
+\begin{lstlisting}
+class Keys {
+public:
+    int num_keys, catched_count;
+    float catch_dist;
+    Key **keys;
+
+    Keys();
+
+    void render();
+    void update();
+    int get_closest_distance();
+};
+\end{lstlisting} 
+& 
+Header da classe Keys.cpp .
+\end{tabular}
+\end{center}
+\-
+Como se pode ver a classe keys é constituida por um array de instâncias da classe \emph{Key}, um numero de chaves (\emph{num\_keys}) que se encontra no documento config.ini e o numero de chaves apanhadas pela jogador (\emph{catched\_count}).
+Existe ainda um método de update, que actualiza o modelo das chaves, determina se uma chave foi ou não apanhada, um método de render, que desenha as torres no mundo e por ultimo um método que calcula a distancia da chave que se encontra a menor distancia do jogador, inferior a 500 metros.
+
+Para as torres o conceito é o mesmo, com a excepção do \emph{catched\_count} e do método \emph{get\_closest\_distance}.
+No entanto as torres têm a caracteristaca de rodar na direcção do jogador quando este se encontra no seu alcance.
+
+Na inicialização do jogo, são calculadas posições aleatórias para as chaves e torres. Estas posições têm em conta que uma torre ou chave nunca deverá ficar a menos de uma determinada distância (definida no ficheiro ini) de outra chave ou torre, evitando assim por exemplo, que uma chave fique escondida dentro do modelo de uma torre.
+
+O algoritmo de cálculo da {\bf distancia entre dois modelos} é simples. Tendo as coordenadas do dos modelos temos:
+
+\begin{center}
+\begin{math}
+Player => (a1,b1)
+\end{math}
+,
+\begin{math}
+Tower => (a2,b2)
+\end{math}
+
+\begin{equation}
+Distancia = \sqrt{((a1-a2)^2+(b1-b2)^2)}
+\end{equation}
+\end{center}
+
+
+\subsection{Angulo de orientação das Torres}
+
+O angulo de orientação das torres para o player pode ser determinado fazendo uso do produto escalar entre dois vectores, a direção do player para a torre e o vector unitário (1,0,0). Sabemos que
+
+\-
+\begin{center}
+\begin{math}
+Player => (a_1,a_2)
+\end{math}
+,
+\begin{math}
+Tower => (b_1,b_2)
+\end{math}
+
+\begin{equation}
+produto escalar = a_1*b_1 + a_2*b_2
+\end{equation}
+\begin{equation}
+produto escalar = direccao * unitario * cos x
+\end{equation}
+\end{center}
+
+Como tal, orientado em função do angulo \emph{x} temos:
+
+\begin{equation}
+x = acos( (a_1*b_1 + a_2*b_2 ) / direccao * unitario * cos x )
+\end{equation}
+
+
+Este angulo é a orientação que uma torre deve assumir para se orientar para um player, está claro, quando a distância é inferior ao alcance da torre.
+
+
+
+
