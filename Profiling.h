@@ -34,8 +34,10 @@ private:
 	int end[TIME_SIZE];
 	char* name[TIME_SIZE];
 
+	bool printed;
 	Vertex *coords;
-	int old_count, new_count;
+	float start_coord_y;
+	float old_count, new_count;
 	int frames, fps;
 };
 

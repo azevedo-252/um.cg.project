@@ -24,8 +24,10 @@
 #include "externs.h"
 #include "Radar.h"
 
-#define PROFILER_START //g_profiling->start_time
-#define PROFILER_END //g_profiling->end_time
+#define PROFILER_START g_profiling->start_time
+#define PROFILER_END g_profiling->end_time
+#define PROFILER_RENDER g_profiling->render();
+#define PROFILER_RESET g_profiling->reset_time();
 
 namespace GLManager {
 
@@ -36,7 +38,7 @@ namespace GLManager {
 		
 		//inicial o profiling
 		g_profiling = new Profiling();
-		g_profiling->start_time(TIME_STARTUP, "Startup");
+		PROFILER_START(TIME_STARTUP, (char *) "Startup");
 		
 		glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 		glutInitWindowSize(conf.rint("window:width"), conf.rint("window:height"));
@@ -121,10 +123,7 @@ namespace GLManager {
 		g_bullets = new Bullets(conf.rstring("models:bullet"));
 		g_keys = new Keys();
 		g_skybox = new SkyBox();
-
 		g_radar = new Radar();
-		//g_profiler = new Profiler();
-
 		g_rainbow = new Rainbow();
 		g_toilet = new Toilet(conf.rstring("models:toilet"));
 		Sound::play(SOUND_MAIN);
@@ -134,6 +133,7 @@ namespace GLManager {
 		g_lighting = new Lighting();
 		g_lifes = new Lifes();
 		g_trees = new Trees();
+		g_profiling = new Profiling();                
 	}
 
 	void initGameMode() {
@@ -177,7 +177,7 @@ namespace GLManager {
 	}
 
 	void render(void) {
-		g_profiling->start_time(TIME_RENDER_TOTAL, (char *) "Render total");
+		PROFILER_START(TIME_RENDER_TOTAL, (char *) "Render total");
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -229,10 +229,12 @@ namespace GLManager {
 
 		InputManager::resetMouseMove();
 		
-		g_profiling->end_time(TIME_RENDER_TOTAL);
-		g_profiling->update();
-		g_profiling->render();
-		g_profiling->reset_time();
+		PROFILER_END(TIME_RENDER_TOTAL);
+                
+		PROFILER_RENDER
+                        
+		PROFILER_RESET
+                
 		// End of frame
 		glutSwapBuffers();
 	}

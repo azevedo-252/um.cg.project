@@ -7,7 +7,7 @@ Ainda que um extra, ou talvez mesmo não um extra uma vez que é uma componente 
 \item[\textit{name}] Regista a descrição da medição.
 \end{description}
 
-A utilização é intuitiva. É invocado o método start\_time com um identificador e uma descrição, ou nome no inicio da medição e end\_time com o mesmo identificador no final da medição. Feito render é impresso para o ecrã a informação, linha a linha.
+A utilização é intuitiva. É invocado o método start\_time com um identificador e uma descrição, ou nome no inicio da medição e end\_time com o mesmo identificador no final da medição. Feito render é impresso para o ecrã a subtração entre tempo final e inicial associado à descrição.
 
 \begin{lstlisting}
 void start_time(int num, char* name);
