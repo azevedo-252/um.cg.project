@@ -1,4 +1,5 @@
 #include <GL/glew.h>
+#include <GL/glut.h>
 
 #include "Trees.h"
 #include "GLManager.h"
@@ -21,7 +22,7 @@ Trees::Trees() {
 		trees[i]->set_pos(pos);
 	}
 
-	
+
 	createTreesList();
 
 	mat_amb[0] = conf.rfloat("trees:amb_r");
@@ -51,19 +52,6 @@ void Trees::createTreesList() {
 	Tree::drawTree();
 	glEndList();
 
-	//gera a lista para todas as arvores, com base na lista anterior
-//	treesList = glGenLists(1);
-//	glNewList(treesList, GL_COMPILE);
-//	for (int i = 0; i < num_trees; i++) {
-//		glPushMatrix();
-//		glTranslatef(trees[i]->coords->x, trees[i]->coords->y, trees[i]->coords->z);
-//		glCallList(treeList);
-//		glRotatef(90, 0, 1, 0);
-//		glCallList(treeList);
-//		glPopMatrix();
-//	}
-//	glEndList();
-
 }
 
 void Trees::render() {
@@ -72,20 +60,23 @@ void Trees::render() {
 	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, mat_spec);
 
 	g_profiling->start_time(TIME_RENDER_TREES, (char *) "Tree Render");
-	
+
 	glDisable(GL_CULL_FACE);
 	glAlphaFunc(GL_GREATER, 0.15);
-	
+
 	for (int i = 0; i < num_trees; i++) {
-		glPushMatrix();
-		glTranslatef(trees[i]->coords->x, trees[i]->coords->y, trees[i]->coords->z);
-		glCallList(treeList);
-		glPopMatrix();
+		Vertex *frustum = new Vertex(trees[i]->coords->x, trees[i]->coords->y + 50, trees[i]->coords->z);
+
+		if (g_frustum->sphereInFrustum(frustum, 52)) {
+			glPushMatrix();
+			glTranslatef(trees[i]->coords->x, trees[i]->coords->y, trees[i]->coords->z);
+			glCallList(treeList);
+			glPopMatrix();
+		}
 	}
-	
-//	glCallList(treesList);
+
 	glAlphaFunc(GL_ALWAYS, 0);
 	glEnable(GL_CULL_FACE);
-	
+
 	g_profiling->end_time(TIME_RENDER_TREES);
 }
