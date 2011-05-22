@@ -44,6 +44,8 @@ namespace GLManager {
     void allowPlayerJump(int id);
 
     void end_game_test();
+	
+	float convertFromKmH(float kmH);
 };
 
 #endif

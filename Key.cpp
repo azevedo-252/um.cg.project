@@ -31,6 +31,7 @@ void Key::render() {
 	if (!catched) {
 		glPushMatrix();
 		glTranslatef(coords->x, coords->y, coords->z);
+		glRotatef(glutGet(GLUT_ELAPSED_TIME) * 0.1, 0, 1, 0);
 		md2_model->drawPlayerItp(true, static_cast<Md2Object::Md2RenderMode> (md2_rendermode));
 		glPopMatrix();
 	}

@@ -23,9 +23,9 @@ Player::Player(const string &path) : Model_MD2(path) {
 	ang_y = M_PI / 2;
 	md2_rendermode = 0;
 
-	speed_front = GLManager::distance(conf.rfloat("player:speed_front"));
-	speed_back = GLManager::distance(conf.rfloat("player:speed_back"));
-	speed_side = GLManager::distance(conf.rfloat("player:speed_side"));
+	speed_front = GLManager::convertFromKmH(conf.rfloat("player:speed_front"));
+	speed_back = GLManager::convertFromKmH(conf.rfloat("player:speed_back"));
+	speed_side = GLManager::convertFromKmH(conf.rfloat("player:speed_side"));
 	speed_rotate_x = conf.rfloat("player:speed_rotate_x");
 	speed_rotate_y = conf.rfloat("player:speed_rotate_y");
 

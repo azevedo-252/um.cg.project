@@ -81,6 +81,7 @@ void Bullets::bullet_hit_test() {
         c_bullet = it->coords;
         if (sqrt(pow(c_player->x - c_bullet->x, 2) + pow(c_player->y - c_bullet->y, 2) + pow(c_player->z - c_bullet->z, 2)) <= BULLET_HIT_DIST) {
             g_lifes->lifes--;
+			it = bullets.erase(it);
         }
     }
 }

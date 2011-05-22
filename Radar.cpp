@@ -54,7 +54,7 @@ void Radar::render() {
 			else if (dist > range)
 				sprintf(string, "Distance: > 500 meters");
 			else
-				sprintf(string, "Distance: %.4f", GLManager::meters(dist));
+				sprintf(string, "Distance: %d", (int) dist);
 			break;
 		case GAME_OVER:
 			sprintf(string, "GAME OVER. YOU LOST!");

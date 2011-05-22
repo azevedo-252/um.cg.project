@@ -56,9 +56,14 @@ Map::~Map() {
 
 void Map::loadHeightMap() {
 	int heightMapSize = tex_height.w * tex_height.h;
+	int maxHeight = 0;
 	heightMapData = (float *) malloc(sizeof (float) * heightMapSize);
 	for (int i = 0; i < heightMapSize; i++) {
-		heightMapData[i] = (float) tex_height.data[i] * max_height / (float) 256;
+		if (tex_height.data[i] > maxHeight) maxHeight = tex_height.data[i];
+	}
+	cout << maxHeight << endl;
+	for (int i = 0; i < heightMapSize; i++) {
+		heightMapData[i] = (float) tex_height.data[i] * max_height / (float) maxHeight;
 	}
 }
 

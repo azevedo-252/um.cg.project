@@ -23,7 +23,7 @@ Model_MD2::Model_MD2(const string &path) {
 #endif
 
     md2_model = new Md2Player(dirname);
-	this->set_scale(0.25);
+	this->set_scale(conf.rfloat("player:scale"));
 }
 
 void Model_MD2::set_scale(GLfloat _scale) {

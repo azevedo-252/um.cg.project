@@ -108,7 +108,7 @@ namespace GLManager {
 		g_dist_factor = conf.rfloat("game:distance_factor");
 		g_update_interval = 1000 / conf.rint("game:updates_per_second");
 		g_anims_interval = 1000 / conf.rint("game:anims_per_second");
-		Bullet::speed = conf.rint("game:bullet_speed");
+		Bullet::speed = convertFromKmH(conf.rint("game:bullet_speed"));
 		Tower::bullet_delay = 1000 * conf.rfloat("game:seconds_per_bullet");
 
 		Textures::load();
@@ -314,5 +314,9 @@ namespace GLManager {
 			Sound::play(SOUND_GAME_OVER);
 			g_player->state = GAME_OVER;
 		}
+	}
+	
+	float convertFromKmH(float kmH) {
+		return kmH * 1000 / 60 / 60 / conf.rint("game:updates_per_second") * conf.rint("game:speed_factor");
 	}
 };
