@@ -7,6 +7,7 @@
 #include "externs.h"
 #include "SkyBox.h"
 #include "Vertex.h"
+#include "GLManager.h"
 
 SkyBox::SkyBox() {
     face1 = Textures::get(SKYBOX1);
@@ -15,9 +16,29 @@ SkyBox::SkyBox() {
     face4 = Textures::get(SKYBOX4);
     face5 = Textures::get(SKYBOX5);
     face6 = Textures::get(SKYBOX6);
+	
+	mat_amb[0] = conf.rfloat("skybox:amb_r");
+	mat_amb[1] = conf.rfloat("skybox:amb_g");
+	mat_amb[2] = conf.rfloat("skybox:amb_b");
+	mat_amb[3] = conf.rfloat("skybox:amb_w");
+	
+	mat_diff[0] = conf.rfloat("skybox:diff_r");
+	mat_diff[1] = conf.rfloat("skybox:diff_g");
+	mat_diff[2] = conf.rfloat("skybox:diff_b");
+	mat_diff[3] = conf.rfloat("skybox:diff_w");
+	
+	mat_spec[0] = conf.rfloat("skybox:spec_r");
+	mat_spec[1] = conf.rfloat("skybox:spec_g");
+	mat_spec[2] = conf.rfloat("skybox:spec_b");
+	mat_spec[3] = conf.rfloat("skybox:spec_w");
 }
 
 void SkyBox::render() {
+	
+	glMaterialfv(GL_FRONT, GL_AMBIENT, mat_amb);
+	glMaterialfv(GL_FRONT, GL_AMBIENT, mat_diff);
+	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_spec);
+	
     Vertex *position = g_player->coords;
     int sizeBox = sqrt(2 * pow(10000, 2)) / 2 - 1500;
     Vertex *size = new Vertex(sizeBox, sizeBox, sizeBox);
@@ -138,5 +159,7 @@ void SkyBox::render() {
 
     // Load Saved Matrix
     glPopMatrix();
+	
+	GLManager::resetMaterials();
 
 }

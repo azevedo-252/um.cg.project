@@ -21,6 +21,10 @@ private:
     TexData face4;
     TexData face5;
     TexData face6;
+	
+	GLfloat mat_amb[4];
+	GLfloat mat_diff[4];
+	GLfloat mat_spec[4];
 };
 
 #endif	/* SKYBOX_H */
