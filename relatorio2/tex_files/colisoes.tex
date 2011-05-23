@@ -2,7 +2,7 @@ Para aumentar o nível de realismo do jogo, decidimos implementar um sistema de 
 
 As colisões foram implementadadas à custa da seguinte função:
 
-\begin{lstlisting}
+\begin{lstlisting}[caption=Cálculo de colisões]
 void Player::calcColisions() {
 	//colisoes com as torres
 	for (int i = 0; i < g_towers->num_towers; i++) {

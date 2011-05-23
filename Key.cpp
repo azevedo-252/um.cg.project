@@ -20,7 +20,6 @@ Key::Key(const string &path) : Model_MD2(path) {
     catched = false;
 }
 
-
 void Key::set_pos(Vertex* new_coords) {
     coords->x = new_coords->x;
     coords->y = new_coords->y;
@@ -28,24 +27,28 @@ void Key::set_pos(Vertex* new_coords) {
 }
 
 void Key::render() {
-	if (!catched) {
-		glPushMatrix();
-		glTranslatef(coords->x, coords->y, coords->z);
-		glRotatef(glutGet(GLUT_ELAPSED_TIME) * 0.1, 0, 1, 0);
-		md2_model->drawPlayerItp(true, static_cast<Md2Object::Md2RenderMode> (md2_rendermode));
-		glPopMatrix();
-	}
+    if (g_frustum->sphereInFrustum(new Vertex(coords->x, coords->y + 4, coords->z), 4)) {
+        if (!catched) {
+            glPushMatrix();
+            glTranslatef(coords->x, coords->y, coords->z);
+            glRotatef(glutGet(GLUT_ELAPSED_TIME) * 0.1, 0, 1, 0);
+            md2_model->drawPlayerItp(true, static_cast<Md2Object::Md2RenderMode> (md2_rendermode));
+            //                glTranslatef(0, 4, 0);
+            //                glutSolidSphere(4,35,35);
+            glPopMatrix();
+        }
+    }
 }
 
 void Key::update() {
-	if (!catched) {
-		direction = this->coords->directionVector(g_player->coords);
-		dir_dist = (sqrt(pow(direction->x, 2) + pow(direction->z, 2)));
+    if (!catched) {
+        direction = this->coords->directionVector(g_player->coords);
+        dir_dist = (sqrt(pow(direction->x, 2) + pow(direction->z, 2)));
 
-		if (dir_dist < g_keys->catch_dist) {
-			catched = true;
-			g_keys->keys_left--;
-			Sound::play(SOUND_KEY_CATCH);
-		}
-	}
+        if (dir_dist < g_keys->catch_dist) {
+            catched = true;
+            g_keys->keys_left--;
+            Sound::play(SOUND_KEY_CATCH);
+        }
+    }
 }

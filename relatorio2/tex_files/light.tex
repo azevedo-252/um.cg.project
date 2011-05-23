@@ -3,14 +3,14 @@ Para a iluminação do jogo, foi idealizada uma luz posicionada nas coordenadas 
 Um dos aspectos mais importantes a ter em conta para a iluminação foi em relação às árvores. Cada árvore é constituida por dois quadrados, mas cada um deles tem uma orientação definida através da sua normal.
 Por pré-definição, a iluminação é feita apenas sob as faces frontais de cada poligono, o que faria com que, para cada uma das 4 faces de uma árvore, duas delas não seriam iluminadas.
 
-Para resolver este problema surgiram duas alternativas: utilização de 4 texturas por árvore, cada uma com uma orientação diferente, em vez de apenas duas com a opção GL_CULL_FACE desligada para ser desenhada de ambos os lados. Ou em alternativa, a utilização da opção do OpenGL \textbf{glLightModelf(GL_LIGHT_MODEL_TWO_SIDE, 1)}
+Para resolver este problema surgiram duas alternativas: utilização de 4 texturas por árvore, cada uma com uma orientação diferente, em vez de apenas duas com a opção GL\_CULL\_FACE desligada para ser desenhada de ambos os lados. Ou em alternativa, a utilização da opção do OpenGL \textbf{glLightModelf(GL\_LIGHT\_MODEL\_TWO\_SIDE, 1)}
 
 Para decidir sobre uma destas implementações, foi utilizado o Profiling, e foram medidos, para cada uma das alternativas, o tempo de render das árvores e o tempo de render total da cena.
 
 De notar que, para serem obtidos números relevantes, foi necessário aumentar o número de árvores para 10000.
 Eis os resultados:
 \begin{itemize}
-\item 2 texturas por árvore, opção GL_LIGHT_MODEL_TWO_SIDE:
+\item 2 texturas por árvore, opção GL\_LIGHT\_MODEL\_TWO\_SIDE:
 	\begin{itemize}
 		\item[render das árvores] 33 ms;
 		\item[render total]	49 ms;
