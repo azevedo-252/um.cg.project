@@ -11,6 +11,7 @@
       <df name="md2loader">
         <in>Anorms.h</in>
         <in>DataManager.h</in>
+        <in>DataManager.inl</in>
         <in>Image.cpp</in>
         <in>Image.h</in>
         <in>Main.cpp</in>
