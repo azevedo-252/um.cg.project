@@ -5,16 +5,12 @@
 %%modelos importados e formato v
 %%uma unidade em OpenGL corresponde a 0.1metros v
 
-Existem algumas considerações iniciais a ter em conta.
+Existem dois modos de câmara: \textit{Third Person Shooter} (tps) e outra \textit{First Person Shooter} (fps). A mudança entre estes dois modos é feita através de uma tecla pré-definida.
 
-São enunciadas várias dimensões, distâncias, em metros. Visto que em OpenGL não se realizam medições em metros foi necessário encontrar uma forma de relacionar as medidas do OpenGL com as medidas pedidas.
-Assim, para que seja possível criar o jogo de acordo com as medidas pedidas no enunciado, considerámos que 1 metro corresponde a 4 unidades em OpenGL.
+O radar não indica a direcção em que está a chave e tem um raio de acção limitado a 500 metros. Este é apresentado no canto inferior esquerdo em modo textual.
 
-Quanto ao terreno, é pedido que seja plano com 4km quadrados de área. Utilizando texturas foi suficiente arranjar uma imagem de acordo com o pretendido e gerar o plano através dela.
+O jogo pode correr em modo full screen e em modo janela, mas nao é possivel alternar no decorrer do jogo, para tal tem de se alterar a variável no ficheiro \textit{config.ini}, de forma a executar em full screen.
 
-Em termos de jogabilidade é necessária a implementação de dois modos de câmara: \textit{Third Person Shooter} (tps) e outra \textit{First Person Shooter} (fps).
-A mudança entre estes dois modos é feita através de uma tecla pré-definida.
-
-O radar não indica a direcção em que está a chave e tem um raio de acção limitado a 500 metros.
+Grande parte das configurações relevantes do jogo, como velocidade do jogador, numero de torres, tempo entre disparos, tamanho do mapa, configurações de iluminação, deslocamento consoante o movimento do rato, resources para modelos, musica, range das torres, entre muitos outros, estão contido no documento \textit{config.ini}, documento este que será explicado mais à frente.
 
 Por último são necessário alguns modelos para as torres, chaves, herói, etc. Por opção, estes modelos são do formato \textit{.md2}. Adiante será desenvolvido este ponto e explicada esta escolha.
