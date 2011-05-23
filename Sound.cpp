@@ -29,6 +29,9 @@ void Sound::load() {
 
 	Sound::loadSingle(SOUND_KEY_CATCH, conf.rstring("sound:key_catch"));
 	alSourcei(sounds[SOUND_KEY_CATCH].source, AL_LOOPING, AL_FALSE);
+	
+	Sound::loadSingle(SOUND_LIFE_LOST, conf.rstring("sound:life_lost"));
+	alSourcei(sounds[SOUND_LIFE_LOST].source, AL_LOOPING, AL_FALSE);
 
 	Sound::loadSingle(SOUND_JUMP, conf.rstring("sound:jump"));
 	alSourcei(sounds[SOUND_JUMP].source, AL_LOOPING, AL_FALSE);
