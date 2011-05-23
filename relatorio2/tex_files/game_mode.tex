@@ -1,0 +1,15 @@
+Foi adicionado no ficheiro \textbf{config.ini} uma opção fullscreen, que permite correr o jogo em GameMode. Isto é uma capacidade do OpenGL de correr o jogo usando o ecrã completo e com algumas caracteristicas especiais que permitem criar um ambiente mais apropriado para se jogar.
+
+O código a acrescentar foi simples, bastando, na inicialização, calcular o tamanho do ecrã para fornecer como parametro à função \textbf{glutGameModeString} e depois activar o GameMode caso a opção esteja activa:
+
+\begin{lstlisting}[caption=Activação do Game Mode]
+	void initGameMode() {
+		stringstream stream;
+		stream << glutGet(GLUT_SCREEN_WIDTH) << 'x' << glutGet(GLUT_SCREEN_HEIGHT) <<
+			':' << conf.rint("window:def_window_depth") << '@' << conf.rint("window:def_refresh_rate");
+
+		glutGameModeString(stream.str().c_str());
+		if (conf.rint("window:fullscreen") && glutGameModeGet(GLUT_GAME_MODE_POSSIBLE))
+			glutEnterGameMode();
+	}
+\end{lstlisting}

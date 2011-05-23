@@ -40,11 +40,11 @@ namespace GLManager {
 		glutCreateWindow(conf.rstring("window:title").c_str());
 
 		initGameMode();
-		
+
 		//inicial o profiling
 		g_profiling = new Profiling();
 		PROFILER_START(TIME_STARTUP, (char *) "Startup");
-		
+
 		/* inicializacao do DevIL */
 		ilInit();
 
@@ -103,7 +103,7 @@ namespace GLManager {
 		game_init();
 
 		glutSetCursor(GLUT_CURSOR_NONE);
-		
+
 	}
 
 	void game_init() {
@@ -126,13 +126,15 @@ namespace GLManager {
 		g_radar = new Radar();
 		g_rainbow = new Rainbow();
 		g_toilet = new Toilet(conf.rstring("models:toilet"));
-		Sound::play(SOUND_MAIN);
+
+		if (conf.rint("sound:music_on"))
+			Sound::play(SOUND_MAIN);
 		glutTimerFunc(g_update_interval, GLManager::update, 0);
 		glutTimerFunc(g_anims_interval, GLManager::updateFrames, 0);
 		g_frustum = new Frustum();
 		g_lighting = new Lighting();
 		g_lifes = new Lifes();
-		g_trees = new Trees();               
+		g_trees = new Trees();
 	}
 
 	void initGameMode() {
@@ -201,20 +203,20 @@ namespace GLManager {
 
 
 		g_trees->render();
-		
+
 		glColor3f(1.0, 1, 1);
 		g_radar->render();
 		g_lifes->render();
 		g_profiling->update();
 
 		InputManager::resetMouseMove();
-		
+
 		PROFILER_END(TIME_RENDER_TOTAL);
-                
+
 		PROFILER_RENDER
-                        
+
 		PROFILER_RESET
-                
+
 		// End of frame
 		glutSwapBuffers();
 	}
@@ -297,7 +299,7 @@ namespace GLManager {
 			g_player->state = GAME_OVER;
 		}
 	}
-	
+
 	float convertFromKmH(float kmH) {
 		return kmH * 1000 / 60 / 60 / conf.rint("game:updates_per_second") * conf.rint("game:speed_factor");
 	}
