@@ -31,8 +31,6 @@ SkyBox::SkyBox() {
 	mat_spec[1] = conf.rfloat("skybox:spec_g");
 	mat_spec[2] = conf.rfloat("skybox:spec_b");
 	mat_spec[3] = conf.rfloat("skybox:spec_w");
-	
-	createDL();
 }
 
 void SkyBox::render() {
