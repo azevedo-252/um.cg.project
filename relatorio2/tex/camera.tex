@@ -7,17 +7,17 @@
 %como mudar entre as camaras
 %codigo
 
-A câmera é posicionada no mundo relativamente ao posicionamento e direcção do jogador. são implementados dois modos de visualização.
-Em termos práticos, o cálculo da posição da câmara consiste em cálculos a partir dos vectores de posição e direcção do jogador, com alguns ajustes para um melhor posicionamento. Isto depende, obviamente do tipo de câmara utilizada:
+A câmera é posicionada no mundo relativamente ao posicionamento e direcção do jogador. São implementados dois modos de visualização.
+Em termos práticos, o cálculo da posição da câmera consiste em cálculos a partir dos vectores de posição e direcção do jogador, com alguns ajustes para um melhor posicionamento. Isto depende, obviamente do tipo de câmera utilizada:
 
 \begin{description}
-\item[Terceira Pessoa] Câmara colocada atrás do modelo ligeiramente acima e com a direcção do modelo. Ao vector de posição do jogador, é subtraido o seu próprio vector de direcção multiplicado por um factor de distância, para colocar a câmara nas costas do jogador. Há ainda um ajuste na coordenada Y para câmara ficar ligeiramente acima do jogador e ser possivel ver o que está para a frente deste. É também feito um teste para impedir que a câmara se posicione abaixo do nivel do terreno.
-\item[Primeira Pessoa] Câmara colocada em frente ao modelo com a direcção do modelo. O método de calculo é semelhante ao anterior, apenas muda a equaçao, para posicionar a câmara á frente do jogador, em vez de nas suas costas.
+\item[Terceira Pessoa] Câmera colocada atrás do modelo ligeiramente acima e com a direcção do modelo. Ao vector de posição do jogador, é subtraido o seu próprio vector de direcção multiplicado por um factor de distância, para colocar a câmera nas costas do jogador. Há ainda um ajuste na coordenada Y para câmera ficar ligeiramente acima do jogador e ser possível ver o que está para a frente deste. É também feito um teste para impedir que a câmera se posicione abaixo do nível do terreno.
+\item[Primeira Pessoa] Câmera colocada em frente ao modelo com a direcção do modelo. O método de cálculo é semelhante ao anterior, apenas muda a equação, para posicionar a câmera à frente do jogador, em vez de nas suas costas.
 \end{description}
 
-Para ficar mais claro, eis o código de cálculo da posição da câmara:
+Para ficar mais claro, eis o código de cálculo da posição da câmera:
 
-\begin{lstlisting}[caption=Função de posicionamento da câmara]
+\begin{lstlisting}[caption=Função de posicionamento da câmera]
 void Camera::placeCamera() {
 	Vertex* pos = g_player->coords;
 	Vertex* dir = g_player->direction;
@@ -60,4 +60,4 @@ void Camera::placeCamera() {
 
 \end{lstlisting} 
 
-O código começa por saber as coordenadas e direcção do jogador, e conforme o tipo de câmara seleccionado (a câmara pode ser alternada pela tecla 'C'), calcula as posições da câmara, terminando então com a chamada ao \textbf{gluLookAt}.
+O código começa por saber as coordenadas e direcção do jogador, e conforme o tipo de câmera seleccionado (a câmera pode ser alternada pela tecla 'C'), calcula as posições da câmera, terminando então com a chamada ao \textbf{gluLookAt}.

@@ -3,10 +3,10 @@ Durante o render apenas é necessário invocar a lista criada, através do seu i
 
 Neste projecto foram usadas Display Lists em vários pontos, e em algumas delas houve subtilezas que foi necessário ter em conta:
 \begin{description}
-\item[Torres] É criada uma Display List para representar uma torre. Como cada torre tem uma orientação diferente, que vai variando ao longo do jogo, não seria possivel criar uma Display List geral para fazer o render de todas as torres. Assim o render das torres resume-se a fazer a translação e rotação para o local correcto, seguido da invocação da DL.
-\item[Árvores] Para as árvores já seria possivel definir, primeiro uma DL para uma árvore individual, e depois uma DL geral para o render de todas as árvores, á custa da primeira DL.
+\item[Torres] É criada uma Display List para representar uma torre. Como cada torre tem uma orientação diferente, que vai variando ao longo do jogo, não seria possível criar uma Display List geral para fazer o render de todas as torres. Assim o render das torres resume-se a fazer a translação e rotação para o local correcto, seguido da invocação da DL.
+\item[Árvores] Para as árvores já seria possível definir, primeiro uma DL para uma árvore individual, e depois uma DL geral para o render de todas as árvores, à custa da primeira DL.
 Porém isto também não foi implementado pois não permitiria aplicar o View Frustum Culling nas árvores, que revelou ser uma alternativa mais eficiente. Assim o método usado foi idêntico ao das torres, apenas com uma DL para uma árvore.
-\item[Balas] As balas têm a particularidade de possuirem animações. No total cada bala alterna entre 7 frames diferentes. Ainda assim, foi notado que, criando uma DL para cada uma das frames, a performance da aplicação era melhorada. Isto foi particularmente interessante ao verificar-se que deste modo, passou a ser possivel ter centenas de balas animadas em simultâneo em jogo, e ainda manter um nível de FPS aceitavel.
+\item[Balas] As balas têm a particularidade de possuirem animações. No total cada bala alterna entre 7 frames diferentes. Ainda assim, foi notado que, criando uma DL para cada uma das frames, a performance da aplicação era melhorada. Isto foi particularmente interessante ao verificar-se que deste modo, passou a ser possível ter centenas de balas animadas em simultâneo em jogo, e ainda manter um nível de FPS aceitável.
 \end{description}
 
 Eis como exemplo, a geração e invocação da DL para as torres:

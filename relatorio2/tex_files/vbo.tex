@@ -1,6 +1,6 @@
-Os Vertex Buffer Objects (VBOs) disponibilizam uma método de render mais eficiente para um conjunto de vértices estático. Através desta ferramenta é possivel definir, na fase de inicialização do programa, um conjunto de vértices com todas as suas propriedades (coordenadas de textura, cores, normais) e armazená-los previamente num buffer na placa gráfica.
+Os Vertex Buffer Objects (VBOs) disponibilizam uma método de render mais eficiente para um conjunto de vértices estático. Através desta ferramenta é possível definir, na fase de inicialização do programa, um conjunto de vértices com todas as suas propriedades (coordenadas de textura, cores, normais) e armazená-los previamente num buffer na placa gráfica.
 
-Neste projecto foram usados VBOs para o desenho do mapa de jogo, por ser o objecto que é estático ao longo de todo o decorrer do jogo. A sua implementação foi feita á custa da função Map::initVBO.
+Neste projecto foram usados VBOs para o desenho do mapa de jogo, por ser o objecto que é estático ao longo de todo o decorrer do jogo. A sua implementação foi feita à custa da função Map::initVBO.
 
 \begin{lstlisting}[caption=Cálculo dos buffers para VBOs (alocação)]
 void Map::initVBO() {
@@ -78,7 +78,7 @@ O cálculo das normais, por depender dos vértices adjacentes, não pode ser cal
 	}
 \end{lstlisting}
 
-Finalmente, são calculados os arrays dos índices indicando a ordem pela qual os vértices devem ser desenhados. O mapa fica dividido em strips pelo que deve ser gerado um array de indices por cada strip.
+Finalmente, são calculados os arrays dos índices indicando a ordem pela qual os vértices devem ser desenhados. O mapa fica dividido em strips pelo que deve ser gerado um array de índices por cada strip.
 
 \begin{lstlisting}[caption=Cálculo dos buffers para VBOs (envio dos buffers)]
 	//gera e envia os buffers
@@ -105,7 +105,7 @@ Finalmente, são calculados os arrays dos índices indicando a ordem pela qual o
 }
 \end{lstlisting}
 
-Para terminar, a função envia os buffers calculados para a placa gráfica, e liberta a memória temporário alocada no início.
+Para terminar, a função envia os buffers calculados para a placa gráfica, e liberta a memória temporária alocada no início.
 
 O render do mapa passa então a ser um ciclo simples, invocando os arrays de strips aqui calculados:
 

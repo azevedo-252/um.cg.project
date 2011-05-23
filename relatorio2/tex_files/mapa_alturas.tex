@@ -23,7 +23,7 @@ void Textures::loadHeightMap(string path, int width) {
 
 A imagem é carregada com recurso á biblioteca DevIL, e é convertida para o formato \emph{IL\_LUMINANCE} para representar uma escala de cinzentos.
 
-Com isto, é obtido um array com os dados da imagem a partir do qual se pode obter informação sobre a altura de cada vertice do mapa, da seguinte forma:
+Com isto, é obtido um array com os dados da imagem a partir do qual se pode obter informação sobre a altura de cada vértice do mapa, da seguinte forma:
 
 \begin{lstlisting}[caption=Função de cálculo da altura de um vértice do mapa]
 float Map::map_h(int x, int z) {
@@ -32,7 +32,7 @@ float Map::map_h(int x, int z) {
 }
 \end{lstlisting}
 
-Além de calcular a altura de cada vértice, é necessário calcular também a altura intermédia de cada ponto no interior dos triangulos do terreno, para proporcionar um movimento fluido. Para isto é feita uma interpolação com base nas alturas dos vértices adjacentes ao ponto que se pretende calcular:
+Além de calcular a altura de cada vértice, é necessário calcular também a altura intermédia de cada ponto no interior dos triângulos do terreno, para proporcionar um movimento fluído. Para isto é feita uma interpolação com base nas alturas dos vértices adjacentes ao ponto que se pretende calcular:
 
 \begin{lstlisting}[caption=Interpolação da altura de um ponto]
 float Map::triangulateHeight(float x, float z) {

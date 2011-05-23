@@ -1,5 +1,5 @@
 
-O player é aquele que se denomina ``herói'' do jogo. Ainda que nos seja permitido carregar qualquer modelo \textit{md2} optamos pela famosa figura dos jogos electrónicos, \textit{Sonic}.
+O player é aquele que se denomina ``herói'' do jogo. Ainda que nos seja permitido carregar qualquer modelo \textit{md2}, optámos pela famosa figura dos jogos electrónicos, \textit{Sonic}.
 
 Para controlar o player criamos uma classe, \textit{Player.cpp}.
 Os modelos \textit{md2} utilizados suportam animações por frames. Assim, foi criada a classe Frame para gerir através da função \textbf{glutTimerFunc} o incremento das frames num intervalo fixo de tempo, configurável no ficheiro \textbf{config.ini}. Isto faz com que a cada intervalo, a frame actual seja incrementada, e quando o jogador está em movimento estas alternem ciclicamente, criando a ilusão de movimento.

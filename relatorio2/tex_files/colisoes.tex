@@ -31,7 +31,7 @@ void Player::calcColisions() {
 }
 \end{lstlisting}
 
-A colisão apenas faz com que, quando o jogador entra num determinado raio de uma árvore ou torre, é empurrado para fora, na direcção dada pelo angulo entre a torre/árvore e o jogador.
+A colisão apenas faz com que, quando o jogador entra num determinado raio de uma árvore ou torre, é empurrado para fora, na direcção dada pelo ângulo entre a torre/árvore e o jogador.
 Um aspecto importante a ter é conta é a altura em que esta função é invocada.
 Inicialmente era chamada no update do jogador, mas isto fazia com que o jogador bloqueasse sempre que fosse contra uma torre, sendo depois necessário recuar um bocado.
-Para resolver este problema, passou-se a fazer a detecção de colisões também depois do update das torres. Desta forma, é permitido que o angulo das torres seja actualizado, durante o seu update, e assim a direcção para a qual o jogador é empurrado já tem em conta o novo angulo, fazendo com que, ao avançar em direcção a uma torre, o jogador automaticamente a contorne.
+Para resolver este problema, passou-se a fazer a detecção de colisões também depois do update das torres. Desta forma, é permitido que o ângulo das torres seja actualizado, durante o seu update, e assim a direcção para a qual o jogador é empurrado já tem em conta o novo ângulo, fazendo com que, ao avançar em direcção a uma torre, o jogador automaticamente a contorne.
